@@ -1,43 +1,34 @@
 <?php
 
+    require_once("modules/mod_accueil/mod_accueil.php");
+    #require_once('decouvrir/mod_decouvrir.php');
 
-
-require_once("modules/mod_accueil/mod_accueil.php");
-
-    echo "<HEADER> ";
-		echo "<META CHARSET = UTF-8/>";
-		echo "<TITLE> 3HArt </TITLE>";
-        $mod = new mod_accueil();
-        $mod->exec();
-		
-    echo "</HEADER>"; 
-
-    echo "<BODY>";
-        
-        
-    echo "</BODY>";
-
+    echo("<HEADER>
+        <META CHARSET = UTF-8/>
+        <TITLE> 3HArt </TITLE>
+    </HEADER>
     
+    <BODY>");
+    $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
+    switch ($_GET['module']) {
+        case 'accueil':
+            $mod = new mod_accueil();
+            $mod->exec();
+            echo ("<a href=\"index.php?module=decouverte\">Découverte</a>");
+            break;
+
+        case 'decouverte':
+            # code...
+            break;
+    }
+    echo("<FOOTER>
+            <p>
+                <a href = index.php>
+                    \#<img src = image/logo.png alt = Logo du site/>
+                </a>
+            </p>
+        </FOOTER>
+    </BODY>");
     
-
-    echo "<FOOTER>";
-        echo "<p>";
-            echo "<A HREF = accueil.html>";
-		        echo "<IMG SRC = image/logo.png alt = Logo du site/>";
-		    echo "</A>";
-            echo "<br>";
-		    echo "Creative commons licence - Amegadjen Fabrice, 2022 Site réalisé dans le cadre de la ressource Développement Web";
-		echo "</p>";
-    echo "</FOOTER>";
-
-    
-
-
-      
-
-
-
-
-
 ?>
