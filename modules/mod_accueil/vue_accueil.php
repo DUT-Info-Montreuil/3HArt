@@ -36,14 +36,24 @@ const mois = [
         }
 
         public function menu(){
-            echo '<a href = " index.php?action=bienvenue&module=connexion" > Bienvenue </a>';
+            echo '<a href = " index.php?action=bienvenue&module=accueil" > Bienvenue </a>';
             echo "<br>";
-            echo '<a href = "index.php?action=inscription&module=connexion" > FormulaireInscription</a>';
+            echo '<a href = "index.php?action=inscription&module=accueil" > FormulaireInscription</a>';
             echo "<br>";
-			echo '<a href = "index.php?action=connexion&module=connexion" > Connexion</a>';
+			echo '<a href = "index.php?action=connexion&module=accueil" > Connexion</a>';
             echo "<br>";
-			echo '<a href = "index.php?action=deconnexion&module=connexion" > Deconnexion</a>';
+			echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
             echo "<br>";
+            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Ajouter une image</a>';
+            echo "<br>";
+        }
+
+        public function image(){
+            echo "<form action=index.php?action=image method=POST enctype=multipart/form-data>";
+                echo "<label for=file>Fichier</label>";
+                echo "<input type=file name=file>";
+                echo "<button type=submit>Enregistrer</button>";
+            echo "</form>";
         }
 
         public function bienvenue(){
