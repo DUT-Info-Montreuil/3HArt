@@ -4,10 +4,11 @@
     #require_once('modules/mod_decouvrir/mod_decouvrir.php');
     require_once("modules/mod_image/mod_images.php");
 
-    echo("<HEADER>
+    echo("<head>
         <META CHARSET = UTF-8/>
-        <TITLE> 3HArt </TITLE>
-    </HEADER>
+        <title> 3HArt </title>
+        <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
+    </head>
     
     <BODY>");
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';

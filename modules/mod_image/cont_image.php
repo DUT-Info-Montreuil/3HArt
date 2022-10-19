@@ -15,7 +15,7 @@ require_once("vue_image.php");
         public function afficheImage() {
             $idImage = "./modules/mod_image/photo.png";
             if (isset($idImage)) {
-                $this->vue->afficherImage($idImage);
+                echo ($this->vue->affichage($idImage));
             }
 
 //            if (isset($_FILES['photo']['tmp_name'])) {  
