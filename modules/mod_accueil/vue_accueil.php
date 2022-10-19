@@ -15,6 +15,8 @@ const mois = [
     12 => "Décembre",
 ];
 
+
+
     class vue_accueil{
 
         
@@ -49,8 +51,8 @@ const mois = [
         }
 
         public function image(){
-            echo "<form action=index.php?action=image method=POST enctype=multipart/form-data>";
-                echo "<label for=file>Fichier</label>";
+            echo "<form action=index.php?action=uploadImage method=POST enctype=multipart/form-data>";
+                echo "<label for=file>Fichier </label>";
                 echo "<input type=file name=file>";
                 echo "<button type=submit>Enregistrer</button>";
             echo "</form>";
@@ -64,7 +66,27 @@ const mois = [
             $heure = date("H:i");
             Print("Bienvenue, Nous sommes le $date et il est $heure");
             echo "<br>";
+
+            $repertoire = "./home/etudiants/info/famegadjen/local_html/SAE_Dev/3HArt/modules/mod_image";
+            
+
+             if(is_dir($repertoire)){  
+                if($iteration = opendir($repertoire)){  
+                    while(($fichier = readdir($iteration)) !== false){  
+                        if($fichier != "." && $fichier != ".."){ 
+                            $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
+                            $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
+                            if(strpos($mime_type, 'image/') === 0){
+                                 // afficher images  
+                            }
+                        } 
+                    } 
+                }  
+                closedir($iteration);    
+            }  
         }
+
+        
 
 
     }

@@ -15,20 +15,20 @@
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            echo ("<a href=\"index.php?module=decouverte\">Découverte</a>");
+            // echo ("<a href=\"index.php?module=decouverte\">Découverte</a>");
             break;
 
         case 'decouverte':
             # code...
             break;
     }
-    echo("<FOOTER>
+    /*echo("<FOOTER>
             <p>
                 <a href = index.php>
                     \#<img src = image/logo.png alt = Logo du site/>
                 </a>
             </p>
         </FOOTER>
-    </BODY>");
+    </BODY>");*/
     
 ?>

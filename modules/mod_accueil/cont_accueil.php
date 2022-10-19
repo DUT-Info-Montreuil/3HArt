@@ -2,8 +2,7 @@
 require_once("modele_accueil.php");
 require_once("vue_accueil.php");
 
-const tabExtensions = ['jpg', 'png', 'jpeg'];
-const maxSize = 400000;
+
 
     class cont_accueil{
         private $modele;
@@ -39,7 +38,7 @@ const maxSize = 400000;
             switch($this->action) { 
 
                 case "bienvenue":
-                    $this->bienvenue();
+                    $this->vue->bienvenue();
                     break;
 
                 case "inscription":
@@ -59,38 +58,17 @@ const maxSize = 400000;
                     break;
 
                 case "ajoutImage";
-                    $this->vue->image();
-                    break;
-
-                case "image";
-                    $tmpName = $_FILES['file']['tmp_name'];
-                    $name = $_FILES['file']['name'];
-                    $size = $_FILES['file']['size'];
-                    $error = $_FILES['file']['error'];
-
-                    $extension = explode('.', $name);
-                    $extension = strtolower(end($extension));
-
-                    if(in_array($extension, tabExtensions)){
-                        if($size <= maxSize){
-                            if(move_uploaded_file($tmpName, './modules/mod_image/'.$name)){
-                                echo "L'upload a bien été effectuer";
-                                echo "<br>";
-                            }
-                            else{
-                                echo "Un problème est survenue";
-                                echo "<br>";
-                            }
-                        }
-                        else{
-                            echo "L'image est trop grande";
-                            echo "<br>";
-                        }
+                    session_start();
+			        if(!empty($_SESSION['login'])){
+                        $this->vue->image();
                     }
                     else{
-                        echo "L'extension de ce fichier n'est pas supporté";
-                        echo "<br>";
+                        echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
                     }
+                    break;
+
+                case "uploadImage";
+                    $this->modele->upload();
                     break;
 
                 default:
@@ -98,22 +76,7 @@ const maxSize = 400000;
                     break;
                 
             }
-        } 
-		
-			
-		
-		public function connexion(){
-            $this->modele->connexion;
-		}
-		
-		public function deconnexion(){
-			$this->modele->deconnexion;
-		}
-
-        public function bienvenue(){
-            $this->vue->bienvenue();
         }
-
         
     }
 ?>
