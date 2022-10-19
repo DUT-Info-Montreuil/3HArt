@@ -1,7 +1,8 @@
 <?php
 
     require_once("modules/mod_accueil/mod_accueil.php");
-    #require_once('decouvrir/mod_decouvrir.php');
+    #require_once('modules/mod_decouvrir/mod_decouvrir.php');
+    require_once("modules/mod_image/mod_images.php");
 
     echo("<HEADER>
         <META CHARSET = UTF-8/>
@@ -15,12 +16,19 @@
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            echo ("<a href=\"index.php?module=decouverte\">Découverte</a>");
+            echo ("<a href=\"index.php?module=decouverte\">Découverte</a><br>");
+            echo ("<a href=\"index.php?module=image\">Image</a>");
             break;
 
         case 'decouverte':
             # code...
             break;
+        
+        case 'image':
+            $mod = new mod_image();
+            $mod->exec();
+            break;
+
     }
     echo("<FOOTER>
             <p>
