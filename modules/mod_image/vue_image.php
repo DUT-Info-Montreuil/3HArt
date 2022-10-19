@@ -22,7 +22,7 @@
                     <td class=\"tableDeuxCol\">
                         <ol>
                             <li><p>Il y aura des choses ici sur l'auteur</p></li>
-                            <li><p>Il y aura des choses ici sur la description</p></li>
+                            <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
                             <li><p>Il y aura des choses ici sur la date de publication</p></li>
                             <li><p>Il y aura des choses ici sur la note</p></li>
                     </td>

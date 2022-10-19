@@ -10,7 +10,7 @@
         <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
     </head>
     
-    <BODY>");
+    <body>");
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
     switch ($_GET['module']) {
@@ -31,13 +31,13 @@
             break;
 
     }
-    echo("<FOOTER>
+    echo("<footer>
             <p>
                 <a href = index.php>
-                    \#<img src = image/logo.png alt = Logo du site/>
+                    <img src = \"publicImage/logo.png\" alt = \"Logo du site\"/>
                 </a>
             </p>
-        </FOOTER>
+        </footer>
     </BODY>");
     
 ?>

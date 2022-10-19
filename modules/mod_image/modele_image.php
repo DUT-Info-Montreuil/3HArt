@@ -26,5 +26,9 @@
 			
 		}
 */	
+		public function getDescription($id){
+			//TODO récupérer dans la base de donnée
+			return "details des images";
+		}
     }
 ?>
