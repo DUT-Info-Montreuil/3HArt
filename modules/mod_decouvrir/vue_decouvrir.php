@@ -1,6 +1,6 @@
 <?php
     class VueDecouvrir{
-        
+
         public function __construct() {
         }
         public function bienvenue() {
@@ -12,8 +12,8 @@
             }
         }
         public function menu() {
-           echo "<a href =\"index.php?module=equipes&action=bienvenue\">Bienvenue <br></a>";
-           echo "<a href =\"index.php?module=equipes&action=liste\">Liste <br></a>"; 
+           echo "<a href =\"index.php?module=users&action=bienvenue\">Bienvenue <br></a>";
+           echo "<a href =\"index.php?module=users&action=liste\">Liste <br></a>"; 
         }
         
         public function affiche_details($tab) {

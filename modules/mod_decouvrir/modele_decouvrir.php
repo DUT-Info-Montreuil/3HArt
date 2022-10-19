@@ -19,7 +19,7 @@ include_once('connexion.php');
 
 
         public function getDetails($id) {
-            $req = self::$bdd->prepare("SELECT * FROM equipe WHERE id = ?");
+            $req = self::$bdd->prepare("SELECT * FROM users WHERE id = ?");
             $req->execute(array($id));
             $t = $req->fetch();
             
