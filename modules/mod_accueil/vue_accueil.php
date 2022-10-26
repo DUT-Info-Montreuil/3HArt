@@ -66,19 +66,22 @@ const mois = [
             $heure = date("H:i");
             Print("Bienvenue, Nous sommes le $date et il est $heure");
             echo "<br>";
+            echo "<br>";
 
-            $repertoire = "./home/etudiants/info/famegadjen/local_html/SAE_Dev/3HArt/modules/mod_image";
+            $repertoire = "./modules/mod_image/";
             
+            
+        
+            
+            if($iteration = opendir($repertoire)){  
+                while(($fichier = readdir($iteration)) !== false){  
+                    if($fichier != "." && $fichier != ".."){ 
+                        $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
+                        $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
+                        if(strpos($mime_type, 'image/') === 0){
+                            echo "<img src='./modules/mod_image/$fichier' width='300px' ><br>";
+                            echo "<br>";
 
-             if(is_dir($repertoire)){  
-                if($iteration = opendir($repertoire)){  
-                    while(($fichier = readdir($iteration)) !== false){  
-                        if($fichier != "." && $fichier != ".."){ 
-                            $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
-                            $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
-                            if(strpos($mime_type, 'image/') === 0){
-                                 // afficher images  
-                            }
                         } 
                     } 
                 }  
