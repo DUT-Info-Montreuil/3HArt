@@ -1,9 +1,9 @@
 <?php
-    include_once('vue_decouvrir.php');
-    include_once('modele_decouvrir.php');
-    include_once('connexion.php');
+    include_once("vue_decouvrir.php");
+    include_once("modele_decouvrir.php");
+    //include_once('connexion.php');
 
-    class ControleurDecouvrir extends Connexion{
+    class ControleurDecouvrir {
         private $vue;
         private $modele;
         private $action;
@@ -18,9 +18,6 @@
             $this->vue->menu();
         }
 
-        function bienvenue() {
-            $this->vue->bienvenue();
-        }
         function liste() {
             $this->vue->affiche_liste($this->modele->getListe());
         }

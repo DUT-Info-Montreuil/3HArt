@@ -34,6 +34,11 @@ require_once("vue_image.php");
         
         public function miniatureImage() {
             $_FILES['photo']['tmp_name'] = "./modules/mod_image/photo.png";
+            if (isset($_FILES['photo']['tmp_name'])) {
+                echo '<img src=\"$_FILES[\'photo\'][\'name\']\" >';
+            }
+            /*
+            $_FILES['photo']['tmp_name'] = "./modules/mod_image/photo.png";
             if (isset($_FILES['photo']['tmp_name'])) {  
                 $taille = getimagesize($_FILES['photo']['tmp_name']);
                 $largeur = $taille[0];
@@ -43,9 +48,10 @@ require_once("vue_image.php");
                 $im = imagecreatefrompng($_FILES['photo']['tmp_name']);
                 $im_miniature = imagecreatetruecolor($largeur_miniature, $hauteur_miniature);
                 imagecopyresampled($im_miniature, $im, 0, 0, 0, 0, $largeur_miniature, $hauteur_miniature, $largeur, $hauteur);
-                imagepng($im_miniature, 'miniatures/'.$_FILES['photo']['name'], 90);
-                echo '<img src="miniatures/' . $_FILES['photo']['name'] . '">';
+                imagepng($im_miniature, $_FILES['photo']['name'], 90);
+                echo "<img src=\"./modules/mod_image/\" ".$_FILES['photo']['name']." >";
             }
+            */
         }
 
         public function details(){

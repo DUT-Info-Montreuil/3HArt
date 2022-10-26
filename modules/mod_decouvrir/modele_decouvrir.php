@@ -1,8 +1,8 @@
 <?php
 
-include_once('connexion.php');
+//include_once('connexion.php');
 
-    class ModeleDecouvrir extends Connexion{
+    class ModeleDecouvrir {
 
         public function __construct(){
         }

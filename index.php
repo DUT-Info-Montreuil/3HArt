@@ -1,7 +1,7 @@
 <?php
 
     require_once("modules/mod_accueil/mod_accueil.php");
-    #require_once('modules/mod_decouvrir/mod_decouvrir.php');
+    require_once("modules/mod_decouvrir/mod_decouvrir.php");
     require_once("modules/mod_image/mod_images.php");
 
     echo("<head>
@@ -22,7 +22,8 @@
             break;
 
         case 'decouverte':
-            # code...
+            $mod = new mod_accueil();
+            $mod->exec();
             break;
         
         case 'image':
