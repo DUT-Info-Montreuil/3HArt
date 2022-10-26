@@ -10,6 +10,7 @@
     </HEADER>
     
     <BODY>");
+
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
     switch ($_GET['module']) {
@@ -25,7 +26,7 @@
             break;
     }
 
-    function 
+  
 
     echo("<FOOTER>
             <p>

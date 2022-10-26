@@ -17,10 +17,18 @@
            echo "<a href =\"index.php?module=users&action=search\"> Search<br></a>";
 
            echo "<a href =\"index.php?module=users&action=3d\">3D <br></a>";
+
+          
+            echo "<a href=\"https://www.qries.com/\">
+                     <img alt=\"Qries\" src=\"https://www.qries.com/images/banner_logo.png\" width=150\" height=\"70\">
+                </a>";
+
+
+
            echo "<a href =\"index.php?module=users&action=paysage\">Paysage <br></a>";
            echo "<a href =\"index.php?module=users&action=dessin\">Dessin <br></a>";
            echo "<a href =\"index.php?module=users&action=noirblanc\">Noir & Blanc <br></a>";
-
+            
 
         }
 
@@ -31,6 +39,7 @@
                 echo "Logo : <img src ='" . $tab['logo'] . "'>";
             }
         }
+       
 
         
 ?>
