@@ -19,10 +19,6 @@ const mois = [
 
     class vue_accueil{
 
-        
-
-        
-
         function __construct(){
 
         }
@@ -37,31 +33,70 @@ const mois = [
 
         }
 
-        public function menu(){
-            echo ("
-            <nav></nav>
+        public function nav() {
+          $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
+          if ($connecter)
+            return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>";
+          else
+            return "
+            <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
+            <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>
+            ";
+        }
+
+        public function menu() {
+            return "
+            <nav>
+              <a href=\"\"><img src=\"\" alt=\"Logo\" /></a>
+              <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
+              <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>
+              <a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>
+              <a class=\"bouton\" href=\"index.php?action=ajoutImage&module=accueil\">Ajouter une image</a>
+            </nav>
+
             <div class=\"list-image-scroll\">
-                <ul class=\"row-list\"></ul>
+                <ul class=\"row-list\">
+
+                </ul>
             </div>
-            ");
-            echo '<a href = " index.php?action=bienvenue&module=accueil" > Bienvenue </a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=inscription&module=accueil" > FormulaireInscription</a>';
-            echo "<br>";
-			echo '<a href = "index.php?action=connexion&module=accueil" > Connexion</a>';
-            echo "<br>";
-			echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Ajouter une image</a>';
-            echo "<br>";
+
+            <div>
+              <div>
+                <a href=\"\">
+                  <img src=\"\" alt=\"\"></img>
+                  <p></p>
+                </a>
+              </div>
+              <div>
+                <a href=\"\">
+                  <img src=\"\" alt=\"\"></img>
+                  <p></p>
+                </a>
+              </div>
+              <div>
+                <a href=\"\">
+                  <img src=\"\" alt=\"\"></img>
+                  <p></p>
+                </a>
+              </div>
+              <div>
+                <a href=\"\">
+                  <img src=\"\" alt=\"\"></img>
+                  <p></p>
+                </a>
+              </div>
+            </div>
+            ";
         }
 
         public function image(){
-            echo "<form action=index.php?action=uploadImage method=POST enctype=multipart/form-data>";
-                echo "<label for=file>Fichier </label>";
-                echo "<input type=file name=file>";
-                echo "<button type=submit>Enregistrer</button>";
-            echo "</form>";
+            return "
+            <form action=index.php?action=uploadImage method=POST enctype=multipart/form-data>
+               <label for=file>Fichier</label>
+               <input type=file name=file>
+               <button type=submit>Enregistrer</button>
+            </form>
+            ";
         }
 
         public function bienvenue(){
@@ -75,27 +110,27 @@ const mois = [
             echo "<br>";
 
             $repertoire = "./modules/mod_image/";
-            
-            
-        
-            
-            if($iteration = opendir($repertoire)){  
-                while(($fichier = readdir($iteration)) !== false){  
-                    if($fichier != "." && $fichier != ".."){ 
+
+
+
+
+            if($iteration = opendir($repertoire)){
+                while(($fichier = readdir($iteration)) !== false){
+                    if($fichier != "." && $fichier != ".."){
                         $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
                         $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
                         if(strpos($mime_type, 'image/') === 0){
                             echo "<img src='./modules/mod_image/$fichier' width='300px' ><br>";
                             echo "<br>";
 
-                        } 
-                    } 
-                }  
-                closedir($iteration);    
-            }  
+                        }
+                    }
+                }
+                closedir($iteration);
+            }
         }
 
-        
+
 
 
     }
