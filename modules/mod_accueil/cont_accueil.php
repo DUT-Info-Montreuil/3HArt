@@ -57,6 +57,22 @@ require_once("vue_accueil.php");
                     $this->modele->ajout($_GET["login"],$_GET["password"]);
                     break;
 
+                case "maChaine";
+                    $this->vue->maChaine();
+                    break;
+
+                case "commenter";
+                    $this->vue->commenter();
+                    break;
+
+                case "posterCommentaire";
+                    $this->modele->posterCommentaire($_POST["commentaire"]);
+                    break;
+
+                case "lireCommentaire";
+                    $this->vue->afficher($this->modele->lireCommentaire());
+                    break;
+
                 case "ajoutImage";
                     session_start();
 			        if(!empty($_SESSION['login'])){
@@ -66,6 +82,15 @@ require_once("vue_accueil.php");
                         echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
                     }
                     break;
+
+                case "supprimerImage";
+                    $this->vue->formulaireSuppression();
+                    break;
+
+                case "suppression";
+                    $this->modele->suppression($_POST["id"]);
+                    break;
+
 
                 case "uploadImage";
                     $this->modele->upload();
