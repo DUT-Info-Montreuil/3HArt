@@ -38,6 +38,12 @@ const mois = [
         }
 
         public function menu(){
+            echo ("
+            <nav></nav>
+            <div class=\"list-image-scroll\">
+                <ul class=\"row-list\"></ul>
+            </div>
+            ");
             echo '<a href = " index.php?action=bienvenue&module=accueil" > Bienvenue </a>';
             echo "<br>";
             echo '<a href = "index.php?action=inscription&module=accueil" > FormulaireInscription</a>';
