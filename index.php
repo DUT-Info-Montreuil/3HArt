@@ -1,34 +1,48 @@
 <?php
 
     require_once("modules/mod_accueil/mod_accueil.php");
-    #require_once('decouvrir/mod_decouvrir.php');
+    require_once("modules/mod_decouvrir/mod_decouvrir.php");
+    require_once("modules/mod_image/mod_images.php");
 
-    echo("<HEADER>
-        <META CHARSET = UTF-8/>
-        <TITLE> 3HArt </TITLE>
-    </HEADER>
-    
-    <BODY>");
+    echo("
+    <html>
+        <head>
+            <META CHARSET = UTF-8/>
+            <title> 3HArt </title>
+            <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
+        </head>
+        
+        <body>");
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
     switch ($_GET['module']) {
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            // echo ("<a href=\"index.php?module=decouverte\">Découverte</a>");
+            echo ("<a href=\"index.php?module=decouverte\">Découverte</a><br>");
+            echo ("<a href=\"index.php?module=image\">Image</a>");
             break;
 
         case 'decouverte':
-            # code...
+            $mod = new mod_accueil();
+            $mod->exec();
             break;
+        
+        case 'image':
+            $mod = new mod_image();
+            $mod->exec();
+            break;
+
     }
-    /*echo("<FOOTER>
-            <p>
-                <a href = index.php>
-                    \#<img src = image/logo.png alt = Logo du site/>
-                </a>
-            </p>
-        </FOOTER>
-    </BODY>");*/
+    echo("
+            <footer>
+                <p>
+                    <a href = index.php>
+                        <img src = \"publicImage/logo.png\" alt = \"Logo du site\"/>
+                    </a>
+                </p>
+            </footer>
+        </body>
+    </html>");
     
 ?>
