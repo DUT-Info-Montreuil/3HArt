@@ -23,9 +23,15 @@ class ModDecouvrir{
                 case "details":
                     $this->controleur->detailUser();
                     break;
-        }
-        }
+                case "action":
+                    $this->controleur->detail
 
+            }
+        };
+
+
+        
+        
     }
 
 

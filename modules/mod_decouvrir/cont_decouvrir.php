@@ -24,6 +24,9 @@
         public function detailsUsers() {
             $this->vue->affiche_details($this->modele->getDetails($_GET['id']));
         }
+        public function detailsUtilisateurs(){
+            $this->vue->affiche _categorie
+        }
         
         
 
@@ -48,6 +51,8 @@
                     break;
             }
         }
+
+        public function 
         
 
 
