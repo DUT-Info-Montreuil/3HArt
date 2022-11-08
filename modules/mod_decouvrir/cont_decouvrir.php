@@ -6,12 +6,10 @@
     class ControleurDecouvrir {
         private $vue;
         private $modele;
-        private $action;
 
         public function __construct(){
             $this->vue = new VueDecouvrir();
-            $this->modele = new ModeleDecouvrir();
-            $this->action = isset($_GET['action']) ? $_GET['action'] : "bienvenue";  
+            $this->modele = new ModeleDecouvrir(); 
         }
 
         public function menu() {
@@ -25,10 +23,7 @@
         public function detailsUsers() {
             $this->vue->affiche_details($this->modele->getDetails($_GET['id']));
         }
-        public function get_action() {
-            return $this->action;
-        }
-
+        
         public function getUsers(){
             
         }

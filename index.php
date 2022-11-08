@@ -4,13 +4,15 @@
     require_once("modules/mod_decouvrir/mod_decouvrir.php");
     require_once("modules/mod_image/mod_images.php");
 
-    echo("<head>
-        <META CHARSET = UTF-8/>
-        <title> 3HArt </title>
-        <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
-    </head>
-    
-    <body>");
+    echo("
+    <html>
+        <head>
+            <META CHARSET = UTF-8/>
+            <title> 3HArt </title>
+            <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
+        </head>
+        
+        <body>");
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
     switch ($_GET['module']) {
@@ -32,13 +34,15 @@
             break;
 
     }
-    echo("<footer>
-            <p>
-                <a href = index.php>
-                    <img src = \"publicImage/logo.png\" alt = \"Logo du site\"/>
-                </a>
-            </p>
-        </footer>
-    </BODY>");
+    echo("
+            <footer>
+                <p>
+                    <a href = index.php>
+                        <img src = \"publicImage/logo.png\" alt = \"Logo du site\"/>
+                    </a>
+                </p>
+            </footer>
+        </body>
+    </html>");
     
 ?>

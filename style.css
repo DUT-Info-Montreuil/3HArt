@@ -1,6 +1,8 @@
 .imageMiniature
 {
-
+    width: 15%;
+    height: auto;
+    margin: 2%;
 }
 
 .imagePrincipale

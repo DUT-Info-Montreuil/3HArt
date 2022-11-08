@@ -6,16 +6,21 @@
             
         }
 
-        public function afficherImage($image) {
+        public function image($image) {
             return "<img class=\"imagePrincipale\" src=\"$image\"";
         }
 
+        public function miniature($image) {
+            return "<img class=\"imageMiniature\" src=\"$image\">";
+        }
+        
+
         public function menu(){
-            echo '<a href = " index.php?module=image&action=image" > Afficher Image </a>';
+            echo 'menu';
         }
 
         public function affichage($idImage) {
-            $image = $this->afficherImage($idImage);
+            $image = $this->image($idImage);
             return "<table>
                 <tr>
                     <td class=\"tableDeuxCol\">$image</td>
