@@ -1,19 +1,6 @@
 
 <?php
-const mois = [
-    1 => "Janvier",
-    2 => "Février",
-    3 => "Mars",
-    4 => "Avril",
-    5 => "Mai",
-    6 => "Juin",
-    7 => "Juillet",
-    8 => "Août",
-    9 => "Septembre",
-    10 => "Octobre",
-    11 => "Novembre",
-    12 => "Décembre",
-];
+
 
 
 
@@ -75,18 +62,9 @@ const mois = [
             echo "<br>";
 			echo '<a href = "index.php?action=connexion&module=accueil" > Connexion</a>';
             echo "<br>";
-			echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Poster une image</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=supprimerImage&module=accueil" > Supprimer une image</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=commenter&module=accueil" > Commenter</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=maChaine&module=accueil" > Ma chaine</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=lireCommentaire&module=accueil" > lire les commentaires</a>';
-            echo "<br>";
+			echo '<a href = "index.php?action=maChaine&module=accueil" > Ma chaine</a>';
+            echo "<br><br>";
+            
             
         }
 
@@ -98,8 +76,37 @@ const mois = [
             echo "</form>";
         }
 
+        public function pasConnecter(){
+            echo "Vous devez être connecté pour continuer";
+        }
 
-        public function maChaine(){
+
+        public function maChaine($pasImage){
+            echo '<a href = " index.php?action=bienvenue&module=accueil" > Accueil </a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Poster une image</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=supprimerImage&module=accueil" > Supprimer une image</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=commenter&module=accueil" > Commenter</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=lireCommentaire&module=accueil" > Afficher les commentaires</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=maChaine&module=accueil" > Masquer les commentaires</a>';
+            echo "<br><br>";
+            if($pasImage){
+                $this->afficheVosImage();
+            }
+            
+
+            
+
+
+        }
+
+        public function afficheVosImage(){
             $repertoire = "./modules/mod_image/";
             
             if(is_dir($repertoire)){
@@ -122,18 +129,15 @@ const mois = [
             echo $texte;
         }
 
-        public function bienvenue(){
-            $d = date("d");
-            $m = mois[date("m")];
-            $y = 20 . date("y");
-            $date = $d . " " . $m . " " . $y ;
-            $heure = date("H:i");
-            Print("Bienvenue, Nous sommes le $date et il est $heure");
-            echo "<br>";
-            var_dump(file_exists("test.txt"));
-
-              
+        public function afficherCommentaires($tab){
+            foreach ($tab as &$texte) {
+                print_r($texte);
+                echo "<br><br>";
+            }
+            
         }
+
+        
 
         
 

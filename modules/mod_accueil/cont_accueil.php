@@ -30,15 +30,18 @@ require_once("vue_accueil.php");
             $this->vue->afficheDetails($this->modele->getDetails($id));
         }
 
+        public function afficher($texte){
+            $this->vue->afficher($texte);
+        }
+
         
 
         function exec(){
-            $this->vue->menu();
-            echo "<br>";
+            
             switch($this->action) { 
-
                 case "bienvenue":
-                    $this->vue->bienvenue();
+                    $this->vue->menu();
+                    echo "<br>";
                     break;
 
                 case "inscription":
@@ -46,11 +49,15 @@ require_once("vue_accueil.php");
                     break;
 
                 case "connexion";
-                    $this->modele->connexion();
+                    $this->vue->menu();
+                    echo "<br>";
+                    $this->vue->afficher($this->modele->connexion());
                     break;
 				
 				case "deconnexion";
-                    $this->modele->deconnexion();
+                    $this->vue->menu();
+                    echo "<br>";
+                    $this->vue->afficher($this->modele->deconnexion());
                     break;
 					
 				case "ajout";
@@ -58,7 +65,14 @@ require_once("vue_accueil.php");
                     break;
 
                 case "maChaine";
-                    $this->vue->maChaine();
+                    if($this->modele->estConnecter()){
+                        $this->vue->maChaine(TRUE);
+                    }
+                    else{
+                        $this->vue->menu();
+                        echo "<br>";
+                        $this->vue->pasConnecter();
+                    }
                     break;
 
                 case "commenter";
@@ -67,20 +81,24 @@ require_once("vue_accueil.php");
 
                 case "posterCommentaire";
                     $this->modele->posterCommentaire($_POST["commentaire"]);
+                    $this->vue->maChaine(TRUE);
                     break;
 
                 case "lireCommentaire";
-                    $this->vue->afficher($this->modele->lireCommentaire());
+                    $this->vue->maChaine(FALSE);
+                    $commentaire = $this->modele->lireCommentaire();
+                    if($commentaire != -1){
+                        $this->vue->afficherCommentaires($commentaire);
+                    }
+                    else{
+                        $this->vue->afficher("Pas de commentaire à afficher :)");
+                    }
+                    echo "<br>";
+                    $this->vue->afficheVosImage();
                     break;
 
                 case "ajoutImage";
-                    session_start();
-			        if(!empty($_SESSION['login'])){
-                        $this->vue->image();
-                    }
-                    else{
-                        echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
-                    }
+                    $this->vue->image();
                     break;
 
                 case "supprimerImage";
@@ -88,12 +106,12 @@ require_once("vue_accueil.php");
                     break;
 
                 case "suppression";
-                    $this->modele->suppression($_POST["id"]);
+                    $this->vue->afficher($this->modele->suppression($_POST["id"]));
                     break;
 
 
                 case "uploadImage";
-                    $this->modele->upload();
+                    $this->vue->afficher($this->modele->upload());
                     break;
 
                 default:
