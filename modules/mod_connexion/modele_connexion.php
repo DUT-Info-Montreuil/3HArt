@@ -1,8 +1,8 @@
 <?php
 
-include_once('connexion.php');
+include_once('Connexion.php');
 
-    class ModeleConnexion extends Connexion{
+    class modele_connexion extends Connexion{
         public function __construct(){
         }
 
@@ -15,13 +15,13 @@ include_once('connexion.php');
                 return($_POST["login"]);
             }
             return NULL;
-    
         }
 
         public function connexion() {
                 $req = Connexion::$bdd->prepare("SELECT * FROM connexion WHERE login = ?");
                 $req->execute(array($_POST['login']));
                 $tab = $req->fetchall();
+
                 if(isset($tab[0]) && password_verify($_POST['password'], $tab[0]['password'])) {
                     $_SESSION['login'] = $tab[0]['login'];
                 }    
@@ -32,5 +32,7 @@ include_once('connexion.php');
                 unset($_SESSION['login']);
             }
         }
+        
+
     }
 ?>

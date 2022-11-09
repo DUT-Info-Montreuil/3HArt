@@ -20,12 +20,6 @@ class mod_accueil{
     }
 
 }
-    
-
-
-      
-
-
 
 
 

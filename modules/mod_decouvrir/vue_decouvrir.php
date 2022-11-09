@@ -1,5 +1,5 @@
 <?php
-    class VueDecouvrir{
+    class vue_decouvrir{
 
         public function __construct() {
         }
@@ -13,34 +13,31 @@
 
         public function menu() {
            
-           echo "<a href =\"index.php?module=users&action=connexion\"> Connexion<br></a>";
-           echo "<a href =\"index.php?module=users&action=deconnexion\"> Deconnexion <br></a>";
+           echo "<a href =\"index.php?module=decouvrir&action=connexion\"> Connexion<br></a>";
+           echo "<a href =\"index.php?module=decouvrir&action=deconnexion\"> Deconnexion <br></a>";
 
-           echo "<a href =\"index.php?module=users&action=search\"> Search<br></a>";
+           echo "<a href =\"index.php?module=decouvrir&action=search\"> Search<br></a>";
 
            echo(
             "<div class=\"categorie\">
-                <a href =\"index.php?module=users&action=3d\">3D <br></a>
+                <a href =\"index.php?module=decouvrir&action=3d\">3D <br></a>
 
                 <a href=\"https://www.qries.com/\">
                      <img alt=\"Qries\" src=\"https://www.qries.com/images/banner_logo.png\" width=150\" height=\"70\">
                 </a>
 
-                <a href =\"index.php?module=users&action=paysage\">
+                <a href =\"index.php?module=decouvrir&action=paysage\">
                 <img alt=\"Paysage\" src =\"publicImage/lisa.jpeg\" >
                 Hello</a>
 
-                <a href =\"index.php?module=users&action=paysage\">Paysage <br></a>
-                <a href =\"index.php?module=users&action=dessin\">Dessin <br></a>
-                <a href =\"index.php?module=users&action=noirblanc\">Noir & Blanc <br></a>
+                <a href =\"index.php?module=decouvrir&action=paysage\">Paysage <br></a>
+                <a href =\"index.php?module=decouvrir&action=dessin\">Dessin <br></a>
+                <a href =\"index.php?module=decouvrir&action=noirblanc\">Noir & Blanc <br></a>
                 
-
             </div>"
            );
 
         }
-        
-            
 
 
         public function affiche_details($tab) {

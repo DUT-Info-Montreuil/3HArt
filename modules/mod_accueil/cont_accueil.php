@@ -2,6 +2,8 @@
 require_once("modele_accueil.php");
 require_once("vue_accueil.php");
 
+
+
     class cont_accueil{
         private $modele;
         private $vue;
@@ -36,7 +38,7 @@ require_once("vue_accueil.php");
             switch($this->action) { 
 
                 case "bienvenue":
-                    $this->bienvenue();
+                    $this->vue->bienvenue();
                     break;
 
                 case "inscription":
@@ -55,27 +57,51 @@ require_once("vue_accueil.php");
                     $this->modele->ajout($_GET["login"],$_GET["password"]);
                     break;
 
+                case "maChaine";
+                    $this->vue->maChaine();
+                    break;
+
+                case "commenter";
+                    $this->vue->commenter();
+                    break;
+
+                case "posterCommentaire";
+                    $this->modele->posterCommentaire($_POST["commentaire"]);
+                    break;
+
+                case "lireCommentaire";
+                    $this->vue->afficher($this->modele->lireCommentaire());
+                    break;
+
+                case "ajoutImage";
+                    session_start();
+			        if(!empty($_SESSION['login'])){
+                        $this->vue->image();
+                    }
+                    else{
+                        echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
+                    }
+                    break;
+
+                case "supprimerImage";
+                    $this->vue->formulaireSuppression();
+                    break;
+
+                case "suppression";
+                    $this->modele->suppression($_POST["id"]);
+                    break;
+
+
+                case "uploadImage";
+                    $this->modele->upload();
+                    break;
+
                 default:
                     echo "erreur : " . $this->action;
                     break;
                 
             }
-        } 
-		
-			
-		
-		public function connexion(){
-            $this->modele->connexion;
-		}
-		
-		public function deconnexion(){
-			$this->modele->deconnexion;
-		}
-
-        public function bienvenue(){
-            $this->vue->bienvenue();
         }
-
         
     }
 ?>

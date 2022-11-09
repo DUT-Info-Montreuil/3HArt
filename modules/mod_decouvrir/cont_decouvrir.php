@@ -3,19 +3,17 @@
     include_once('modele_decouvrir.php');
     //include_once('connexion.php');
 
-    class ControleurDecouvrir {
+    class controleur_decouvrir {
         private $vue;
         private $modele;
         
 
         public function __construct(){
-            $this->vue = new VueDecouvrir();
-            $this->modele = new ModeleDecouvrir();
+            $this->vue = new vue_decouvrir();
+            $this->modele = new modele_decouvrir();
              
         }
-        public function connect(){
-            this;
-        }
+        
         
         function liste() {
             $this->vue->affiche_liste($this->modele->getListe());
@@ -24,10 +22,6 @@
         public function detailsUsers() {
             $this->vue->affiche_details($this->modele->getDetails($_GET['id']));
         }
-        public function detailsUtilisateurs(){
-            $this->vue->affiche _categorie
-        }
-        
         
 
 
@@ -51,10 +45,6 @@
                     break;
             }
         }
-
-        public function 
-        
-
 
         public function exec(){
             $this->vue->menu();

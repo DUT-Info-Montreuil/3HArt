@@ -1,40 +1,54 @@
 <?php
+
     require_once("modules/mod_accueil/mod_accueil.php");
-    include_once('modules/mod_decouvrir/mod_decouvrir.php');
+    require_once("modules/mod_decouvrir/mod_decouvrir.php");
+    require_once("modules/mod_connexion/mod_connexion.php");
 
-    #require_once('decouvrir/mod_decouvrir.php');
+    //require_once("modules/mod_images");
 
-    echo("<HEADER>
-        <META CHARSET = UTF-8/>
-        <TITLE> 3HArt </TITLE>
-    </HEADER>
-    
-    <BODY>");
-
+    echo("
+    <html>
+        <head>
+            <META CHARSET = UTF-8/>
+            <title> 3HArt </title>
+            <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">
+        </head>
+        
+        <body>");
     $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
     switch ($_GET['module']) {
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            echo ("<a href=\"index.php?module=decouvrir\">Découverte</a>");
+            //echo ("<a href=\"index.php?module=decouvrir\">Decouvrir</a><br>");
+            //echo ("<a href=\"index.php?module=image\">Image</a>");
             break;
 
         case 'decouvrir':
-            $mod = new ModDecouvrir();
+            $mod = new mod_decouvrir();
+            $mod->exec();
+            break;
+        case 'connexion':
+            $mod = new mod_connexion();
+            $mod->exec();
+            break;
+           
+        case 'image':
+            $mod = new mod_image();
             $mod->exec();
             break;
     }
 
-  
-
-    echo("<FOOTER>
-            <p>
-                <a href = index.php>
-                    \#<img src = image/logo.png alt = Logo du site/>
-                </a>
-            </p>
-        </FOOTER>
-    </BODY>");
+    echo("
+            <footer>
+                <p>
+                    <a href = index.php?module=accueil>
+                        <img src = \"publicImage/logo.png\" alt = \"Logo du site\"/>
+                    </a>
+                </p>
+            </footer>
+        </body>
+    </html>");
     
 ?>

@@ -1,10 +1,9 @@
 <?php
 include_once('vue_generique.php');
-    class VueConnexion extends VueGenerique{
+    class vue_connexion extends vue_generique{
         public function __construct() {
             parent::__construct();
         }
-
 
         public function menu() {
         echo "<a href =\"index.php?module=connexion&action=ajout\">Inscription<br></a>";
@@ -14,7 +13,6 @@ include_once('vue_generique.php');
         else if(isset($_SESSION['login'])) {
             echo '<a href="index.php?module=connexion&action=deconnexion">Déconnexion</a> <br> ';
         }
-
         }
 
         public function form_ajout() {
@@ -53,6 +51,7 @@ include_once('vue_generique.php');
         public function resultat_inscription() {
             echo "Vous vous êtes correctement inscrit";
         }
+        
 
         public function resultat_deconnexion() {
             if(!isset($_SESSION['login'])) {

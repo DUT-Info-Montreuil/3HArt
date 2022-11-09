@@ -1,0 +1,33 @@
+
+.imageMiniature
+{
+    width: 15%;
+    height: auto;
+    margin: 2%;
+}
+
+.imagePrincipale
+{
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+}
+
+.imagePleineEcran
+{
+    width: inherit;/*TODO*/
+}
+
+table
+{
+    background-color: rgb(176, 182, 185);
+    border: 1px solid darkgrey;
+}
+
+
+
+.tableDeuxCol
+{
+    width: 50%;
+    
+}

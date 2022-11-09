@@ -153,3 +153,14 @@ Insert into MettreFavoris values (2, 3);
 
 Insert into Noter values (2, 3, 8);
 Insert into Noter values (1, 3, 7);
+
+
+CREATE TABLE Regarder(
+   IdUtilisateur INTEGER,
+   IdImage INTEGER,
+   DateVisionnage TIMESTAMP NOT NULL,
+   TempsVisionnage TIME,
+   PRIMARY KEY(IdUtilisateur, IdImage)
+);
+ALTER TABLE Regarder ADD FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur) ADD FOREIGN KEY(IdImage) REFERENCES Image(IdImage);
+ALTER TABLE `Regarder` ADD  CONSTRAINT `IdUtilisateur` FOREIGN KEY (`IdUtilisateur`) REFERENCES `Utilisateur`(`IdUtilisateur`) ON DELETE RESTRICT ON UPDATE RESTRICT;

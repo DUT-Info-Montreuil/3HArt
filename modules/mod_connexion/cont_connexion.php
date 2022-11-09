@@ -1,28 +1,30 @@
 <?php
     include_once('modules/mod_connexion/vue_connexion.php');
     include_once('modules/mod_connexion/modele_connexion.php');
-    include_once('connexion.php');
+    include_once('Connexion.php');
 
-    class ControleurConnexion extends Connexion{
+    class controleur_connexion extends Connexion{
         private $vue;
         private $modele;
-        private $action;
+        // private $action;
 
         public function __construct(){
-            $this->vue = new VueConnexion();
-            $this->modele = new ModeleConnexion();
-            $this->action = isset($_GET['action']) ? $_GET['action'] : "";  
+            $this->vue = new vue_connexion();
+            $this->modele = new modele_connexion();
+            //$this->action = isset($_GET['action']) ? $_GET['action'] : "";  
         }
 
         public function menu() {
             $this->vue->menu();
         }
+
         function bienvenue() {
             $this->vue->bienvenue();
         }
-        public function get_action() {
-            return $this->action;
-        }
+
+        // public function get_action() {
+        //     return $this->action;
+        // }
         public function ajout() {
             $this->vue->form_ajout();
         }
@@ -46,23 +48,31 @@
             return $this->vue;
         }
         public function exec() {
-            switch($this->get_action()) {
-                case "ajout": 
-                    $this->ajout();
-                    break;
-                case "inscription": 
-                    $this->inscription();
-                    break;
-                case "connexion" :
-                    $this->form_connexion();
-                    break;
-                case "connecter" :
-                    $this->connecter();
-                    break;
-                case "deconnexion" :
-                    $this->deconnexion();
+            // echo $this->get_action();
+            if(isset($_GET['action'])){
+                switch($_GET['action']) {
+                    case "ajout": 
+                        $this->ajout();
+                        break;
+                    case "inscription": 
+                        $this->inscription();
+                        break;
+                    case "connexion" :
+                        $this->form_connexion();
+                        break;
+                    case "connecter" :
+                        $this->connecter();
+                        break;
+                    case "deconnexion" :
+                        $this->deconnexion();
+                }
             }
+            else {
             global $affichage;
-            $affichage=$this->vue->getAffichage();        }
+            $affichage=$this->vue->getAffichage();      
+            }  
+        }
+
+
     }
 ?>
