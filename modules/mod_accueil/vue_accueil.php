@@ -45,48 +45,70 @@ const mois = [
         }
 
         public function menu() {
-            return "
-            <nav>
-              <a href=\"\"><img src=\"\" alt=\"Logo\" /></a>
-              <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
-              <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>
-              <a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>
+          $nav = $this->nav(); // TODO: mettre dans le controleur
+          return "
+          <header>
+            <a href=\"\"><img src=\"\" alt=\"Logo\" /></a>
+          </header>
+          <nav>
+            <div class=\"elementADroite\">
+              $nav
               <a class=\"bouton\" href=\"index.php?action=ajoutImage&module=accueil\">Ajouter une image</a>
-            </nav>
-
-            <div class=\"list-image-scroll\">
-                <ul class=\"row-list\">
-
-                </ul>
             </div>
+          </nav>
 
+          <div id=\"accueil-list-image\" class=\"list-image-scroll\">
+              <ul class=\"row-list\">
+                <li class=\"inline\">
+                  <a href=\"index.php?module=image&nom=6356cfeea83ca.webp&action=image\">
+                    <img class=\"inline grande-image-pour-list\" src=\"./imageTest/6356cfeea83ca.webp\" alt=\"\">
+                  </a>
+                </li>
+                <li class=\"inline\">
+                  <a href=\"index.php?module=image&nom=628b1ba0599c7.webp&action=image\">
+                    <img class=\"inline grande-image-pour-list\" src=\"./imageTest/628b1ba0599c7.webp\" alt=\"\">
+                  </a>
+                </li>
+                <li class=\"inline\">
+                  <a href=\"index.php?module=image&nom=6313b92632599.webp&action=image\">
+                    <img class=\"inline grande-image-pour-list\" src=\"./imageTest/6313b92632599.webp\" alt=\"\">
+                  </a>
+                </li>
+                <li class=\"inline\">
+                  <a href=\"index.php?module=image&nom=63583382a6aa1.webp&action=image\">
+                    <img class=\"inline grande-image-pour-list\" src=\"./imageTest/63583382a6aa1.webp\" alt=\"\">
+                  </a>
+                </li>
+              </ul>
+          </div>
+
+          <div class=\"elementADroite\">
             <div>
-              <div>
-                <a href=\"\">
-                  <img src=\"\" alt=\"\"></img>
-                  <p></p>
-                </a>
-              </div>
-              <div>
-                <a href=\"\">
-                  <img src=\"\" alt=\"\"></img>
-                  <p></p>
-                </a>
-              </div>
-              <div>
-                <a href=\"\">
-                  <img src=\"\" alt=\"\"></img>
-                  <p></p>
-                </a>
-              </div>
-              <div>
-                <a href=\"\">
-                  <img src=\"\" alt=\"\"></img>
-                  <p></p>
-                </a>
-              </div>
+              <a href=\"\">
+                <img src=\"\" alt=\"\"></img>
+                <p>Poster Image</p>
+              </a>
             </div>
-            ";
+            <div>
+              <a href=\"\">
+                <img src=\"\" alt=\"\"></img>
+                <p></p>
+              </a>
+            </div>
+            <div>
+              <a href=\"\">
+                <img src=\"\" alt=\"\"></img>
+                <p></p>
+              </a>
+            </div>
+            <div>
+              <a href=\"\">
+                <img src=\"\" alt=\"\"></img>
+                <p>Plus</p>
+              </a>
+            </div>
+          </div>
+          ";
         }
 
         public function image(){
@@ -100,16 +122,7 @@ const mois = [
         }
 
         public function bienvenue(){
-            $d = date("d");
-            $m = mois[date("m")];
-            $y = 20 . date("y");
-            $date = $d . " " . $m . " " . $y ;
-            $heure = date("H:i");
-            Print("Bienvenue, Nous sommes le $date et il est $heure");
-            echo "<br>";
-            echo "<br>";
-
-            $repertoire = "./modules/mod_image/";
+            $repertoire = "./modules/mod_image/"; // TODO: A mettre dans utile
 
 
 

@@ -1,0 +1,71 @@
+body {
+    margin: 0px;
+}
+
+header {
+    /*TODO*/
+    display: flex;
+}
+
+nav {
+    background-color: rgb(206, 192, 173);
+    display: flex;
+    position: sticky;
+    top: 0px;
+    height: 50px;
+    align-items: center;
+    z-index: 3;
+}
+
+div {
+    display: inline-flex;
+}
+
+.inline {
+    display: inline;
+}
+
+.row-list{
+    text-decoration: none;
+    padding: 0%;
+    margin: 0%;
+    align-items: center;
+}
+
+.bouton {
+    text-decoration: none;
+    color: black;
+    border: 1px black solid;
+    border-radius: 6px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.elementADroite {
+    position: relative;
+    left: 72%;
+}
+
+.list-image-scroll {
+    max-height: 400px;
+    overflow: scroll;
+    display: flex;
+    margin: 20px;
+}
+
+#accueil-list-image {
+    white-space: nowrap;
+    width: 650px;
+    border: 2px solid black;
+    border-radius: 2%;
+    align-items: flex-start;
+    position: sticky;
+    left: 5%;
+    z-index: 1;
+}
+
+.grande-image-pour-list {
+    width: 650px;
+    height: 390px;
+
+}

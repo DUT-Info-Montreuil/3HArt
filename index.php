@@ -3,15 +3,16 @@
     require_once("modules/mod_accueil/mod_accueil.php");
     #require_once('decouvrir/mod_decouvrir.php');
 
-    echo("<HEADER>
+    echo("<head>
         <META CHARSET = UTF-8/>
         <TITLE> 3HArt </TITLE>
-    </HEADER>
+        <link href=\"style.css\"  rel=\"stylesheet\" type=\"text/css\">
+    </head>
     
     <BODY>");
-    $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
+    $module=isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
-    switch ($_GET['module']) {
+    switch ($module) {
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
