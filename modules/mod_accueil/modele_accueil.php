@@ -4,6 +4,10 @@ const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 const maxTaille = 400000;
 const LONGUEUR_MAX = 8000;  
 const HAUTEUR_MAX = 8000;
+<<<<<<< HEAD
+=======
+const REPERTOIRE = "./modules/mod_image/";
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
 
 
     class modele_accueil{
@@ -32,16 +36,37 @@ const HAUTEUR_MAX = 8000;
 			
 		}
 
+<<<<<<< HEAD
 		public function suppression($id){
 			$repertoire = "./modules/mod_image/";
             $compteur = 0;
 
             if(is_dir($repertoire)){
                 if($iteration = opendir($repertoire)){  
+=======
+		public function lireCommentaire(){
+			$texte = file_get_contents('test.txt');
+			return $texte;
+
+		}
+
+		public function posterCommentaire($commentaire){
+			$fichier = fopen('test.txt', 'c+b');
+			fwrite($fichier, 'Un premier texte dans mon fichier');
+		}
+
+		public function suppression($id){
+
+            $compteur = -1;
+
+            if(is_dir(REPERTOIRE)){
+                if($iteration = opendir(REPERTOIRE)){  
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
                     while(($fichier = readdir($iteration)) !== false){  
 						if($compteur == $id){
 							if($fichier != "." && $fichier != ".."){ 
 								$fichier_info = finfo_open(FILEINFO_MIME_TYPE);
+<<<<<<< HEAD
 								$mime_type = finfo_file($fichier_info, $repertoire.$fichier);
 								if(strpos($mime_type, 'image/') === 0){
 									echo "<img src='./modules/mod_image/$fichier' width='300px' > ";
@@ -53,6 +78,18 @@ const HAUTEUR_MAX = 8000;
 						}
 
                     }  
+=======
+								$mime_type = finfo_file($fichier_info, REPERTOIRE.$fichier);
+								if(strpos($mime_type, 'image/') === 0){
+									unlink(REPERTOIRE.$fichier);
+									header('Location: index.php?action=bienvenue&module=accueil');
+									exit();
+								} 
+							}
+						}
+						$compteur ++;
+					}  
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
                     closedir($iteration);    
                 }
             }
@@ -60,15 +97,25 @@ const HAUTEUR_MAX = 8000;
 		}
 
 		public function upload(){
+<<<<<<< HEAD
             $tmpName = $_FILES['file']['tmp_name'];
             $name = $_FILES['file']['name'];
             $size = $_FILES['file']['size'];
             $erreur = $_FILES['file']['error'];
 			$dimensionImg = getimagesize($_FILES['file']['tmp_name']);
+=======
+			if(!empty($_SESSION['login'])){
+				$tmpName = $_FILES['file']['tmp_name'];
+				$name = $_FILES['file']['name'];
+				$size = $_FILES['file']['size'];
+				$erreur = $_FILES['file']['error'];
+				$dimensionImg = getimagesize($_FILES['file']['tmp_name']);
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
 
-            $extension = explode('.', $name);
-            $extension = strtolower(end($extension));
+				$extension = explode('.', $name);
+				$extension = strtolower(end($extension));
 
+<<<<<<< HEAD
 			if($erreur == 0){
 				if(in_array($extension, tabExtensions)){
 					if($size <= maxTaille){
@@ -90,17 +137,44 @@ const HAUTEUR_MAX = 8000;
 					}
 					else{
 						echo "L'image est trop lourde";
+=======
+				if($erreur == 0){
+					if(in_array($extension, tabExtensions)){
+						if($size <= maxTaille){
+							if(($dimensionImg[0] <= LONGUEUR_MAX) && ($dimensionImg[1] <= HAUTEUR_MAX) ){
+								$nomUnique = uniqid('', true); //pour généré un nom unique pour les photos au nom trop générique pour éviter qu'elles soient écrasés l'une après l'autre
+								$nomUnique = $nomUnique.".".$extension;
+								if(move_uploaded_file($tmpName, REPERTOIRE.$nomUnique)){
+									header('Location: index.php?action=bienvenue&module=accueil');
+									exit();
+								}
+								else{
+									echo "Une erreur est survenue";
+									echo "<br>";
+								}
+							}
+							else{
+								echo "L'image est trop grande";
+							}
+						}
+						else{
+							echo "L'image est trop lourde";
+							echo "<br>";
+						}
+					}
+					else{
+						echo "L'extension de ce fichier n'est pas supporté";
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
 						echo "<br>";
 					}
 				}
 				else{
-					echo "L'extension de ce fichier n'est pas supporté";
+					echo "Une erreur est survenue";
 					echo "<br>";
 				}
 			}
 			else{
-				echo "Une erreur est survenue";
-				echo "<br>";
+				echo "Vous n'êtes pas connecté";
 			}
         }
 		

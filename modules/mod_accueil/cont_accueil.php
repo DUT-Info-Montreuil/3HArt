@@ -58,6 +58,22 @@ require_once("vue_accueil.php");
                     $this->modele->ajout($_GET["login"],$_GET["password"]);
                     break;
 
+                case "maChaine";
+                    $this->vue->maChaine();
+                    break;
+
+                case "commenter";
+                    $this->vue->commenter();
+                    break;
+
+                case "posterCommentaire";
+                    $this->modele->posterCommentaire($_POST["commentaire"]);
+                    break;
+
+                case "lireCommentaire";
+                    $this->vue->afficher($this->modele->lireCommentaire());
+                    break;
+
                 case "ajoutImage";
                     session_start();
 			        if(!empty($_SESSION['login'])){
@@ -73,7 +89,10 @@ require_once("vue_accueil.php");
                     break;
 
                 case "suppression";
+<<<<<<< HEAD
                     echo "test";
+=======
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
                     $this->modele->suppression($_POST["id"]);
                     break;
 

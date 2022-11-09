@@ -9,8 +9,8 @@
     </HEADER>
     
     <BODY>");
-    $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
-
+    //$_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
+    $_GET['module'] = 'accueil';
     switch ($_GET['module']) {
         case 'accueil':
             $mod = new mod_accueil();
