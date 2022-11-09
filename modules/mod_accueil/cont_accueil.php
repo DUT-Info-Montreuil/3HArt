@@ -35,6 +35,7 @@ require_once("vue_accueil.php");
         function exec(){
             $this->vue->menu();
             echo "<br>";
+            echo $this->action;
             switch($this->action) { 
 
                 case "bienvenue":
@@ -66,6 +67,16 @@ require_once("vue_accueil.php");
                         echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
                     }
                     break;
+
+                case "supprimerImage";
+                    $this->vue->formulaireSuppression();
+                    break;
+
+                case "suppression";
+                    echo "test";
+                    $this->modele->suppression($_POST["id"]);
+                    break;
+
 
                 case "uploadImage";
                     $this->modele->upload();
