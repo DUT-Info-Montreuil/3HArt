@@ -82,10 +82,10 @@ const mois = [
               </ul>
           </div>
 
-          <div class=\"elementADroite\">
+          <div id=\"option\">
             <div>
-              <a href=\"\">
-                <img src=\"\" alt=\"\"></img>
+              <a href=\"index.php?module=accueil&action=ajoutImage\">
+                <img class=\"icon\" src=\"./imageTest/upload.svg\" alt=\"Poster une image\"></img>
                 <p>Poster Image</p>
               </a>
             </div>
@@ -122,25 +122,25 @@ const mois = [
         }
 
         public function bienvenue(){
-            $repertoire = "./modules/mod_image/"; // TODO: A mettre dans utile
+            // $repertoire = "./modules/mod_image/"; // TODO: A mettre dans utile
 
 
 
 
-            if($iteration = opendir($repertoire)){
-                while(($fichier = readdir($iteration)) !== false){
-                    if($fichier != "." && $fichier != ".."){
-                        $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
-                        $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
-                        if(strpos($mime_type, 'image/') === 0){
-                            echo "<img src='./modules/mod_image/$fichier' width='300px' ><br>";
-                            echo "<br>";
+            // if($iteration = opendir($repertoire)){
+            //     while(($fichier = readdir($iteration)) !== false){
+            //         if($fichier != "." && $fichier != ".."){
+            //             $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
+            //             $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
+            //             if(strpos($mime_type, 'image/') === 0){
+            //                 echo "<img src='./modules/mod_image/$fichier' width='300px' ><br>";
+            //                 echo "<br>";
 
-                        }
-                    }
-                }
-                closedir($iteration);
-            }
+            //             }
+            //         }
+            //     }
+            //     closedir($iteration);
+            // }
         }
 
 

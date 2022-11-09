@@ -21,6 +21,11 @@ div {
     display: inline-flex;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .inline {
     display: inline;
 }
@@ -33,8 +38,6 @@ div {
 }
 
 .bouton {
-    text-decoration: none;
-    color: black;
     border: 1px black solid;
     border-radius: 6px;
     padding: 2px;
@@ -49,8 +52,12 @@ div {
 .list-image-scroll {
     max-height: 400px;
     overflow: scroll;
-    display: flex;
+    display: inline-flex;
     margin: 20px;
+}
+
+.icon {
+    margin: 5%;
 }
 
 #accueil-list-image {
@@ -62,6 +69,16 @@ div {
     position: sticky;
     left: 5%;
     z-index: 1;
+}
+
+#option {
+    position: relative;
+    left: 10%;
+    height: 400px;
+    vertical-align: top;
+    border: 2px solid black;
+    margin: 25px;
+    border-radius: 5%;
 }
 
 .grande-image-pour-list {
