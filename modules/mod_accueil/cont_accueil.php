@@ -37,7 +37,9 @@ require_once("vue_accueil.php");
         
 
         function exec(){
-            
+            $this->vue->menu();
+            echo "<br>";
+            echo $this->action;
             switch($this->action) { 
                 case "bienvenue":
                     $this->vue->menu();
@@ -107,6 +109,9 @@ require_once("vue_accueil.php");
 
                 case "suppression";
                     $this->vue->afficher($this->modele->suppression($_POST["id"]));
+                    $this->vue->afficher($this->modele->suppression($_POST["id"]));
+                    echo "test";
+                    $this->modele->suppression($_POST["id"]);
                     break;
 
 

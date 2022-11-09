@@ -77,34 +77,9 @@
                 echo "<button type=submit>Enregistrer</button>";
             echo "</form>";
         }
+<<<<<<< HEAD
         
-
-        public function pasConnecter(){
-            echo "Vous devez être connecté pour continuer";
-        }
-
-
-        public function maChaine($pasImage){
-            echo '<a href = " index.php?action=bienvenue&module=accueil" > Accueil </a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Poster une image</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=supprimerImage&module=accueil" > Supprimer une image</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=commenter&module=accueil" > Commenter</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=lireCommentaire&module=accueil" > Afficher les commentaires</a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=maChaine&module=accueil" > Masquer les commentaires</a>';
-            echo "<br><br>";
-            if($pasImage){
-                $this->afficheVosImage();
-            }
-        }
-
-            
+=======
 
         public function pasConnecter(){
             echo "Vous devez être connecté pour continuer";
@@ -133,9 +108,41 @@
 
             
 
+        public function pasConnecter(){
+            echo "Vous devez être connecté pour continuer";
+        }
+
+
+        public function maChaine($pasImage){
+            echo '<a href = " index.php?action=bienvenue&module=accueil" > Accueil </a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=ajoutImage&module=accueil" > Poster une image</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=supprimerImage&module=accueil" > Supprimer une image</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=commenter&module=accueil" > Commenter</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=lireCommentaire&module=accueil" > Afficher les commentaires</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=maChaine&module=accueil" > Masquer les commentaires</a>';
+            echo "<br><br>";
+            if($pasImage){
+                $this->afficheVosImage();
+            }
+            
+
+            
+
 
         }
 
+<<<<<<< HEAD
+=======
+        }
+
+>>>>>>> 7180068a7806e18de4b17ddde5a21b65349a2d73
         public function afficheVosImage(){
             $repertoire = "./modules/mod_image/";
             
@@ -159,12 +166,20 @@
             echo $texte;
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7180068a7806e18de4b17ddde5a21b65349a2d73
         public function afficherCommentaires($tab){
             foreach ($tab as &$texte) {
                 print_r($texte);
                 echo "<br><br>";
             }
             
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
         public function bienvenue(){
             $d = date("d");
             $m = mois[date("m")];
@@ -173,6 +188,7 @@
             $heure = date("H:i");
             Print("Bienvenue, Nous sommes le $date et il est $heure");
             echo "<br>";
+<<<<<<< HEAD
 
             $repertoire = "./modules/mod_image/";
             
@@ -190,6 +206,13 @@
                     closedir($iteration);    
                 }
             }  
+=======
+            var_dump(file_exists("test.txt"));
+
+              
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
+>>>>>>> ad365fee47195599db5612b19522673ecd371e79
+>>>>>>> 7180068a7806e18de4b17ddde5a21b65349a2d73
         }
 
         

@@ -4,6 +4,7 @@ const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 const maxTaille = 400000;
 const LONGUEUR_MAX = 8000;  
 const HAUTEUR_MAX = 8000;
+
 const REPERTOIRE = "./modules/mod_image/";
 
 
@@ -15,7 +16,7 @@ const REPERTOIRE = "./modules/mod_image/";
 		public function connexion(){
 			session_start();
 			$_SESSION['login'] = "Gilgamesh";
-			return "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
+			echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
 			
 		}	
 		
@@ -25,61 +26,40 @@ const REPERTOIRE = "./modules/mod_image/";
 				$_SESSION = array();
 				session_destroy();
 				unset($_SESSION);
-				return "Vous êtes deconnecté";
+				echo "Vous êtes deconnecté";
 			}
 			else{
-				return "Vous n'êtes pas connecté";
+				echo "Vous n'êtes pas connecté";
 			}
 			
 		}
 
+		
+
 		public function lireCommentaire(){
-			$file = fopen('commentaire.txt','r');
-			$i = 0;
-			while ($line = fgets($file)) {
-				$texte[$i] = $line;
-				$i++;
-			}
-			fclose($file);
-			if($i == 0){
-				return -1;
-			}
-			else{
-				return $texte;
-			}
+			$texte = file_get_contents('test.txt');
+			return $texte;
 
 		}
 
 		public function posterCommentaire($commentaire){
-			$fichier = fopen('commentaire.txt', 'c+b');
-			$contenue = file_get_contents('commentaire.txt');
-			$texte = ''.$contenue.$commentaire . "\n";
-			fwrite($fichier, $texte );
-		}
-
-		public function estConnecter(){
-			session_start();
-			if(!empty($_SESSION['login'])){
-				return TRUE;
-			}
-			else{
-				return FALSE;
-			}
+			$fichier = fopen('test.txt', 'c+b');
+			fwrite($fichier, 'Un premier texte dans mon fichier');
 		}
 
 		public function suppression($id){
+			$compteur = -1;
 
-            $compteur = -1;
-			if(is_dir(REPERTOIRE)){
-				if($iteration = opendir(REPERTOIRE)){  
-					while(($fichier = readdir($iteration)) !== false){  
+            if(is_dir(REPERTOIRE)){
+                if($iteration = opendir(REPERTOIRE)){  
+                    while(($fichier = readdir($iteration)) !== false){  
 						if($compteur == $id){
 							if($fichier != "." && $fichier != ".."){ 
 								$fichier_info = finfo_open(FILEINFO_MIME_TYPE);
-								$mime_type = finfo_file($fichier_info, REPERTOIRE.$fichier);
+								$mime_type = finfo_file($fichier_info, $repertoire.$fichier);
 								if(strpos($mime_type, 'image/') === 0){
 									unlink(REPERTOIRE.$fichier);
-									header('Location: index.php?action=maChaine&module=accueil');
+									header('Location: index.php?action=bienvenue&module=accueil');
 									exit();
 								} 
 							}
@@ -89,12 +69,11 @@ const REPERTOIRE = "./modules/mod_image/";
                     closedir($iteration);    
                 }
             }
+	
 			return "Une erreur est survenue";
-
 		}
 
 		public function upload(){
-			session_start();
 			if(!empty($_SESSION['login'])){
 				$tmpName = $_FILES['file']['tmp_name'];
 				$name = $_FILES['file']['name'];
@@ -112,35 +91,35 @@ const REPERTOIRE = "./modules/mod_image/";
 								$nomUnique = uniqid('', true); //pour généré un nom unique pour les photos au nom trop générique pour éviter qu'elles soient écrasés l'une après l'autre
 								$nomUnique = $nomUnique.".".$extension;
 								if(move_uploaded_file($tmpName, REPERTOIRE.$nomUnique)){
-									header('Location: index.php?action=maChaine&module=accueil');
+									header('Location: index.php?action=bienvenue&module=accueil');
 									exit();
 								}
 								else{
-									return "Une erreur est survenue";
+									echo "Une erreur est survenue";
 									echo "<br>";
 								}
 							}
 							else{
-								return "L'image est trop grande";
+								echo "L'image est trop grande";
 							}
 						}
 						else{
-							return "L'image est trop lourde";
+							echo "L'image est trop lourde";
 							echo "<br>";
 						}
 					}
 					else{
-						return "L'extension de ce fichier n'est pas supporté";
+						echo "L'extension de ce fichier n'est pas supporté";
 						echo "<br>";
 					}
 				}
 				else{
-					return "Une erreur est survenue";
+					echo "Une erreur est survenue";
 					echo "<br>";
 				}
 			}
 			else{
-				return "Vous n'êtes pas connecté";
+				echo "Vous n'êtes pas connecté";
 			}
         }
 		
