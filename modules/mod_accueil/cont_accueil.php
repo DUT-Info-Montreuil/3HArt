@@ -37,7 +37,13 @@ require_once("vue_accueil.php");
         
 
         function exec(){
+<<<<<<< HEAD
             
+=======
+            $this->vue->menu();
+            echo "<br>";
+            echo $this->action;
+>>>>>>> ad365fee47195599db5612b19522673ecd371e79
             switch($this->action) { 
                 case "bienvenue":
                     $this->vue->menu();
@@ -106,7 +112,15 @@ require_once("vue_accueil.php");
                     break;
 
                 case "suppression";
+<<<<<<< HEAD
                     $this->vue->afficher($this->modele->suppression($_POST["id"]));
+=======
+<<<<<<< HEAD
+                    echo "test";
+=======
+>>>>>>> d919ca82232fb23178051c9e98b9bc84cdfe530b
+                    $this->modele->suppression($_POST["id"]);
+>>>>>>> ad365fee47195599db5612b19522673ecd371e79
                     break;
 
 
