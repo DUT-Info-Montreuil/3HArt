@@ -23,7 +23,7 @@ const mois = [
 
         }
 
-        public function formulaireInscription(){
+        public function formulaireInscription() { // TODO: mettre méthode dans mod_connexion
             echo "<form method = get action = \" index.php?module=connexion&action=ajout \" >";
             echo "<input type=text name=login></input>";
             echo "<input type=text name=password></input>";
@@ -107,6 +107,19 @@ const mois = [
                 <p>Plus</p>
               </a>
             </div>
+          </div>
+
+          <div id=\"album\">
+            <div><a href=\"\"><img src=\"\" alt=\"\"></a></div>
+            <div><a href=\"\"><img src=\"\" alt=\"\"></a></div>
+            <div><a href=\"\"><img src=\"\" alt=\"\"></a></div>
+            <div><a href=\"\"><img src=\"\" alt=\"\"></a></div>
+          </div>
+
+          <div id=\"decouvrir\"><a href=\"\"><img src=\"\" alt=\"\"></a></div>
+
+          <div id=\"listAbonnement\">
+            <ul></ul>
           </div>
           ";
         }
