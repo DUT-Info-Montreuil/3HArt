@@ -7,35 +7,12 @@ require_once("vue_accueil.php");
     class cont_accueil{
         private $modele;
         private $vue;
-        private $action;
 
         function __construct($modele, $vue){
             $this->modele = $modele;
             $this->vue = $vue;
-
-            if (isset($_GET["action"])){
-                $this-> action = $_GET["action"];
-            }
-            else{
-                $this-> action = "bienvenue";
-            }
-
         }
-
-        public function liste(){
-            $this->vue->afficheListe($this->modele->getListe());
-        }
-
-        public function details($id){
-            $this->vue->afficheDetails($this->modele->getDetails($id));
-        }
-
-        public function afficher($texte){
-            $this->vue->afficher($texte);
-        }
-
-        
-
+         
         function exec(){
             $this->vue->menu();
             echo "<br>";
