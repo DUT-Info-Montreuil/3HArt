@@ -18,11 +18,17 @@ include_once('vue_generique.php');
         public function form_ajout() {
             ?>
                 <form action="index.php?module=connexion&action=inscription" method="post">
-                    <p>Login : </p>
-                    <input type="texte" name="login" required minlength="1" maxlength="50"/>
-                    <p>Password : </p>
-                    <input type="texte" name="password" required minlength="1" maxlength="500"/>
-                    <input type="submit" value="S'inscrire"/>
+                    <div class="form-element">
+                        <label for="pseudo">Pseudo : </label>
+                        <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <label for="motDePasse">Mot de passe : </label>
+                        <input type="password" name="motDePasse" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <input type="submit" value="S'inscrire"/>
+                    </div>
                 </form>
             <?php
         }
