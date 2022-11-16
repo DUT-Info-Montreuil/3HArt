@@ -36,11 +36,6 @@ require_once("vue_accueil.php");
             $this->vue->menu();
             echo "<br>";
             switch($this->action) { 
-
-                case "bienvenue":
-                    $this->vue->bienvenue();
-                    break;
-
                 case "inscription":
                     $this->vue->formulaireInscription();
                     break;

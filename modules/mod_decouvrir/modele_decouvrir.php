@@ -7,39 +7,35 @@
         public function __construct(){
         }
 
-        public function connexion(){
-			session_start();
-			$_SESSION['login'] = "Gilgamesh";
-			echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
+        // public function connexion(){
+		// 	session_start();
+		// 	$_SESSION['login'] = "Gilgamesh";
+		// 	echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
 			
-		}	
+		// }	
 
-		public function deconnexion(){
-			session_start();
-			if(!empty($_SESSION['login'])){
-				$_SESSION = array();
-				session_destroy();
-				unset($_SESSION);
-				echo "Vous êtes deconnecté";
-			}
-			else{
-				echo "Vous n'êtes pas connecté";
-			}
-		}
+		// public function deconnexion(){
+		// 	session_start();
+		// 	if(!empty($_SESSION['login'])){
+		// 		$_SESSION = array();
+		// 		session_destroy();
+		// 		unset($_SESSION);
+		// 		echo "Vous êtes deconnecté";
+		// 	}
+		// 	else{
+		// 		echo "Vous n'êtes pas connecté";
+		// 	}
+		// }
 
         
-
+        
         public function getListe() {  
-
             $req = self::$bdd->prepare("SELECT * FROM ");
             $req->execute();
             $tab = $req->fetchAll();
-
             return $tab;
         }
  
-
-
         public function getDetails($id) {
             $req = self::$bdd->prepare("SELECT * FROM users WHERE id = ?");
             $req->execute(array($id));
@@ -61,7 +57,6 @@
             return NULL;
     
         }
-
 
         public function categorie($typeImage){
             switch ($typeImage) {
