@@ -2,7 +2,7 @@
 
     require_once("modules/mod_accueil/mod_accueil.php");
     require_once("modules/mod_decouvrir/mod_decouvrir.php");
-    require_once("modules/mod_image/mod_images.php");
+    require_once("modules/mod_image/mod_image.php");
 
     echo("
     <html>
