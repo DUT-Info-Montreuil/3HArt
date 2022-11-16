@@ -13,16 +13,16 @@ include_once('vue_generique.php');
             else if(isset($_SESSION['login'])) {
                 echo '<a href="index.php?module=connexion&action=deconnexion">Déconnexion</a> <br> ';
             }
-            else if (isset($_SESSION['inscription'])){
-                echo '<a href="index.php?module=connexion&action=inscription">Inscription</a> <br> ';
-            }
+            
         }
 
         public function form_inscription() {
             ?>
-                <form action="index.php?module=connexion&action=addInscription" method="post">
+                <form action="index.php?module=connexion&action=inscription" method="post">
                         <p>Login : <input type="texte" name="login" required minlength="1" maxlength="50"/></p>
                         <p>Password : <input type="password" name="password" required minlength="1" maxlength="500"/></p>
+                        <p>Email : <input type="texte" name="mail" required minlength="1" maxlength="500"/></p>
+                        <p>ConfirmEmail : <input type="texte" name="confirmMail" required minlength="1" maxlength="500"/></p>
                         <p><input type="submit" value="S'inscrire"/></p>
                 </form>
             <?php
@@ -34,12 +34,17 @@ include_once('vue_generique.php');
                         <p>Login : <input type="texte" name="login" required minlength="1" maxlength="50"/></p>
                         <p>Password : <input type="password" name="password" required minlength="1" maxlength="500"/></p>
                         <p><input type="submit" value="Se connecter"/></p>
+                        <p>Pas encore le compte? 
+                            <a href = "index.php?action=addInscription&module=connexion" >Inscription maintenant</a>
+                        </p>
+
                 </form>
             <?php
         }
 
         public function resultat_connexion() {
-            if(isset($_SESSION['login'])) {
+            if(isset($_SESSION['login']) ) {
+                
                 echo "Vous êtes connecté.e sous le login : " . $_POST['login'];
             }
             else{
@@ -48,16 +53,21 @@ include_once('vue_generique.php');
         }
 
         public function resultat_inscription() {
-            echo "Vous vous êtes correctement inscrit";
+            if(isset($_SESSION['login']) ) {
+                
+                echo "Vous êtes inscrit.e sous le login : " . $_POST['login'];
+            }
+            else{
+                echo "Erreur d'inscription";
+            }
         }
         
 
         public function resultat_deconnexion() {
             if(!isset($_SESSION['login'])) {
-                echo "Vous n'êtes pas connecté"; 
+                echo " Vous n'êtes pas connecté"; 
             }        
         }
     }    
-// hello 123456
 
 ?>
