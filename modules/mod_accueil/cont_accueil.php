@@ -4,77 +4,93 @@ require_once("vue_accueil.php");
 
 
 
-    class cont_accueil{
+    class cont_accueil {
+
         private $modele;
         private $vue;
-        private $action;
 
-        function __construct($modele, $vue){
+        function __construct($modele, $vue) {
             $this->modele = $modele;
             $this->vue = $vue;
-
-            if (isset($_GET["action"])){
-                $this-> action = $_GET["action"];
-            }
-            else{
-                $this-> action = "bienvenue";
-            }
-
         }
-
-        public function liste(){
-            $this->vue->afficheListe($this->modele->getListe());
-        }
-
-        public function details($id){
-            $this->vue->afficheDetails($this->modele->getDetails($id));
-        }
-
-        
-
+         
         function exec(){
-            $this->vue->menu();
-            echo "<br>";
-            switch($this->action) { 
+            echo ($this->vue->menu());
+            if(isset($_GET['action'])){
+                switch($_GET['action']) { 
+                    case "inscription":
+                        $this->vue->formulaireInscription();
+                        break;
 
-                case "bienvenue":
-                    $this->vue->bienvenue();
-                    break;
+                    case "connexion";
+                        $this->vue->afficher($this->modele->connexion());
+                        break;
+                    
+                    case "deconnexion";
+                        $this->vue->afficher($this->modele->deconnexion());
+                        break;
+                        
+                    case "ajout";
+                        $this->modele->ajout($_GET["login"],$_GET["password"]);
+                        break;
 
-                case "inscription":
-                    $this->vue->formulaireInscription();
-                    break;
+                    case "maChaine";
+                        if($this->modele->estConnecter()){
+                            $this->vue->maChaine(TRUE);
+                        }
+                        else{
+                            $this->vue->menu();
+                            echo "<br>";
+                            $this->vue->pasConnecter();
+                        }
+                        break;
 
-                case "connexion";
-                    $this->modele->connexion();
-                    break;
-				
-				case "deconnexion";
-                    $this->modele->deconnexion();
-                    break;
-					
-				case "ajout";
-                    $this->modele->ajout($_GET["login"],$_GET["password"]);
-                    break;
+                    case "commenter";
+                        $this->vue->commenter();
+                        break;
 
-                case "ajoutImage";
-                    session_start();
-			        if(!empty($_SESSION['login'])){
+                    case "posterCommentaire";
+                        $this->modele->posterCommentaire($_POST["commentaire"]);
+                        $this->vue->maChaine(TRUE);
+                        break;
+
+                    case "lireCommentaire";
+                        $this->vue->maChaine(FALSE);
+                        $commentaire = $this->modele->lireCommentaire();
+                        if($commentaire != -1){
+                            $this->vue->afficherCommentaires($commentaire);
+                        }
+                        else{
+                            $this->vue->afficher("Pas de commentaire à afficher :)");
+                        }
+                        echo "<br>";
+                        $this->vue->afficheVosImage();
+                        break;
+
+                    case "ajoutImage";
                         $this->vue->image();
-                    }
-                    else{
-                        echo "Veuillez vous connecter pour utiliser ce service ou souscriver à notre offre exceptionnel de 999€";
-                    }
-                    break;
+                        break;
 
-                case "uploadImage";
-                    $this->modele->upload();
-                    break;
+                    case "supprimerImage";
+                        $this->vue->formulaireSuppression();
+                        break;
 
-                default:
-                    echo "erreur : " . $this->action;
-                    break;
-                
+                    case "suppression";
+                        $this->vue->afficher($this->modele->suppression($_POST["id"]));
+                        $this->vue->afficher($this->modele->suppression($_POST["id"]));
+                        echo "test";
+                        $this->modele->suppression($_POST["id"]);
+                        break;
+
+
+                    case "uploadImage";
+                        $this->vue->afficher($this->modele->upload());
+                        break;
+
+                    default:
+                        echo "erreur : " . $this->action;
+                        break;
+                }      
             }
         }
         

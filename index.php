@@ -13,9 +13,9 @@
         </head>
         
         <body>");
-    $_GET['module']=isset($_GET['module']) ? $_GET['module'] : 'accueil';
+        $module = isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
-    switch ($_GET['module']) {
+    switch ($module) {
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
