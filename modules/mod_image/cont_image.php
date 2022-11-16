@@ -13,7 +13,7 @@ require_once("vue_image.php");
         }
 
         public function afficheImage($idImage,$miniature = false) {
-            $idImage = "./modules/mod_image/$idImage";
+            $idImage = $this->modele->cheminImage($idImage);
             if ($miniature)
                 echo ($this->vue->miniature($idImage));
             else
