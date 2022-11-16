@@ -30,9 +30,9 @@ const REPERTOIRE = "./modules/mod_image/";
 			else{
 				echo "Vous n'êtes pas connecté";
 			}
-			
 		}
 
+		
 		public function lireCommentaire(){
 			$texte = file_get_contents('test.txt');
 			return $texte;

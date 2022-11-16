@@ -18,19 +18,19 @@
             $this->vue->menu();
         }
 
-        function bienvenue() {
-            $this->vue->bienvenue();
-        }
-
         // public function get_action() {
         //     return $this->action;
         // }
-        public function ajout() {
-            $this->vue->form_ajout();
+        // public function ajout() {
+        //     $this->vue->form_ajout();
+        // }
+        public function addInscription() {
+            $this->vue->form_inscription();
         }
         public function inscription() {
             $this->modele->inscription();
         }
+        
         public function form_connexion() {
             $this->vue->form_connexion();
         }
@@ -51,8 +51,8 @@
             // echo $this->get_action();
             if(isset($_GET['action'])){
                 switch($_GET['action']) {
-                    case "ajout": 
-                        $this->ajout();
+                    case "addInscription": 
+                        $this->addInscription();
                         break;
                     case "inscription": 
                         $this->inscription();

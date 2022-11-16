@@ -18,12 +18,7 @@ const mois = [
 
     class vue_accueil{
 
-        
-
-        
-
         function __construct(){
-
         }
 
         public function formulaireInscription(){
@@ -85,11 +80,13 @@ const mois = [
             echo "<br>";
             echo '<a href = "index.php?action=lireCommentaire&module=accueil" > Lire les commentaires</a>';
             echo "<br>";
-            echo '<a href = "index.php?module=decouvrir" >Decouvrir</a>';
+            echo '<a href = "index.php?action=decouvrir&module=decouvrir" >Decouvrir</a>';
             echo "<br>";
-            echo '<a href = "index.php?module=image" >Image</a>';
+            echo '<a href = "index.php?action=image&module=image" >Image</a>';
             echo "<br>";
             echo '<a href = "index.php?action=connexion&module=connexion" >Connexion</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=addInscription&module=connexion" >Inscription</a>';
             echo "<br>";
             
             
