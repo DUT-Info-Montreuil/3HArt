@@ -4,27 +4,19 @@
     include_once('Connexion.php');
 
     class controleur_connexion extends Connexion{
+        
         private $vue;
         private $modele;
-        // private $action;
 
         public function __construct(){
             $this->vue = new vue_connexion();
             $this->modele = new modele_connexion();
-            //$this->action = isset($_GET['action']) ? $_GET['action'] : "";  
         }
 
         public function menu() {
             $this->vue->menu();
         }
-
-        function bienvenue() {
-            $this->vue->bienvenue();
-        }
-
-        // public function get_action() {
-        //     return $this->action;
-        // }
+        
         public function ajout() {
             $this->vue->form_ajout();
         }
@@ -48,7 +40,6 @@
             return $this->vue;
         }
         public function exec() {
-            // echo $this->get_action();
             if(isset($_GET['action'])){
                 switch($_GET['action']) {
                     case "ajout": 

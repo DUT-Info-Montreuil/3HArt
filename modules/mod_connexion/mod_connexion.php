@@ -10,14 +10,9 @@ Connexion::initConnexion();
     class mod_connexion {
 
         private $controleur;
-        
-        
+               
         function __construct(){
-            // $vue = new vue_connexion();
-            // $modele = new modele_connexion();
-            // $this->controleur = new controleur_connexion($modele, $vue);
             $this->controleur = new controleur_connexion();
-
         }
         
         public function exec(){

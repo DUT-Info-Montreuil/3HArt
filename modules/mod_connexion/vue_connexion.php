@@ -18,23 +18,29 @@ include_once('vue_generique.php');
         public function form_ajout() {
             ?>
                 <form action="index.php?module=connexion&action=inscription" method="post">
-                    <body>
-                        <p>Login : <input type="texte" name="login" required minlength="1" maxlength="50"/></p>
-                        <p>Password : <input type="texte" name="password" required minlength="1" maxlength="500"/></p>
-                        <p><input type="submit" value="S'inscrire"/></p>
-                    </body>
+                    <p>Login : </p>
+                    <input type="texte" name="login" required minlength="1" maxlength="50"/>
+                    <p>Password : </p>
+                    <input type="texte" name="password" required minlength="1" maxlength="500"/>
+                    <input type="submit" value="S'inscrire"/>
                 </form>
             <?php
         }
 
         public function form_connexion() {
             ?>
-                <form action="index.php?module=connexion&action=connecter" method="post">
-                    <body>
-                        <p>Login : <input type="texte" name="login" required minlength="1" maxlength="50"/></p>
-                        <p>Password : <input type="texte" name="password" required minlength="1" maxlength="500"/></p>
-                        <p><input type="submit" value="Se connecter"/></p>
-                    </body>
+                <form class="color-grey" action="index.php?module=connexion&action=connecter" method="post">  
+                    <div class="form-element">
+                        <label for="pseudo">Pseudo : </label>
+                        <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <label for="motDePasse">Mot de passe : </label>
+                        <input type="password" name="motDePasse" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <input type="submit" value="Se connecter"/>
+                    </div>
                 </form>
             <?php
         }
