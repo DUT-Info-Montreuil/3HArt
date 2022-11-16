@@ -20,7 +20,7 @@
         }
 
         public function afficherTelechargement($string){
-            echo "<a href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
+            echo "<a id = telechargement href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
         }
 
         public function affichage($idImage) {
@@ -40,8 +40,8 @@
         }
 		
 		public function commenter($nom){
-            echo "<form method = POST action = \" index.php?module=image&nom=$nom&action=image \" >";
-                echo "<label>Entrez un commentaire</label> ";
+            echo "<form id = creerCommentaire method = POST action = \" index.php?module=image&nom=$nom&action=image \" >";
+                echo "<label>Entrez un commentaire : </label> ";
                 echo "<input type=text id= num name=commentaire></input>";
                 echo "<br>";
                 echo "<br>";
@@ -55,8 +55,13 @@
 	
 		public function afficherCommentaires($commentaire){
 			for($i = 0; $i <= sizeof($commentaire) -1 ; $i++){
-				echo $commentaire[$i]['auteur'] . " as ecrit le " .  $commentaire[$i]['dateCreation'] . " : " . $commentaire[$i]['contenue'] ;
-				echo "<br><br>";
+                $auteur = $commentaire[$i]['auteur'];
+                $dateCreation = $commentaire[$i]['dateCreation'];
+                $contenue = $commentaire[$i]['contenue'];
+                echo " <NOBR class = auteur> $auteur </NOBR>";
+                echo " <p class = date> le $dateCreation </p>";
+				echo  " <NOBR class = commentaires >   $contenue  </NOBR>" ;
+                echo "<br>";
 			}
 		}
 		
@@ -65,7 +70,7 @@
         }
 		
 		public function accueil(){
-            echo '<a href = "index.php?module=image" > Accueil</a>';
+            echo '<a id = accueil href = "index.php?module=image" > Accueil</a>';
         }
 		
 		

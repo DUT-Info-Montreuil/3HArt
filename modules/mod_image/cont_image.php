@@ -14,7 +14,7 @@ require_once("vue_image.php");
         }
 
         public function afficheImage($idImage,$miniature = false) {
-            $idImage = "./modules/mod_image/$idImage";
+            $idImage = REPERTOIRE.$idImage;
 			
             if ($miniature)
                 echo ($this->vue->miniature($idImage));
@@ -23,9 +23,9 @@ require_once("vue_image.php");
         }
 		
 		public function afficherImages($images){
-			for($i = 0; $i <= sizeof($images) -1 ; $i++){
+            for($i = 0; $i <= sizeof($images) -1 ; $i++){
 				$nom = $images[$i];
-                $this->vue->afficher("<a href = \"index.php?module=image&nom=$nom&action=image\" >");
+                $this->vue->afficher("<a id = images href = \"index.php?module=image&nom=$nom&action=image\" >");
                 $this->afficheImage($nom,true);
                 echo '</a>';
 				$this->vue->espacer();
@@ -43,10 +43,11 @@ require_once("vue_image.php");
 
                     case "image" :
 						$this->vue->accueil();
+                        $this->vue->espacer();
 						$this->afficheImage($_GET['nom']);
                         $this->vue->afficherTelechargement($_GET['nom']);
+                        $this->vue->espacer();
 						$this->vue->commenter($_GET['nom']); // formulaire commentaire
-						$this->vue->espacer();
 						if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ){
 							session_start();
 							$this->modele->enregistrerCommentaire($_GET['nom'], $_SESSION['login'], $_POST['commentaire'] ); 
@@ -75,8 +76,7 @@ require_once("vue_image.php");
                 }
             }
             else {
-                $this->afficherImages($this->modele->getImages());
-                
+                $this->afficherImages($this->modele->getImages());                
             }
         } 
 		

@@ -1,6 +1,7 @@
 <?php
 
 
+
     class modele_image{
 
         function __construct(){
@@ -62,6 +63,7 @@
 			$json = json_encode($fichier);
 			file_put_contents("commentaire.json", $json);
 		} 
+
 		
 		public function getImages(){
 			$images = array();

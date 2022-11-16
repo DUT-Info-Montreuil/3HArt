@@ -21,9 +21,64 @@ div {
     display: inline-flex;
 }
 
+
+
+.imagePrincipale
+{
+    width:90%;
+    height:auto;
+    margin-left:5%;
+    max-height: 1000px;
+
+}
+
+table{
+    background-color: rgb(176,182,185);
+    border:1px solid darkgrey;
+    width: -moz-available;
+}
+
 a {
     text-decoration: none;
     color: black;
+}
+
+#accueil{
+    color:blue;
+}
+
+.auteur{
+    display: inline-block;
+    font-weight:bold;
+    margin-left: 10px;
+}
+
+.date{
+    display: inline-block;
+    color:silver;
+    font-size: 12px;
+}
+
+.commentaires{
+    display: block;
+    margin-left: 10px;
+}
+
+#images{
+    margin-left: 10px;
+}
+
+#creerCommentaire{
+    margin-left: 10px;
+}
+
+#telechargement{
+    margin-left: 10px;
+    color: blue;
+}
+
+#commentaires{
+    margin-left: 10px;
 }
 
 .inline {

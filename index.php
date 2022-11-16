@@ -13,7 +13,7 @@
     <BODY>");
     
     $module=isset($_GET['module']) ? $_GET['module'] : 'accueil';
-
+    $module = 'image';
     switch ($module) {
         case 'accueil':
             $mod = new mod_accueil();
