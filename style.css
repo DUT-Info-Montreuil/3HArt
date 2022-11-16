@@ -1,39 +1,50 @@
 form {
     display: table;
     margin: auto;
+    padding: 2%;
+    border: 2px solid #525e57;
+    border-radius: 4%;
 }
 
+.container 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+}
 /* color */
 .color-grey {
-    color: 525e57;
+    background-color: #525e57;
 }
 
 .color-dark-blue {
-    color: 20575c;
+    background-color: #20575c;
 }
 
 .color-green-blue {
-    color: 378d9a;
+    background-color: #378d9a;
 }
 
 .color-blue {
-    color: 63a8c0;
+    background-color: #63a8c0;
 }
 
 .color-light-blue {
-    color: b0d2ff;
+    background-color: #b0d2ff;
 }
 
 .color-white-blue {
-    color: dbe6fc;
+    background-color: #dbe6fc;
 }
 
 .color-brown {
-    color: d09b65;
+    background-color: #d09b65;
 }
 
 .color-orange-brown {
-    color: c07558;
+    background-color: #c07558;
 }
 /* color */
 

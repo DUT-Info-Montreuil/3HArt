@@ -18,46 +18,50 @@ include_once('vue_generique.php');
 
         public function form_inscription() {
             ?>
-                <form action="index.php?module=connexion&action=inscription" method="post">
-                    <div class="form-element">
-                        <label for="pseudo">Pseudo : </label>
-                        <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <label for="mail">Email : </label>
-                        <input type="email" name="mail" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <label for="password">Mot de passe : </label>
-                        <input type="password" name="password" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <label for="confirmPassword">Confirmer mot de passe : </label>
-                        <input type="password" name="confirmPassword" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <input type="submit" value="S'inscrire"/>
-                    </div>
-                </form>
+                <div class="container">
+                    <form class="color-dark-blue" action="index.php?module=connexion&action=inscription" method="post">
+                        <div class="form-element">
+                            <label for="pseudo">Pseudo : </label>
+                            <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <label for="mail">Email : </label>
+                            <input type="email" name="mail" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <label for="password">Mot de passe : </label>
+                            <input type="password" name="password" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <label for="confirmPassword">Confirmer mot de passe : </label>
+                            <input type="password" name="confirmPassword" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <input type="submit" value="S'inscrire"/>
+                        </div>
+                    </form>
+                </div>
             <?php
         }
 
         public function form_connexion() {
             ?>
-                <form class="color-grey" action="index.php?module=connexion&action=connecter" method="post">  
-                    <div class="form-element">
-                        <label for="login">Pseudo : </label>
-                        <input type="texte" name="login" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <label for="password">Mot de passe : </label>
-                        <input type="password" name="password" required minlength="1" maxlength="50"/>
-                    </div>
-                    <div class="form-element">
-                        <input type="submit" value="Se connecter"/>
-                        <a href = "index.php?action=addInscription&module=connexion" >s'inscrire</a>
-                    </div>
-                </form>
+                <div class="container">
+                    <form class="color-dark-blue" action="index.php?module=connexion&action=connecter" method="post">  
+                        <div class="form-element">
+                            <label for="login">Pseudo : </label>
+                            <input type="texte" name="login" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <label for="password">Mot de passe : </label>
+                            <input type="password" name="password" required minlength="1" maxlength="50"/>
+                        </div>
+                        <div class="form-element">
+                            <input type="submit" value="Se connecter"/>
+                            <a href = "index.php?action=addInscription&module=connexion" >s'inscrire</a>
+                        </div>
+                    </form>
+                </div>
             <?php
         }
 
