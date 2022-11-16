@@ -1,6 +1,7 @@
 <?php
 
     require_once("modules/mod_accueil/mod_accueil.php");
+    require_once("modules/mod_image/mod_image.php");
     #require_once('decouvrir/mod_decouvrir.php');
 
     echo("<head>
@@ -23,6 +24,13 @@
         case 'decouverte':
             # code...
             break;
+        
+        
+        case 'image':
+            $mod = new mod_image();
+            $mod->exec();
+            break;
+        
     }
     /*echo("<FOOTER>
             <p>
