@@ -3,6 +3,7 @@
     require_once("modules/mod_accueil/mod_accueil.php");
     require_once("modules/mod_decouvrir/mod_decouvrir.php");
     require_once("modules/mod_image/mod_image.php");
+    require_once("modules/mod_connexion/mod_connexion.php");
 
     echo("
     <html>
@@ -19,12 +20,16 @@
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            echo ("<a href=\"index.php?module=decouverte\">Découverte</a><br>");
-            echo ("<a href=\"index.php?module=image\">Image</a>");
+            //echo ("<a href=\"index.php?module=decouvrir\">Decouvrir</a><br>");
+            //echo ("<a href=\"index.php?module=image\">Image</a>");
             break;
 
-        case 'decouverte':
-            $mod = new mod_accueil();
+        case 'decouvrir':
+            $mod = new mod_decouvrir();
+            $mod->exec();
+            break;
+        case 'connexion':
+            $mod = new mod_connexion();
             $mod->exec();
             break;
         

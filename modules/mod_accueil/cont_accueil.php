@@ -69,28 +69,7 @@ require_once("vue_accueil.php");
 
                     case "ajoutImage";
                         $this->vue->image();
-                        break;
-
-                    case "supprimerImage";
-                        $this->vue->formulaireSuppression();
-                        break;
-
-                    case "suppression";
-                        $this->vue->afficher($this->modele->suppression($_POST["id"]));
-                        $this->vue->afficher($this->modele->suppression($_POST["id"]));
-                        echo "test";
-                        $this->modele->suppression($_POST["id"]);
-                        break;
-
-
-                    case "uploadImage";
-                        $this->vue->afficher($this->modele->upload());
-                        break;
-
-                    default:
-                        echo "erreur : " . $this->action;
-                        break;
-                }      
+                }
             }
         }
         

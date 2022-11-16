@@ -3,7 +3,6 @@
   class vue_accueil{
 
       function __construct(){
-
       }
 
       public function formulaireInscription(){
@@ -23,14 +22,13 @@
 
       public function formulaireSuppression(){
           echo "<form method = POST action = \" index.php?module=accueil&action=suppression \" >";
-          //echo "<form action=index.php?action=suppression&module=accueil method=GET ";
-              echo "<input type=text name=id></input>";
+              echo "<label>Entrez l'indice de l'image à supprimer</label> ";
+              echo "<input type=text id= num name=id></input>";
               echo "<br>";
               echo "<br>";
               echo "<input type =\"submit\" name = envoyer >";
           echo "</form>";
 
-          //echo "<form method = get action = \" index.php?module=accueil&action=suppression \" >";
 
       }
 
@@ -42,6 +40,7 @@
               echo "<br>";
               echo "<input type =\"submit\" name = envoyer >";
           echo "</form>";
+
       }
 
       public function nav() {
@@ -214,7 +213,6 @@
           //             if(strpos($mime_type, 'image/') === 0){
           //                 echo "<img src='./modules/mod_image/$fichier' width='300px' ><br>";
           //                 echo "<br>";
-
           //             }
           //         }
           //     }

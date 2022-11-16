@@ -4,37 +4,12 @@ const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 const maxTaille = 400000;
 const LONGUEUR_MAX = 8000;  
 const HAUTEUR_MAX = 8000;
-
 const REPERTOIRE = "./modules/mod_image/";
-
 
     class modele_accueil{
 
         function __construct(){
         }
-
-		public function connexion(){
-			session_start();
-			$_SESSION['login'] = "Gilgamesh";
-			echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
-			
-		}	
-		
-		public function deconnexion(){
-			session_start();
-			if(!empty($_SESSION['login'])){
-				$_SESSION = array();
-				session_destroy();
-				unset($_SESSION);
-				echo "Vous êtes deconnecté";
-			}
-			else{
-				echo "Vous n'êtes pas connecté";
-			}
-			
-		}
-
-		
 
 		public function lireCommentaire(){
 			$texte = file_get_contents('test.txt');
@@ -48,7 +23,8 @@ const REPERTOIRE = "./modules/mod_image/";
 		}
 
 		public function suppression($id){
-			$compteur = -1;
+
+            $compteur = -1;
 
             if(is_dir(REPERTOIRE)){
                 if($iteration = opendir(REPERTOIRE)){  
@@ -56,7 +32,7 @@ const REPERTOIRE = "./modules/mod_image/";
 						if($compteur == $id){
 							if($fichier != "." && $fichier != ".."){ 
 								$fichier_info = finfo_open(FILEINFO_MIME_TYPE);
-								$mime_type = finfo_file($fichier_info, $repertoire.$fichier);
+								$mime_type = finfo_file($fichier_info, REPERTOIRE.$fichier);
 								if(strpos($mime_type, 'image/') === 0){
 									unlink(REPERTOIRE.$fichier);
 									header('Location: index.php?action=bienvenue&module=accueil');
@@ -69,8 +45,7 @@ const REPERTOIRE = "./modules/mod_image/";
                     closedir($iteration);    
                 }
             }
-	
-			return "Une erreur est survenue";
+
 		}
 
 		public function upload(){
@@ -120,8 +95,7 @@ const REPERTOIRE = "./modules/mod_image/";
 			}
 			else{
 				echo "Vous n'êtes pas connecté";
-			}
-        }
-		
+			}	
+		}	
     }
 ?>

@@ -15,17 +15,55 @@
         public function menu() {
             $this->vue->menu();
         }
-
-        function liste() {
-            $this->vue->affiche_liste($this->modele->getListe());
-        }
-
-        public function detailsUsers() {
-            $this->vue->affiche_details($this->modele->getDetails($_GET['id']));
-        }
         
-        public function getUsers(){
-            
+        public function search(){
+            return $this->modele->search();
         }
+        public function categorie(){
+
+            switch ($_GET['categorie']) {
+                case '3d':
+                    $this->modele->categorie("3d");
+                    break;
+                case 'paysage':
+                    break;
+                case 'dessin':
+                    break;
+                case 'noirblanc':
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+
+        public function exec(){
+            $this->vue->menu();
+            echo "<br>";
+            if (isset($_GET['action'])){
+                switch($_GET['action']) { 
+                    case "inscription":
+                        $this->vue->formulaireInscription();
+                        break;
+    
+                    case "connexion";
+                        $this->modele->connexion();
+                        break;
+                    
+                    case "deconnexion";
+                        $this->modele->deconnexion();
+                        break;
+                        
+                    case "search";
+                        $this->modele->search();
+    
+                    default:
+                        echo "erreur : ".$this->action;
+                        break;
+                    
+                }
+            }
+            
+        }    
     }
 ?>
