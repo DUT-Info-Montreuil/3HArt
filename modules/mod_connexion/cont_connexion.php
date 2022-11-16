@@ -16,13 +16,15 @@
         public function menu() {
             $this->vue->menu();
         }
-        
-        public function ajout() {
-            $this->vue->form_ajout();
+
+        public function addInscription() {
+            $this->vue->form_inscription();
         }
         public function inscription() {
             $this->modele->inscription();
+            $this->vue->resultat_inscription();
         }
+        
         public function form_connexion() {
             $this->vue->form_connexion();
         }
@@ -42,8 +44,8 @@
         public function exec() {
             if(isset($_GET['action'])){
                 switch($_GET['action']) {
-                    case "ajout": 
-                        $this->ajout();
+                    case "addInscription": 
+                        $this->addInscription();
                         break;
                     case "inscription": 
                         $this->inscription();

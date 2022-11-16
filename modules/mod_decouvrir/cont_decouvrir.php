@@ -67,7 +67,7 @@
                         $this->modele->search();
     
                     default:
-                        echo "erreur : " . $this->action;
+                        echo "erreur : ".$this->action;
                         break;
                     
                 }

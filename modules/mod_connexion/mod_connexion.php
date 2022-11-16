@@ -1,7 +1,6 @@
 <?php
 
 include_once('cont_connexion.php');
-include_once('modele_connexion.php');
 include_once('Connexion.php');
 
 Connexion::initConnexion();

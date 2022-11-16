@@ -6,16 +6,17 @@ include_once('vue_generique.php');
         }
 
         public function menu() {
-        echo "<a href =\"index.php?module=connexion&action=ajout\">Inscription<br></a>";
-        if(!isset($_SESSION['login'])) {
-            echo '<a href="index.php?module=connexion&action=connexion">Connexion</a><br>';
-        }
-        else if(isset($_SESSION['login'])) {
-            echo '<a href="index.php?module=connexion&action=deconnexion">Déconnexion</a> <br> ';
-        }
+            echo "<a href =\"index.php?module=connexion&action=ajout\">Inscription<br></a>";
+            if(!isset($_SESSION['login'])) {
+                echo '<a href="index.php?module=connexion&action=connexion">Connexion</a><br>';
+            }
+            else if(isset($_SESSION['login'])) {
+                echo '<a href="index.php?module=connexion&action=deconnexion">Déconnexion</a> <br> ';
+            }
+            
         }
 
-        public function form_ajout() {
+        public function form_inscription() {
             ?>
                 <form action="index.php?module=connexion&action=inscription" method="post">
                     <div class="form-element">
@@ -23,8 +24,16 @@ include_once('vue_generique.php');
                         <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
                     </div>
                     <div class="form-element">
-                        <label for="motDePasse">Mot de passe : </label>
-                        <input type="password" name="motDePasse" required minlength="1" maxlength="50"/>
+                        <label for="mail">Email : </label>
+                        <input type="email" name="mail" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <label for="password">Mot de passe : </label>
+                        <input type="password" name="password" required minlength="1" maxlength="50"/>
+                    </div>
+                    <div class="form-element">
+                        <label for="confirmPassword">Confirmer mot de passe : </label>
+                        <input type="password" name="confirmPassword" required minlength="1" maxlength="50"/>
                     </div>
                     <div class="form-element">
                         <input type="submit" value="S'inscrire"/>
@@ -37,22 +46,24 @@ include_once('vue_generique.php');
             ?>
                 <form class="color-grey" action="index.php?module=connexion&action=connecter" method="post">  
                     <div class="form-element">
-                        <label for="pseudo">Pseudo : </label>
-                        <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
+                        <label for="login">Pseudo : </label>
+                        <input type="texte" name="login" required minlength="1" maxlength="50"/>
                     </div>
                     <div class="form-element">
-                        <label for="motDePasse">Mot de passe : </label>
-                        <input type="password" name="motDePasse" required minlength="1" maxlength="50"/>
+                        <label for="password">Mot de passe : </label>
+                        <input type="password" name="password" required minlength="1" maxlength="50"/>
                     </div>
                     <div class="form-element">
                         <input type="submit" value="Se connecter"/>
+                        <a href = "index.php?action=addInscription&module=connexion" >s'inscrire</a>
                     </div>
                 </form>
             <?php
         }
 
         public function resultat_connexion() {
-            if(isset($_SESSION['login'])) {
+            if(isset($_SESSION['login']) ) {
+                
                 echo "Vous êtes connecté.e sous le login : " . $_POST['login'];
             }
             else{
@@ -61,16 +72,21 @@ include_once('vue_generique.php');
         }
 
         public function resultat_inscription() {
-            echo "Vous vous êtes correctement inscrit";
+            if(isset($_SESSION['login']) ) {
+                
+                echo "Vous êtes inscrit.e sous le login : " . $_POST['login'];
+            }
+            else{
+                echo "Erreur d'inscription";
+            }
         }
         
 
         public function resultat_deconnexion() {
             if(!isset($_SESSION['login'])) {
-                echo "Vous n'êtes pas connecté"; 
+                echo " Vous n'êtes pas connecté"; 
             }        
         }
     }    
-
 
 ?>
