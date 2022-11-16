@@ -19,7 +19,17 @@ require_once("vue_image.php");
             else
                 echo ($this->vue->affichage($idImage));
         }
-
+		/*
+		public function afficherImages($images){
+            for($i = 0; $i <= sizeof($images) -1 ; $i++){
+				$nom = $images[$i];
+                $this->vue->afficher("<a id = images href = \"index.php?module=image&nom=$nom&action=image\" >");
+                $this->afficheImage($nom,true);
+                echo '</a>';
+				$this->vue->espacer();
+			}
+        }
+*/
         public function details(){
             //$this->vue->afficheDetails($this->modele->getDetails($idImage));
             echo("details images");
@@ -33,10 +43,11 @@ require_once("vue_image.php");
                         $this->afficheImage($_GET['nom']);
                         break;
 						$this->vue->accueil();
+                        $this->vue->espacer();
 						$this->afficheImage($_GET['nom']);
                         $this->vue->afficherTelechargement($_GET['nom']);
+                        $this->vue->espacer();
 						$this->vue->commenter($_GET['nom']); // formulaire commentaire
-						$this->vue->espacer();
 						if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ){
 							session_start();
 							$this->modele->enregistrerCommentaire($_GET['nom'], $_SESSION['login'], $_POST['commentaire'] ); 

@@ -4,7 +4,8 @@ const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 const maxTaille = 400000;
 const LONGUEUR_MAX = 8000;  
 const HAUTEUR_MAX = 8000;
-const REPERTOIRE = "./modules/mod_image/";
+
+const REPERTOIRE = "./imageTest/";
 
     class modele_accueil{
 
