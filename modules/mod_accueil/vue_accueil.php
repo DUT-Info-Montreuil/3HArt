@@ -62,14 +62,6 @@ const mois = [
         
 
         public function menu(){
-            echo '<a href = " index.php?action=bienvenue&module=accueil" > Bienvenue </a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=inscription&module=accueil" > FormulaireInscription</a>';
-            echo "<br>";
-			echo '<a href = "index.php?action=connexion&module=connexion" > Connexion</a>';
-            echo "<br>";
-			echo '<a href = "index.php?action=deconnexion&module=accueil" > Deconnexion</a>';
-            echo "<br>";
             echo '<a href = "index.php?action=ajoutImage&module=accueil" > Poster une image</a>';
             echo "<br>";
             echo '<a href = "index.php?action=supprimerImage&module=accueil" > Supprimer une image</a>';
@@ -87,6 +79,8 @@ const mois = [
             echo '<a href = "index.php?action=connexion&module=connexion" >Connexion</a>';
             echo "<br>";
             echo '<a href = "index.php?action=addInscription&module=connexion" >Inscription</a>';
+            echo "<br>";
+            echo '<a href = "index.php?action=deconnexion&module=connexion" > Deconnexion</a>';
             echo "<br>";
             
             
@@ -111,7 +105,7 @@ const mois = [
                             $fichier_info = finfo_open(FILEINFO_MIME_TYPE);
                             $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
                             if(strpos($mime_type, 'image/') === 0){
-                                echo "<img src='./modules/mod_image/$fichier' width=300px  > "; //
+                                echo "<img src='./modules/mod_image/$fichier' width=300px  > "; 
                             } 
                         } 
                     }  

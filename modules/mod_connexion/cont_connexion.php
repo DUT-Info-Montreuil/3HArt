@@ -29,6 +29,7 @@
         }
         public function inscription() {
             $this->modele->inscription();
+            $this->vue->resultat_inscription();
         }
         
         public function form_connexion() {
