@@ -37,7 +37,6 @@
             $mod = new mod_image();
             $mod->exec();
             break;
-
     }
     echo("
             <footer>
