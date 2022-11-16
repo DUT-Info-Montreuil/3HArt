@@ -17,6 +17,15 @@
             $this->vue->menu();
         }
 
+<<<<<<< HEAD
+=======
+        // public function get_action() {
+        //     return $this->action;
+        // }
+        // public function ajout() {
+        //     $this->vue->form_ajout();
+        // }
+>>>>>>> 3ef600993bffe16a9fd79eb5e6320350701112ed
         public function addInscription() {
             $this->vue->form_inscription();
         }
