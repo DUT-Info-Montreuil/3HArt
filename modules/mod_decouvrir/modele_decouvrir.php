@@ -9,9 +9,8 @@
 
         public function connexion(){
 			session_start();
-			$_SESSION['login'] = "Gilgamesh";
-			echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;
-			
+			$_SESSION['login'] = "";
+			echo "Vous êtes connecté en tant que : " . $_SESSION['login'] ;	
 		}	
 
 		public function deconnexion(){
@@ -24,6 +23,7 @@
 			}
 			else{
 				echo "Vous n'êtes pas connecté";
+
 			}
 		}
 
@@ -31,11 +31,11 @@
 
         public function getListe() {  
 
-            $req = self::$bdd->prepare("SELECT * FROM ");
+            $req = self::$bdd->prepare("SELECT * FROM Image  ");
             $req->execute();
             $tab = $req->fetchAll();
-
             return $tab;
+        
         }
      
  
@@ -50,20 +50,15 @@
         }
 
         public function getDetailsTypeImage($typeImage) {
-            $req = self::$bdd->prepare("SELECT * FROM users WHERE typeImage = ?");
+            $req = self::$bdd->prepare("SELECT * FROM Utilisateurs WHERE typeImage = ?");
             $req->execute(array($id));
             $detail = $req->fetch();
-        
             return $detail;
         }
 
-        public function search(){
-            Echo "search";
-            return NULL;
+        public function recherche(){
     
         }
-        
-      
   
 
         public function categorie($typeImage){

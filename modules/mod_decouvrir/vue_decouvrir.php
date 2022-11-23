@@ -14,21 +14,17 @@
            echo "<a href =\"index.php?module=users&action=connexion\"> Connexion<br></a>";
            echo "<a href =\"index.php?module=users&action=deconnexion\"> Deconnexion <br></a>";
 
-           echo "<a href =\"index.php?module=users&action=search\"> Search<br></a>";
-
            echo "<a href =\"index.php?module=users&action=3d\">3D <br></a>";
 
-          
             echo "<a href=\"https://www.qries.com/\">
                      <img alt=\"Qries\" src=\"https://www.qries.com/images/banner_logo.png\" width=150\" height=\"70\">
                 </a>";
 
-
-
            echo "<a href =\"index.php?module=users&action=paysage\">Paysage <br></a>";
            echo "<a href =\"index.php?module=users&action=dessin\">Dessin <br></a>";
            echo "<a href =\"index.php?module=users&action=noirblanc\">Noir & Blanc <br></a>";
-            
+            echo 
+
 
         }
 
@@ -45,33 +41,3 @@
 ?>
 
 
-                    <!-- 
-                    foreach ($gamers as $g) {
-                        echo '<li>';
-                        echo '<a href="', $_SERVER['SCRIPT_NAME'], '/PageController/getGamerByName/', $g['name'], '">', $g['name'], '</a><br>';
-                        echo $g['adress'], '<br>';
-                        echo '--<a href="', $_SERVER['SCRIPT_NAME'], '/PageController/getGamersByCity/', $g['city'], '">', $g['city'], '</a>';
-                        echo '</li>';
-                    }
-                     -->
-                
-<!--                     
-                    if (isset($gamer)) {
-                        echo 'Thông tin chi tiết về game thủ:';
-                        echo '<li>';
-                        echo '<a href="', $_SERVER['SCRIPT_NAME'], '/PageController/getGamerByName/', $gamer['name'], '">', $gamer['name'], '</a><br></li>';
-                        echo '<li>', $gamer['adress'], '</li>';
-                        echo '<li>', $gamer['city'], '</li>';
-                    }
-                    if (isset($gamersInCities)) {
-                        echo 'Các game thủ ở: <b>', $gamersInCities[0]['city'], '</b>';
-                        foreach ($gamersInCities as $g) {
-                            echo '<li>';
-                            echo '<a href="', $_SERVER['SCRIPT_NAME'], '/PageController/getGamersByCity/', $g['name'], '">', $g['name'], ' </a>';
-                            echo $g['adress'], ' ';
-                            echo $g['city'];
-                            echo '</li>';
-                        }
-                    }   -->
-                    
-                
