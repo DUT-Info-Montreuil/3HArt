@@ -29,7 +29,6 @@
               echo "<input type =\"submit\" name = envoyer >";
           echo "</form>";
 
-
       }
 
       public function commenter(){
@@ -42,7 +41,7 @@
           echo "</form>";
 
       }
-
+/*
       public function nav() {
         $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
         if (isset($_SESSION['login']))
@@ -52,20 +51,10 @@
           <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
           <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>
           ";
-      }
+      }*/
 
       public function menu() {
-        $nav = $this->nav(); // TODO: mettre dans le controleur
         return "
-        <header>
-          <a href=\"\"><img src=\"\" alt=\"Logo\" /></a>
-        </header>
-        <nav>
-          <div class=\"elementADroite\">
-            $nav
-          </div>
-        </nav>
-
         <div id=\"accueil-list-image\" class=\"list-image-scroll\">
             <ul class=\"row-list\">
               <li class=\"inline\">
