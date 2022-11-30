@@ -5,7 +5,6 @@ require_once("vue_image.php");
     class cont_image{
         private $modele;
         private $vue;
-        private $idImage;
 
         function __construct($modele, $vue){
             $this->modele = $modele;
@@ -42,7 +41,11 @@ require_once("vue_image.php");
 				$this->vue->espacer();
 			}
         }
-*/
+*/      
+        public function upload() {
+            $this->modele->upload();
+        }
+
         public function details(){
             //$this->vue->afficheDetails($this->modele->getDetails($idImage));
             echo("details images");
@@ -69,8 +72,8 @@ require_once("vue_image.php");
 							$this->vue->afficher("Pas de commentaire a afficher :(");
 						}*/
 						break;
-                    case "pleinEcran":
-
+                    case "upload":
+                        $this->upload();
                         break;
 
                     

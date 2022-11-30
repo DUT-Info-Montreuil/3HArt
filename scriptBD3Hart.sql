@@ -201,8 +201,7 @@ CREATE TABLE Image(
    IdImage SERIAL,
    NomImage VARCHAR(50)  NOT NULL,
    MotCles TEXT,
-   Categorie VARCHAR(50) ,
-   Noir_Blanc BOOLEAN,
+   Categorie VARCHAR(50),
    pathImg VARCHAR(50) NOT NULL,
    IdUtilisateur bigint(20) unsigned NOT NULL,
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur)

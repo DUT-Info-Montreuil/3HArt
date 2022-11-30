@@ -63,7 +63,6 @@
         <nav>
           <div class=\"elementADroite\">
             $nav
-            <a class=\"bouton\" href=\"index.php?action=ajoutImage&module=accueil\">Ajouter une image</a>
           </div>
         </nav>
 
@@ -94,8 +93,8 @@
 
         <div id=\"option\">
           <div>
-            <a href=\"index.php?module=accueil&action=ajoutImage\">
-              <img class=\"icon\" src=\"./imageTest/upload.svg\" alt=\"Poster une image\"></img>
+            <a href=\"index.php?module=image&action=upload\">
+              <img class=\"icon\" src=\"./publicImage/upload.svg\" alt=\"Poster une image\"></img>
               <p>Poster Image</p>
             </a>
           </div>

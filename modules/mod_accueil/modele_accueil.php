@@ -1,53 +1,10 @@
 <?php
 
-const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
-const maxTaille = 400000;
-const LONGUEUR_MAX = 8000;  
-const HAUTEUR_MAX = 8000;
-
-const REPERTOIRE = "./imageTest/";
-
     class modele_accueil{
 
         function __construct(){
         }
 
-		public function lireCommentaire(){
-			$texte = file_get_contents('test.txt');
-			return $texte;
-
-		}
-
-		public function posterCommentaire($commentaire){
-			$fichier = fopen('test.txt', 'c+b');
-			fwrite($fichier, 'Un premier texte dans mon fichier');
-		}
-
-		public function suppression($id){
-
-            $compteur = -1;
-
-            if(is_dir(REPERTOIRE)){
-                if($iteration = opendir(REPERTOIRE)){  
-                    while(($fichier = readdir($iteration)) !== false){  
-						if($compteur == $id){
-							if($fichier != "." && $fichier != ".."){ 
-								$fichier_info = finfo_open(FILEINFO_MIME_TYPE);
-								$mime_type = finfo_file($fichier_info, REPERTOIRE.$fichier);
-								if(strpos($mime_type, 'image/') === 0){
-									unlink(REPERTOIRE.$fichier);
-									header('Location: index.php?action=bienvenue&module=accueil');
-									exit();
-								} 
-							}
-						}
-						$compteur ++;
-					}  
-                    closedir($iteration);    
-                }
-            }
-
-		}
 
 		public function upload(){
 			if(!empty($_SESSION['login'])){
