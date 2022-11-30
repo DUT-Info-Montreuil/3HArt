@@ -171,6 +171,7 @@ Insert into Noter values (1, 3, 7);
 
 
 
+Drop table if exists Hastag;
 
 Drop table if exists Regarder ;
 Drop table if exists Appartenir ;
@@ -287,6 +288,12 @@ CREATE TABLE Noter(
    Note SMALLINT,
    PRIMARY KEY(IdUtilisateur, IdImage),
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur),
+   FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
+);
+CREATE TABLE Hastag(
+   idHastag SERIAL,
+   IdImage bigint(20) unsigned,
+   contenuHastag VARCHAR(50) NOT NULL,
    FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
 );
 
