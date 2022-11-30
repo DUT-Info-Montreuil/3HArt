@@ -55,28 +55,20 @@ require_once("vue_image.php");
                     case "image" :
                         $this->afficheImage($_GET['nom']);
                         break;
-						$this->vue->accueil();
-                        $this->vue->espacer();
-						$this->afficheImage($_GET['nom']);
-                        $this->vue->afficherTelechargement($_GET['nom']);
-                        $this->vue->espacer();
-						$this->vue->commenter($_GET['nom']); // formulaire commentaire
-						if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ){
-							session_start();
-							$this->modele->enregistrerCommentaire($_GET['nom'], $_SESSION['login'], $_POST['commentaire'] ); 
-							header("Location: index.php?module=image&nom=$_GET[nom]&action=image"); /* Pour que les données ne soit pas conservé
+                    case "commenter":
+                        if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ) {
+							$this->modele->postCommentaire($_SESSION['login'], $_GET['nom'], $_POST['commentaire'] ); 
+							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image"); /* Pour que les données ne soit pas conservé
 							lors d'un rafraichissement de la page et que les commentaires dédoublent */
 						}
-						$commentaire = $this->modele->lireCommentaires($_GET['nom']);
+                        /*$commentaire = $this->modele->lireCommentaires($_GET['nom']);
 						if($commentaire != -1){
 							$this->vue->afficherCommentaires($commentaire);
 						}
 						else{
 							$this->vue->afficher("Pas de commentaire a afficher :(");
-						}
-						echo "<br>";
+						}*/
 						break;
-
                     case "pleinEcran":
 
                         break;

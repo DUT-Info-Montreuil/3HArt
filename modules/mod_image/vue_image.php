@@ -43,7 +43,7 @@
             ;
             //if (isset($_SESSION['login'])) {
             if (true) { // TODO: a changer
-                $commenter = $this->commenter($_SESSION['login']);
+                $commenter = $this->commenter();
                 $aAfficher = $aAfficher.$commenter;
             }
             $aAfficher = $aAfficher.$tabCommentaires."</div>";
@@ -51,9 +51,9 @@
             return $aAfficher;
         }
 		
-		public function commenter($nom){
+		public function commenter(){
             return "
-                <form id=\"creerCommentaire\" method=\"POST\" action=\"index.php?module=image&nom=$nom&action=image\" >
+                <form id=\"creerCommentaire\" method=\"POST\" action=\"index.php?module=image&nom=".$_GET["nom"]."&action=commenter\" >
                     <label>Entrez un commentaire : </label>
                     <input type=\"text\" id=\"num\" name=\"commentaire\"></input>                
                     <input type=\"submit\" name=\"envoyer \">

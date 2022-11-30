@@ -1,5 +1,6 @@
 <?php
-
+    
+    session_start();
     require_once("Connexion.php");
     require_once("modules/mod_accueil/mod_accueil.php");
     require_once("modules/mod_decouvrir/mod_decouvrir.php");

@@ -36,6 +36,19 @@
 			}
 		}
 
+		public function getIdUtilisateur($pseudo) {
+			try {
+				$sql = 'SELECT IdUtilisateur FROM Utilisateur WHERE pseudo=?';
+				$statement = self::$bdd->prepare($sql);
+				$statement->execute(array($pseudo));
+				$resultat = $statement->fetchAll();
+				return $resultat;
+			}
+			catch (PDOExeception $e) {
+				echo $e->getMessage().$e->getCode();
+			}
+		}
+
 		public function getCommentaire($idImage) {
 			try {
 				$sql = 'SELECT * FROM Commenter WHERE IdImage=?';
@@ -51,28 +64,20 @@
 				echo $e->getMessage().$e->getCode();
 			}
 		}
-/*
-		public function enregistrerCommentaire($idImage, $auteur, $contenue ){
-			$fichier = file_get_contents("commentaire.json");
-			
-			$commentaire = array(
-				"idCommentaire" => uniqid('', true),
-				"auteur" => utf8_encode($auteur),
-				"dateCreation" => $this->dateT(),
-				"contenue" => utf8_encode($contenue),
-			);
-			
-			$fichier = json_decode($fichier, true);
-			
-			if(!isset($fichier[$idImage])){ // à mettre dans upload ou équivalent
-				$fichier[$idImage] =  array();
+
+		public function postCommentaire($auteur, $idImage, $contenue) {			
+			try {
+				$sql = 'INSERT INTO Commenter (IdUtilisateur, IdImage, Message) VALUES (?,?,?)';
+				$statement = self::$bdd->prepare($sql);
+				$auteur = $this->getIdUtilisateur($auteur)[0]["IdUtilisateur"];
+				$idImage = $this->getIdImage($idImage)[0]["IdImage"];
+				var_dump($idImage);
+				$contenue = utf8_encode($contenue);
+				$statement->execute(array($auteur, $idImage, $contenue));
 			}
-			
-			$fichier[$idImage][count($fichier[$idImage])] = $commentaire;  
-			
-			$json = json_encode($fichier);
-			file_put_contents("commentaire.json", $json);
+			catch (PDOExeception $e) {
+				echo $e->getMessage().$e->getCode();
+			}
 		} 
-*/
     }
 ?>

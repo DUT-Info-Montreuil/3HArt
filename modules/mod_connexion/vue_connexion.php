@@ -21,8 +21,8 @@ include_once('vue_generique.php');
                 <div class="container">
                     <form class="color-dark-blue" action="index.php?module=connexion&action=inscrire" method="post">
                         <div class="form-element">
-                            <label for="pseudo">Pseudo : </label>
-                            <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
+                            <label for="login">Pseudo : </label>
+                            <input type="texte" name="login" required minlength="1" maxlength="50"/>
                         </div>
                         <div class="form-element">
                             <label for="mail">Email : </label>
