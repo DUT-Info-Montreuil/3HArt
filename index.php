@@ -37,6 +37,13 @@
             $mod = new mod_image();
             $mod->exec();
             break;
+        
+        
+        case 'image':
+            $mod = new mod_image();
+            $mod->exec();
+            break;
+        
     }
     echo("
             <footer>
