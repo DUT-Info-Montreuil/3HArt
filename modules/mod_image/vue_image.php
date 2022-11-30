@@ -10,8 +10,8 @@
             return "<img class=\"imagePrincipale\" src=\"$image\"";
         }
 
-        public function miniature($image) {
-            return "<img class=\"imageMiniature\" src=\"$image\">";
+        public function miniature($nomImage) {
+            return "<img class=\"imageMiniature\" src=\"$nomImage\">";
         }
         
 
@@ -23,46 +23,55 @@
             echo "<a id = telechargement href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
         }
 
-        public function affichage($idImage) {
-            $image = $this->image($idImage);
-            return "<table>
-                <tr>
-                    <td class=\"tableDeuxCol\">$image</td>
-                    <td class=\"tableDeuxCol\">
-                        <ol>
-                            <li><p>Il y aura des choses ici sur l'auteur</p></li>
-                            <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
-                            <li><p>Il y aura des choses ici sur la date de publication</p></li>
-                            <li><p>Il y aura des choses ici sur la note</p></li>
-                    </td>
-                </tr>
-            </table>";
+        public function affichage($nomImage,$tabCommentaires) {
+            $image = $this->image($nomImage);
+            $aAfficher = "
+                <table class=\"color-white-blue\">
+                    <tr>
+                        <td class=\"tableDeuxCol\">$image</td>
+                        <td class=\"tableDeuxCol\">
+                            <ol>
+                                <li><p>Il y aura des choses ici sur l'auteur</p></li>
+                                <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
+                                <li><p>Il y aura des choses ici sur la date de publication</p></li>
+                                <li><p>Il y aura des choses ici sur la note</p></li>
+                        </td>
+                    </tr>
+                </table>
+                <div id=\"commentaires\" class=\"color-light-blue\">
+                "
+            ;
+            //if (isset($_SESSION['login'])) {
+            if (true) { // TODO: a changer
+                $commenter = $this->commenter($_SESSION['login']);
+                $aAfficher = $aAfficher.$commenter;
+            }
+            $aAfficher = $aAfficher.$tabCommentaires."</div>";
+
+            return $aAfficher;
         }
 		
 		public function commenter($nom){
-            echo "<form id = creerCommentaire method = POST action = \" index.php?module=image&nom=$nom&action=image \" >";
-                echo "<label>Entrez un commentaire : </label> ";
-                echo "<input type=text id= num name=commentaire></input>";
-                echo "<br>";
-                echo "<br>";
-                echo "<input type =\"submit\" name = envoyer >";
-            echo "</form>";
-
-
+            return "
+                <form id=\"creerCommentaire\" method=\"POST\" action=\"index.php?module=image&nom=$nom&action=image\" >
+                    <label>Entrez un commentaire : </label>
+                    <input type=\"text\" id=\"num\" name=\"commentaire\"></input>                
+                    <input type=\"submit\" name=\"envoyer \">
+                </form>
+            ";
         }
 
-  
-	
-		public function afficherCommentaires($commentaire){
-			for($i = 0; $i <= sizeof($commentaire) -1 ; $i++){
-                $auteur = $commentaire[$i]['auteur'];
-                $dateCreation = $commentaire[$i]['dateCreation'];
-                $contenue = $commentaire[$i]['contenue'];
-                echo " <NOBR class = auteur> $auteur </NOBR>";
-                echo " <p class = date> le $dateCreation </p>";
-				echo  " <NOBR class = commentaires >   $contenue  </NOBR>" ;
-                echo "<br>";
-			}
+		public function afficherCommentaire($commentaire,$auteur) {
+            $dateCreation = $commentaire['dateCreation'];
+            $contenue = $commentaire['Message'];
+            $commentaireVue = "
+                <div class=\"commentaire\">
+                    <p class=\"auteur\">$auteur</p>
+                    <p class=\"date\"> le $dateCreation</p>
+                    <p class=\"contenue\">$contenue</p>
+                </div>
+            ";
+            return $commentaireVue;
 		}
 		
 		public function afficher($texte){

@@ -19,8 +19,9 @@
 
 table
 {
-    background-color: rgb(176, 182, 185);
-    border: 1px solid darkgrey;
+    background-color: rgb(176,182,185);
+    border:1px solid darkgrey;
+    width: -moz-available;
 }
 
 
@@ -64,12 +65,6 @@ div {
 
 }
 
-table{
-    background-color: rgb(176,182,185);
-    border:1px solid darkgrey;
-    width: -moz-available;
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -82,26 +77,33 @@ a {
 .auteur{
     display: inline-block;
     font-weight:bold;
-    margin-left: 10px;
+    margin-left: 1%;
 }
 
 .date{
     display: inline-block;
     color:silver;
     font-size: 12px;
+    margin-left: 1%;
 }
 
-.commentaires{
-    display: block;
-    margin-left: 10px;
+.commentaire{
+    display: flex;
+    border: black solid 1px;
 }
 
+.contenue
+{
+    margin-left: 3%;
+}
 #images{
     margin-left: 10px;
 }
 
 #creerCommentaire{
-    margin-left: 10px;
+    display: table;
+    border: hidden;
+    width: 100%;
 }
 
 #telechargement{
@@ -110,7 +112,7 @@ a {
 }
 
 #commentaires{
-    margin-left: 10px;
+    display: list-item;
 }
 
 .inline {

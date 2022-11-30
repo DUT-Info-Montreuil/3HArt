@@ -44,12 +44,13 @@
         public function exec() {
             if(isset($_GET['action'])){
                 switch($_GET['action']) {
-                    case "addInscription": 
+                    case "inscription": 
                         $this->addInscription();
                         break;
-                    case "inscription": 
+                    case "inscrire": 
                         $this->inscription();
                         break;
+                        
                     case "connexion" :
                         $this->form_connexion();
                         break;

@@ -12,12 +12,25 @@ require_once("vue_image.php");
             $this->vue = $vue;
         }
 
-        public function afficheImage($idImage,$miniature = false) {
-            $idImage = $this->modele->cheminImage($idImage);
-            if ($miniature)
-                echo ($this->vue->miniature($idImage));
-            else
-                echo ($this->vue->affichage($idImage));
+        public function afficheImage($nomImage,$miniature = false) {
+            $nomCheminImage = $this->modele->cheminImage($nomImage);
+            if ($miniature) {
+                echo ($this->vue->miniature($nomCheminImage));
+            }
+            else {
+                $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
+                $vueCommentaires = $this->commentaires($commentaires);
+                echo ($this->vue->affichage($nomCheminImage,$vueCommentaires));
+            }
+        }
+
+        public function commentaires($commentaires) {
+            $commentaire = "";
+            for($i = 0; $i <= sizeof($commentaires) -1 ; $i++) {
+                $auteur = $this->modele->getNomUtilisateur($commentaires[$i]["IdUtilisateur"])[0]["pseudo"];
+                $commentaire = $commentaire.$this->vue->afficherCommentaire($commentaires[$i],$auteur);
+            }
+            return $commentaire;
         }
 		/*
 		public function afficherImages($images){

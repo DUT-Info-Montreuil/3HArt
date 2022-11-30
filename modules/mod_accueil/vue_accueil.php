@@ -45,7 +45,7 @@
 
       public function nav() {
         $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
-        if ($connecter)
+        if (isset($_SESSION['login']))
           return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>";
         else
           return "

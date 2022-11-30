@@ -19,7 +19,7 @@ include_once('vue_generique.php');
         public function form_inscription() {
             ?>
                 <div class="container">
-                    <form class="color-dark-blue" action="index.php?module=connexion&action=inscription" method="post">
+                    <form class="color-dark-blue" action="index.php?module=connexion&action=inscrire" method="post">
                         <div class="form-element">
                             <label for="pseudo">Pseudo : </label>
                             <input type="texte" name="pseudo" required minlength="1" maxlength="50"/>
@@ -78,7 +78,7 @@ include_once('vue_generique.php');
         public function resultat_inscription() {
             if(isset($_SESSION['login']) ) {
                 
-                echo "Vous êtes inscrit.e sous le login : " . $_POST['login'];
+                echo "Vous êtes inscrit.e sous le login : " . $_SESSION['login'];
             }
             else{
                 echo "Erreur d'inscription";

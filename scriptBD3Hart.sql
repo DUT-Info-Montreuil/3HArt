@@ -267,7 +267,8 @@ CREATE TABLE Apparaitre(
 CREATE TABLE Commenter(
    IdUtilisateur bigint(20) unsigned,
    IdImage bigint(20) unsigned,
-   Message VARCHAR(500) ,
+   Message VARCHAR(500),
+   dateCreation datetime DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY(IdUtilisateur, IdImage),
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur),
    FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
