@@ -8,8 +8,10 @@ class mod_accueil{
     private $controleur;
     
     
-    function __construct() {
-        $this->controleur = new cont_accueil(new modele_accueil(), new vue_accueil());
+    function __construct(){
+        $vue = new vue_accueil();
+        $modele = new modele_accueil();
+        $this->controleur = new cont_accueil($modele, $vue);
     }
 
     
