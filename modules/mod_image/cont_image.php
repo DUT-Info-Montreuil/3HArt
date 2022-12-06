@@ -43,6 +43,7 @@ require_once("vue_image.php");
         }
 */      
         public function upload() {
+            echo ($this->vue->upload());
             $this->modele->upload();
         }
 
