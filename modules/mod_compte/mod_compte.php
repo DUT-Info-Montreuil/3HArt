@@ -3,12 +3,12 @@
     require_once("vue_compte.php");
     require_once("modele_compte.php");
 
-    class mod_comptel{
+    class mod_compte {
         private $controleur;
         
         
         function __construct() {
-            $this->controleur = new cont_accueil(new modele_accueil(), new vue_accueil());
+            $this->controleur = new cont_compte(new modele_compte(), new vue_compte());
         }
 
         
