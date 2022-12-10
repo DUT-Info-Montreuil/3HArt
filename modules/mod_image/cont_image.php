@@ -19,7 +19,7 @@ require_once("vue_image.php");
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
                 $vueCommentaires = $this->commentaires($commentaires);
-				$moyenne = $this->modele->obtenirMoyenne(1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
+				$moyenne = $this->modele->obtenirMoyenne(1); // TODO changer le 1 par idImage quand $this->modele->getIdImage($nomImage)[0]["IdImage"] opérationnel
 				if($moyenne != -1){
 					$note = "Cette image a une moyenne de " . $moyenne . "/10 ";
 				}
