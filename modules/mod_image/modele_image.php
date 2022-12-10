@@ -1,6 +1,6 @@
 <?php
 
-const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
+//const tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 const maxTaille = 400000;
 const LONGUEUR_MAX = 8000;  
 const HAUTEUR_MAX = 8000;
@@ -18,7 +18,7 @@ const REPERTOIRE = "./imageTest/";
 
 		public function getIdImage($nomImage) {
 			try {
-				$sql = 'SELECT IdImage FROM Image WHERE NomImage LIKE ?';
+				$sql = 'SELECT IdImage FROM dutinfopw20164.Image WHERE NomImage LIKE ?';
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($nomImage));
 				$resultat = $statement->fetchAll();
@@ -58,7 +58,7 @@ const REPERTOIRE = "./imageTest/";
 
 		public function getCommentaire($idImage) {
 			try {
-				$sql = 'SELECT * FROM Commenter WHERE IdImage=?';
+				$sql = 'SELECT * FROM dutinfopw20164.Commenter WHERE IdImage=?';
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array(intval($idImage)));
 				$resultat = $statement->fetchAll();
@@ -100,8 +100,62 @@ const REPERTOIRE = "./imageTest/";
 				echo $e->getMessage().$e->getCode();
 			}
 		}
+		
+		public function ajouterNote($note, $idImage){
+			$sql = 'SELECT * FROM dutinfopw20164.Noter WHERE IdImage=? and IdUtilisateur =?';
+			$statement = self::$bdd->prepare($sql);
+			$statement->execute(array($idImage,"5")); // TODO changer le 5 par idUtilisateur
+			$resultat = $statement->fetchAll();
+			
+			if(is_numeric($note)){
+				if($note >= 0){
+					if($note <= 10){
+						// $auteur = $this->getIdUtilisateur($_SESSION["login"])[0]["IdUtilisateur"]; à remettre quand connection() sera implémenter
+						if(!empty($resultat)){
+							$sql = " UPDATE dutinfopw20164.Noter SET Note = ?  WHERE IdUtilisateur = ? and IdImage = ?";
+							$parametre = array($note,"5",$idImage);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+						}
+						else{
+							$sql = 'INSERT INTO dutinfopw20164.Noter (IdUtilisateur, IdImage, Note) VALUES (?,?,?)';
+							$parametre = array("5",$idImage,$note);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+						}	
+						try {
+							$statement = self::$bdd->prepare($sql);
+							$statement->execute($parametre); 
+						}
+						catch (PDOExeception $e) {
+							echo $e->getMessage().$e->getCode();
+						}
+					}
+					else{
+						return -3;
+					}
+				}
+				else{
+					return -2;
+				}
+			}
+			else{
+				return -1;
+			}
+		}
+		
+		public function obtenirMoyenne($idImage){
+			try {
+				$sql = 'SELECT SUM(Note), Count(*) FROM dutinfopw20164.Noter WHERE IdImage=?';
+				$statement = self::$bdd->prepare($sql);
+				$statement->execute(array($idImage));
+				$resultat = $statement->fetchAll();
+				$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(*)"];
+				return $moyenne;
+			}
+			catch (PDOExeception $e) {
+				echo $e->getMessage().$e->getCode();
+			}
+		}
 
 		public function upload(){
+			$tabExtensions = ['jpg', 'png', 'jpeg','webp'];
 			if(!empty($_SESSION['login'])) {
 				if (!empty($_FILES)) {
 					$tmpName = $_FILES['file']['tmp_name'];
@@ -114,7 +168,7 @@ const REPERTOIRE = "./imageTest/";
 					$extension = strtolower(end($extension));
 
 					if($erreur == 0){
-						if(in_array($extension, tabExtensions)){
+						if(in_array($extension, $tabExtensions)){
 							if($size <= maxTaille){
 								if(($dimensionImg[0] <= LONGUEUR_MAX) && ($dimensionImg[1] <= HAUTEUR_MAX) ){
 									$nomUnique = uniqid('', true); //pour généré un nom unique pour les photos au nom trop générique pour éviter qu'elles soient écrasés l'une après l'autre

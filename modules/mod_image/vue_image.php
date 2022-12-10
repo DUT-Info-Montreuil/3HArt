@@ -33,7 +33,7 @@
             echo "<a id = telechargement href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
         }
 
-        public function affichage($nomImage,$tabCommentaires) {
+        public function affichage($nomImage,$tabCommentaires, $note) {
             $image = $this->image($nomImage);
             $aAfficher = "
                 <table class=\"color-white-blue\">
@@ -44,7 +44,7 @@
                                 <li><p>Il y aura des choses ici sur l'auteur</p></li>
                                 <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
                                 <li><p>Il y aura des choses ici sur la date de publication</p></li>
-                                <li><p>Il y aura des choses ici sur la note</p></li>
+                                <li><p>Cette image a une moyenne de " . $note . "/10 </p></li>
                         </td>
                     </tr>
                 </table>
@@ -55,6 +55,8 @@
             if (true) { // TODO: a changer
                 $commenter = $this->commenter();
                 $aAfficher = $aAfficher.$commenter;
+				$noter = $this->noter();
+				$aAfficher = $aAfficher.$noter;
             }
             $aAfficher = $aAfficher.$tabCommentaires."</div>";
 
@@ -66,6 +68,16 @@
                 <form id=\"creerCommentaire\" method=\"POST\" action=\"index.php?module=image&nom=".$_GET["nom"]."&action=commenter\" >
                     <label>Entrez un commentaire : </label>
                     <input type=\"text\" id=\"num\" name=\"commentaire\"></input>                
+                    <input type=\"submit\" name=\"envoyer \">
+                </form>
+            ";
+        }
+		
+		public function noter(){
+            return "
+                <form id=\"noterImage\" method=\"POST\" action=\"index.php?module=image&nom=".$_GET["nom"]."&action=noter\" >
+                    <label>Entrez une note : </label>
+                    <input type=\"text\" id=\"num\" name=\"note\"></input>                
                     <input type=\"submit\" name=\"envoyer \">
                 </form>
             ";

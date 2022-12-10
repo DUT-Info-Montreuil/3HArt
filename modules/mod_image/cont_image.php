@@ -19,7 +19,8 @@ require_once("vue_image.php");
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
                 $vueCommentaires = $this->commentaires($commentaires);
-                echo ($this->vue->affichage($nomCheminImage,$vueCommentaires));
+				$moyenne = $this->modele->obtenirMoyenne(1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
+				echo ($this->vue->affichage($nomCheminImage,$vueCommentaires,$moyenne));
             }
         }
 
@@ -45,6 +46,10 @@ require_once("vue_image.php");
         public function upload() {
             echo ($this->vue->upload());
             $this->modele->upload();
+        }
+		
+		public function noter() {
+            return $this->modele->ajouterNote($_POST['note'], 1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
         }
 
         public function details(){
@@ -76,8 +81,35 @@ require_once("vue_image.php");
                     case "upload":
                         $this->upload();
                         break;
-
-                    
+						
+					case "noter":
+						$test = $this->noter();
+						if($test < 0){
+							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=noteErreur&log=$test");
+						}
+						else{
+							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image");
+						}
+						break;
+						
+					case "noteErreur":
+						$this->afficheImage($_GET['nom']);
+						switch($_GET['log']){
+							case -1:
+								$this->vue->afficher("La note doit etre un nombre");
+								break;
+							
+							case -2:
+								$this->vue->afficher("La note doit etre positive");
+								break;
+								
+							case -3:
+								$this->vue->afficher("La note ne peut pas etre superieur a 10 "); 
+								break;
+							
+						}
+						break;
+						
                     default:
                         echo ("erreur : ".$_GET['action']);
                         break;
@@ -96,11 +128,11 @@ require_once("vue_image.php");
 			
 		
 		public function connexion(){
-            $this->modele->connexion;
+            $this->modele->connexion();
 		}
 		
 		public function deconnexion(){
-			$this->modele->deconnexion;
+			$this->modele->deconnexion();
 		}
         
     }
