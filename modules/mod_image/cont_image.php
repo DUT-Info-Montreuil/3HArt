@@ -20,7 +20,13 @@ require_once("vue_image.php");
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
                 $vueCommentaires = $this->commentaires($commentaires);
 				$moyenne = $this->modele->obtenirMoyenne(1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
-				echo ($this->vue->affichage($nomCheminImage,$vueCommentaires,$moyenne));
+				if($moyenne != -1){
+					$note = "Cette image a une moyenne de " . $moyenne . "/10 ";
+				}
+				else{
+					$note = "Il n'y a pas encore de note ";
+				}	
+				echo ($this->vue->affichage($nomCheminImage,$vueCommentaires,$note));
             }
         }
 
@@ -113,6 +119,9 @@ require_once("vue_image.php");
 						break;
 						
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cfa713a (Pris en compte de si l'image a pas de note)
 					case "noteErreur":
 						$this->afficheImage($_GET['nom']);
 						switch($_GET['log']){
@@ -130,8 +139,11 @@ require_once("vue_image.php");
 							
 						}
 						break;
+<<<<<<< HEAD
 =======
 >>>>>>> 64f5d87 (Suppression de l'action "noteErreur")
+=======
+>>>>>>> cfa713a (Pris en compte de si l'image a pas de note)
 						
                     default:
                         echo ("erreur : ".$_GET['action']);

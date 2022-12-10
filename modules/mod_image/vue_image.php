@@ -44,7 +44,7 @@
                                 <li><p>Il y aura des choses ici sur l'auteur</p></li>
                                 <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
                                 <li><p>Il y aura des choses ici sur la date de publication</p></li>
-                                <li><p>Cette image a une moyenne de " . $note . "/10 </p></li>
+                                <li><p>$note</p></li>
                         </td>
                     </tr>
                 </table>

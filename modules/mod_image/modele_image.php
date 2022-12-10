@@ -146,8 +146,13 @@ const REPERTOIRE = "./imageTest/";
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($idImage));
 				$resultat = $statement->fetchAll();
-				$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(*)"];
-				return $moyenne;
+				if($resultat[0]["Count(*)"] != 0 ){ 
+					$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(*)"];
+					return $moyenne;
+				}
+				else{
+					return -1;
+				}
 			}
 			catch (PDOExeception $e) {
 				echo $e->getMessage().$e->getCode();
