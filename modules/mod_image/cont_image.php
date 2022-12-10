@@ -63,6 +63,26 @@ require_once("vue_image.php");
 
                     case "image" :
                         $this->afficheImage($_GET['nom']);
+						if(isset($_GET['log'])){
+							switch($_GET['log']){
+								case -1:
+									$this->vue->afficher("La note doit etre un nombre");
+									break;
+								
+								case -2:
+									$this->vue->afficher("La note doit etre positive");
+									break;
+									
+								case -3:
+									$this->vue->afficher("La note ne peut pas etre superieur a 10 "); 
+									break;
+								
+								default:
+									echo ("erreur : ".$_GET['log']);
+									break;
+							}
+							
+						}
                         break;
                     case "commenter":
                         if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ) {
@@ -85,13 +105,14 @@ require_once("vue_image.php");
 					case "noter":
 						$test = $this->noter();
 						if($test < 0){
-							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=noteErreur&log=$test");
+							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image&log=$test");
 						}
 						else{
 							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image");
 						}
 						break;
 						
+<<<<<<< HEAD
 					case "noteErreur":
 						$this->afficheImage($_GET['nom']);
 						switch($_GET['log']){
@@ -109,6 +130,8 @@ require_once("vue_image.php");
 							
 						}
 						break;
+=======
+>>>>>>> 64f5d87 (Suppression de l'action "noteErreur")
 						
                     default:
                         echo ("erreur : ".$_GET['action']);
