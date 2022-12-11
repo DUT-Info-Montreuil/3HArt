@@ -35,8 +35,7 @@
 
         }
         public function deconnexion() {
-            $this->modele->deconnexion();
-            $this->vue->resultat_deconnexion();
+            echo($this->vue->resultat_deconnexion($this->modele->deconnexion()));
         }
         public function getVue() {
             return $this->vue;

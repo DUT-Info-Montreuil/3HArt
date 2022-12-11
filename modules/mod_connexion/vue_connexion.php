@@ -86,8 +86,8 @@ include_once('vue_generique.php');
         }
         
 
-        public function resultat_deconnexion() {
-            if(!isset($_SESSION['login'])) {
+        public function resultat_deconnexion($codeErreur) {
+            if($codeErreur==1) {
                 echo " Vous n'êtes pas connecté"; 
             }        
         }

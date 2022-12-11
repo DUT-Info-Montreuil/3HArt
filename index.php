@@ -22,7 +22,6 @@
         case 'accueil':
             $mod = new mod_accueil();
             $mod->exec();
-            //echo ("<a href=\"index.php?module=decouvrir\">Decouvrir</a><br>");
             break;
 
         case 'decouvrir':

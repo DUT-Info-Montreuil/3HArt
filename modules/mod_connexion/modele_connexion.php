@@ -1,7 +1,5 @@
 <?php
  
- include_once('Connexion.php');
- 
    class modele_connexion extends Connexion{
        public function __construct(){
        }
@@ -12,34 +10,36 @@
                $pwhash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                $req = Connexion::$bdd->prepare("INSERT INTO Utilisateur(Pseudo, MotDePasse, Mail, Premium) VALUES (?,?,?,false)");
                $req->execute(array($_POST['login'],$pwhash,$_POST['mail']));
-               $_SESSION['login'] = $_POST['login'];              
+               $_SESSION['login'] = $_POST['login'];
+               /*Récup id*/
+               $req = Connexion::$bdd->prepare("SELECT IdUtilisateur FROM Utilisateur WHERE Pseudo = ?");
+               $req->execute(array($_POST['login']));
+               $tab = $req->fetch();
+               $_SESSION['id'] =$tab['IdUtilisateur'];
            }
        }
  
         public function connexion() {
-            $req = Connexion::$bdd->prepare("SELECT MotDePasse FROM Utilisateur WHERE Pseudo = ?");
+            $req = Connexion::$bdd->prepare("SELECT IdUtilisateur, MotDePasse FROM Utilisateur WHERE Pseudo = ?");
             $req->execute(array($_POST['login']));
-            $tab = $req->fetchall();
-            if(isset($tab[0]) && password_verify($_POST['password'], $tab[0]['MotDePasse'])) {
+            $tab = $req->fetch();
+            if(isset($tab) && password_verify($_POST['password'], $tab['MotDePasse'])) {
                 $_SESSION['login'] = $_POST['login'];
-        }
+                $_SESSION['id'] =$tab['IdUtilisateur'];
+            }
               
        }
  
        public function deconnexion() {
-           session_start();
            if(!empty($_SESSION['login'])){
                $_SESSION = array();
                session_destroy();
                unset($_SESSION);
-               echo "Vous êtes deconnecté";
+               return 0;
            }
            else{
-               echo "Vous n'êtes pas connecté";
+               return 1;
            }
-           // if(isset($_SESSION['login'])) {
-           //     unset($_SESSION['login']);
-           // }
         }
 
         

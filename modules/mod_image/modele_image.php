@@ -102,15 +102,15 @@ const REPERTOIRE = "./imageTest/";
 		}
 		
 		public function ajouterNote($note, $idImage){
+			$auteur = $_SESSION["id"];
 			$sql = 'SELECT * FROM dutinfopw20164.Noter WHERE IdImage=? and IdUtilisateur =?';
 			$statement = self::$bdd->prepare($sql);
-			$statement->execute(array($idImage,"5")); // TODO changer le 5 par idUtilisateur
+			$statement->execute(array($idImage,$auteur)); // TODO changer le 5 par idUtilisateur
 			$resultat = $statement->fetchAll();
 			
 			if(is_numeric($note)){
 				if($note >= 0){
 					if($note <= 10){
-						$auteur = $_SESSION["IdUtilisateur"];
 						if(!empty($resultat)){
 							$sql = " UPDATE dutinfopw20164.Noter SET Note = ?  WHERE IdUtilisateur = ? and IdImage = ?";
 							$parametre = array($note, $auteur, $idImage);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
