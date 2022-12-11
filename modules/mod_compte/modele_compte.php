@@ -1,17 +1,22 @@
 <?php
 
-    class modele_compte{
+    class modele_compte extends Connexion {
 
         function __construct() {
 
         }
 
-        public function getMyCompte() {
+        public function getMyCompte($idUtilisateur, $nomUtilisateur) {
             try {
-				$sql = 'SELECT * FROM Image WHERE IdUtilisateur = ?';
+				$sql = 'SELECT * FROM Utilisateur WHERE IdUtilisateur = ? AND Pseudo = ?';
+				// var_dump($idUtilisateur);
+				// var_dump($nomUtilisateur);
+				$tab = array($idUtilisateur, $nomUtilisateur);
+				// var_dump($tab);
 				$statement = self::$bdd->prepare($sql);
-				$statement->execute(array($nomImage));
-				$resultat = $statement->fetchAll();
+				$statement->execute($tab);
+				$resultat = $statement->fetch();
+				// var_dump($resultat);
 				return $resultat;
 			}
 			catch (PDOExeception $e) {
@@ -23,7 +28,7 @@
             try {
 				$sql = 'SELECT * FROM Image WHERE IdUtilisateur = ?';
 				$statement = self::$bdd->prepare($sql);
-				$statement->execute(array($nomImage));
+				$statement->execute(array($_SESSION['id']));
 				$resultat = $statement->fetchAll();
 				return $resultat;
 			}

@@ -2,7 +2,6 @@ body
 {
     margin: 0px;
 }
-
 header
 {
     /*TODO*/
@@ -107,7 +106,26 @@ footer
 }
 /* color */
 
-
+/* dropdown menu */
+.collapse-menu {
+    flex: none;
+    transition: flex 500ms;
+}
+.collapse-menu:hover {
+    flex: 1 1 auto;
+}
+.collapse-menu .collapse-element {
+    transition: all 500ms;
+}
+.collapse-menu:not(:hover) > .collapse-element {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+}
+.collapse-menu:hover > .collapse-element {
+    opacity: 1;
+    height: 0;
+}
 
 .tableDeuxCol
 {
@@ -140,6 +158,7 @@ footer
 {
     margin-left: 3%;
 }
+
 #images{
     margin-left: 10px;
 }

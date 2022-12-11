@@ -11,7 +11,10 @@
         }
          
         function exec(){
-            $this->vue->menu();
+            $this->vue->menu(
+                $this->modele->getMyCompte($_SESSION['id'], $_SESSION['login']),
+                $this->modele->getMyImage()
+            );
             if(isset($_GET['action'])){
                 switch($_GET['action']) { 
                     

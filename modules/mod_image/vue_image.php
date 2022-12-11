@@ -11,7 +11,7 @@
             <div class="container">
                 <form class="color-dark-blue centre-fenetre" action="index.php?module=image&action=upload" method=POST enctype=multipart/form-data>
                     <label for=file>Fichier</label>
-                    <input type=file name=file>
+                    <input type=file name=file accept=\".jpg, .jpeg, .png, .webp\">
                     <button type=submit>Enregistrer</button>
                 </form>
             </div>

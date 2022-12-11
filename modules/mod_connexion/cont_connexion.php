@@ -1,8 +1,8 @@
 <?php
-    include_once('modules/mod_connexion/vue_connexion.php');
-    include_once('modules/mod_connexion/modele_connexion.php');
-    include_once('Connexion.php');
-
+    
+    require_once('modules/mod_connexion/vue_connexion.php');
+    require_once('modules/mod_connexion/modele_connexion.php');
+    
     class controleur_connexion extends Connexion{
         
         private $vue;
