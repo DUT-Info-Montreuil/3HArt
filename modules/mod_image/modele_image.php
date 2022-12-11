@@ -110,14 +110,14 @@ const REPERTOIRE = "./imageTest/";
 			if(is_numeric($note)){
 				if($note >= 0){
 					if($note <= 10){
-						// $auteur = $this->getIdUtilisateur($_SESSION["login"])[0]["IdUtilisateur"]; à remettre quand connection() sera implémenter
+						$auteur = $_SESSION["IdUtilisateur"];
 						if(!empty($resultat)){
 							$sql = " UPDATE dutinfopw20164.Noter SET Note = ?  WHERE IdUtilisateur = ? and IdImage = ?";
-							$parametre = array($note,"5",$idImage);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+							$parametre = array($note, $auteur, $idImage);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
 						}
 						else{
 							$sql = 'INSERT INTO dutinfopw20164.Noter (IdUtilisateur, IdImage, Note) VALUES (?,?,?)';
-							$parametre = array("5",$idImage,$note);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+							$parametre = array($auteur, $idImage, $note);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
 						}	
 						try {
 							$statement = self::$bdd->prepare($sql);
