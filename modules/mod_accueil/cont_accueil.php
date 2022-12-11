@@ -15,35 +15,6 @@ require_once("vue_accueil.php");
          
         function exec(){
             echo ($this->vue->menu());
-            if (isset($_GET['action'])) {
-                switch($_GET['action']) { 
-                    case "bienvenue":
-                        $this->vue->menu();
-                        echo "<br>";
-                        break;
-
-                    case "inscription":
-                        $this->vue->formulaireInscription();
-                        break;
-
-                    case "connexion";
-                        $this->vue->menu();
-                        echo "<br>";
-                        $this->vue->afficher($this->modele->connexion());
-                        break;
-                    
-                    case "deconnexion";
-                        $this->vue->menu();
-                        echo "<br>";
-                        $this->vue->afficher($this->modele->deconnexion());
-                        break;
-                        
-
-                    default:
-                        echo "erreur : " . $this->action;
-                        break;
-                }    
-            }
         }
         
     }
