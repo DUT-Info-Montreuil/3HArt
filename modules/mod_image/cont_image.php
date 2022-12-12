@@ -15,7 +15,8 @@ require_once("vue_image.php");
             $image = $this->modele->getImage($nomImage);
             $auteur = $this->modele->getNomUtilisateur($image[0]['IdUtilisateur']);
             if ($miniature) {
-                echo ($this->vue->miniature($nomCheminImage));
+                // echo ($this->vue->miniature($nomCheminImage));
+                echo "en traveau";
             }
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);

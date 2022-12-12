@@ -1,19 +1,9 @@
 <?php
-include_once('vue_generique.php');
-    class vue_connexion extends vue_generique{
+
+    class vue_connexion extends vue_generique {
+        
         public function __construct() {
             parent::__construct();
-        }
-
-        public function menu() {
-            echo "<a href =\"index.php?module=connexion&action=ajout\">Inscription<br></a>";
-            if(!isset($_SESSION['login'])) {
-                echo '<a href="index.php?module=connexion&action=connexion">Connexion</a><br>';
-            }
-            else if(isset($_SESSION['login'])) {
-                echo '<a href="index.php?module=connexion&action=deconnexion">Déconnexion</a> <br> ';
-            }
-            
         }
 
         public function form_inscription() {
@@ -69,6 +59,7 @@ include_once('vue_generique.php');
             if(isset($_SESSION['login']) ) {
                 
                 echo "Vous êtes connecté.e sous le login : " . $_POST['login'];
+                header('Refresh: 3; index.php');
             }
             else{
                 echo "Erreur de connexion";
@@ -76,9 +67,9 @@ include_once('vue_generique.php');
         }
 
         public function resultat_inscription() {
-            if(isset($_SESSION['login']) ) {
-                
+            if(isset($_SESSION['login']) ) { 
                 echo "Vous êtes inscrit.e sous le login : " . $_SESSION['login'];
+                header('Refresh: 3; index.php');
             }
             else{
                 echo "Erreur d'inscription";
@@ -89,7 +80,11 @@ include_once('vue_generique.php');
         public function resultat_deconnexion($codeErreur) {
             if($codeErreur==1) {
                 echo " Vous n'êtes pas connecté"; 
-            }        
+                header('Refresh: 3; index.php');
+            }
+            else {
+                echo "Déconexion réussi";
+            }
         }
     }    
 
