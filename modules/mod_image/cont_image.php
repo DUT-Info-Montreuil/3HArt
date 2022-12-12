@@ -118,7 +118,7 @@ require_once("vue_image.php");
                     $this->vue->afficherTemps($this->modele->calculerTemps($tFinal));
                     unset($_SESSION['tempsDebut']);
                 }
-                $this->afficherImages($this->modele->getImages());
+                // $this->afficherImages($this->modele->getImages());
                 
                 
                 
