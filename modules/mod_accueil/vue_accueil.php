@@ -35,11 +35,6 @@
                   <img class="inline grande-image-pour-list" src="./imageTest/6313b92632599.webp" alt="">
                 </a>
               </li>
-              <li class="inline">
-                <a href="index.php?module=image&nom=63583382a6aa1.webp&action=image">
-                  <img class="inline grande-image-pour-list" src="./imageTest/63583382a6aa1.webp" alt="">
-                </a>
-              </li>
             </ul>
         </div>
 
