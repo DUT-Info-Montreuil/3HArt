@@ -23,16 +23,8 @@
         public function miniature($nomImage) {
             return "<img class=\"imageMiniature\" src=\"$nomImage\">";
         }
-        
 
-        
-
-        public function afficherTelechargement($string){
-            echo "<a id = telechargement href = index.php?module=image&action=telechargement&urlFichier=$string > Télécharger l'image</a>";
-            //echo "<a id = telechargement href=./modules/mod_image/$string  download=$string></a>";
-        }
-
-        public function affichage($image, $note) {
+        public function affichage($image, $note, $auteur) {
         ?>
             <table class="color-white-blue">
                 <tr>
@@ -41,10 +33,11 @@
                     </td>
                     <td class=tableDeuxCol>
                         <ol>
-                            <li><p>Il y aura des choses ici sur l'auteur</p></li>
+                            <li><p><?php echo($auteur[0]['pseudo'])?></p></li>
                             <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
                             <li><p><?php echo($image[0]['dateCreation']); ?></p></li>
                             <li><p>note moyenne : <?php echo($note) ?>/10</p></li>
+                            <li><a id=telechargement href="index.php?module=image&action=telechargement&urlFichier=<?php echo($image[0]['pathImg'])?>">Télécharger l'image</a></li>
                     </td>
                 </tr>
             </table>

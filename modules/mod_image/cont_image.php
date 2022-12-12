@@ -13,13 +13,14 @@ require_once("vue_image.php");
 
         public function afficheImage($nomImage,$miniature = false) { //TODO recupérer l'image a la place du chemin
             $image = $this->modele->getImage($nomImage);
+            $auteur = $this->modele->getNomUtilisateur($image[0]['IdUtilisateur']);
             if ($miniature) {
                 echo ($this->vue->miniature($nomCheminImage));
             }
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
 				$moyenne = $this->modele->obtenirMoyenne($image); 
-				$this->vue->affichage($image,$moyenne);
+				$this->vue->affichage($image,$moyenne,$auteur);
                 $this->commentaires($commentaires);
             }
         }
