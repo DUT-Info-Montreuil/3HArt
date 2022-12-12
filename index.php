@@ -57,7 +57,7 @@
                 $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
                 if (isset($_SESSION['login']))
                   return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>
-                            <a href=\"index.php?module=maChaine\"> Ma Chaine</a>";
+                            <a class=\"bouton\" href=\"index.php?module=maChaine\"> Ma Chaine</a>";
                 else
                   return "
                   <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
