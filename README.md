@@ -1,2 +1,2 @@
 # 3HArt
-site web de partage d'image payante ou non
+site web de partage d'image pouvant être commenter et noter
