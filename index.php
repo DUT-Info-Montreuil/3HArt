@@ -26,30 +26,28 @@
                     <a class=\"bouton\" href=\"index.php?action=ajoutImage&module=accueil\">Ajouter une image</a>
                 </div>
             </nav>
-        ");
+            ");
         $module = isset($_GET['module']) ? $_GET['module'] : 'accueil';
 
-    switch ($module) {
-        case 'accueil':
-            $mod = new mod_accueil();
-            $mod->exec();
-            //echo ("<a href=\"index.php?module=decouvrir\">Decouvrir</a><br>");
-            //echo ("<a href=\"index.php?module=image\">Image</a>");
-            break;
+        switch ($module) {
+            case 'accueil':
+                $mod = new mod_accueil();
+                $mod->exec();
+                break;
+            case 'decouvrir':
+                $mod = new mod_decouvrir();
+                $mod->exec();
+                break;
+            case 'connexion':
+                $mod = new mod_connexion();
+                $mod->exec();
+                break;
+            case 'image':
+                $mod = new mod_image();
+                $mod->exec();
+                break;
 
-        case 'decouvrir':
-            $mod = new mod_decouvrir();
-            $mod->exec();
-            break;
-        case 'connexion':
-            $mod = new mod_connexion();
-            $mod->exec();
-            break;
-        case 'image':
-            $mod = new mod_image();
-            $mod->exec();
-            break;
-    }
+        }
     echo("
             <footer>
                 <p>
@@ -66,10 +64,9 @@
         if ($connecter)
           return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>";
         else
-          return "
-          <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
-          <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>
-          ";
-      }
+          return "<a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
+                <a class=\"bouton\" href=\"index.php?module=connexion&action=inscription\">Inscription</a>";
+        }
+    
     
 ?>

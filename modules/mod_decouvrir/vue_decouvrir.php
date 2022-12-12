@@ -15,9 +15,9 @@
             affichage();
 
            echo "<a href =\"index.php?module=users&action=paysage\">Paysage <br></a>";
+           echo "<a href =\"index.php?module=users&action=portrait\">Portrait <br></a>";
            echo "<a href =\"index.php?module=users&action=dessin\">Dessin <br></a>";
            echo "<a href =\"index.php?module=users&action=noirblanc\">Noir & Blanc <br></a>";
-
         }
 
         public function affiche_details($tab) {
@@ -27,6 +27,10 @@
                 echo "Logo : <img src ='" . $tab['logo'] . "'>";
         }
         
+        public function afficheImageParCategorie($typeImage){
+            $image= $this->image($typeImage, idImage); 
+            
+        }
         public function affichage($idImage) {
             $image = $this->image($idImage);
             return "<table>
