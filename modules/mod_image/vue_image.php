@@ -1,6 +1,6 @@
 <?php
 
-    class vue_image{        
+    class vue_image extends vue_generique {        
 
         function __construct(){
             
@@ -17,7 +17,7 @@
         }
 
         public function image($image) {
-            return "<img class=\"imagePrincipale\" src=\"$image\"";
+            return "";
         }
 
         public function miniature($nomImage) {
@@ -33,81 +33,74 @@
             echo "<a id = telechargement href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
         }
 
-        public function affichage($nomImage,$tabCommentaires, $note) {
-            $image = $this->image($nomImage);
-            $aAfficher = "
-                <table class=\"color-white-blue\">
-                    <tr>
-                        <td class=\"tableDeuxCol\">$image</td>
-                        <td class=\"tableDeuxCol\">
-                            <ol>
-                                <li><p>Il y aura des choses ici sur l'auteur</p></li>
-                                <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
-                                <li><p>Il y aura des choses ici sur la date de publication</p></li>
-                                <li><p>$note</p></li>
-                        </td>
-                    </tr>
-                </table>
-                <div id=\"commentaires\" class=\"color-light-blue\">
-                "
-            ;
-            //if (isset($_SESSION['login'])) {
-            if (true) { // TODO: a changer
-                $commenter = $this->commenter();
-                $aAfficher = $aAfficher.$commenter;
-				$noter = $this->noter();
-				$aAfficher = $aAfficher.$noter;
+        public function affichage($image, $note) {
+        ?>
+            <table class="color-white-blue">
+                <tr>
+                    <td class="tableDeuxCol">
+                        <img class="imagePrincipale" src="<?php echo($image[0]['pathImg']); ?>">
+                    </td>
+                    <td class=tableDeuxCol>
+                        <ol>
+                            <li><p>Il y aura des choses ici sur l'auteur</p></li>
+                            <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
+                            <li><p><?php echo($image[0]['dateCreation']); ?></p></li>
+                            <li><p><?php $note ?></p></li>
+                    </td>
+                </tr>
+            </table>
+            <div id=commentaires class=color-light-blue>
+        <?php
+            if (isset($_SESSION['login'])) {
+            // if (true) { // TODO: a changer
+                $this->commenter();
+                $this->noter();
             }
-            $aAfficher = $aAfficher.$tabCommentaires."</div>";
 
-            return $aAfficher;
+        ?>
+            
+        <?php
         }
 		
 		public function commenter(){
-            return "
-                <form id=\"creerCommentaire\" method=\"POST\" action=\"index.php?module=image&nom=".$_GET["nom"]."&action=commenter\" >
-                    <label>Entrez un commentaire : </label>
-                    <input type=\"text\" id=\"num\" name=\"commentaire\"></input>                
-                    <input type=\"submit\" name=\"envoyer \">
-                </form>
-            ";
+            $nom = $_GET["nom"];
+        ?>
+            <form id=creerCommentaire method=POST action="index.php?module=image&nom=<?php echo($nom); ?>&action=commenter" >
+                <label>Entrez un commentaire : </label>
+                <input type=text id=num name=commentaire></input>                
+                <input type=submit name=envoyer>
+            </form>
+        <?php
         }
 		
 		public function noter(){
-            return "
-                <form id=\"noterImage\" method=\"POST\" action=\"index.php?module=image&nom=".$_GET["nom"]."&action=noter\" >
-                    <label>Entrez une note : </label>
-                    <input type=\"text\" id=\"num\" name=\"note\"></input>                
-                    <input type=\"submit\" name=\"envoyer \">
-                </form>
-            ";
+        ?>
+            <form id=noterImage method=POST action="index.php?module=image&nom=<?php $_GET["nom"] ?>&action=noter" >
+                <label>Entrez une note : </label>
+                <input type=text id=num name=note></input>                
+                <input type=submit name=envoyer>
+            </form>
+        <?php
         }
 
 		public function afficherCommentaire($commentaire,$auteur) {
             $dateCreation = $commentaire['dateCreation'];
             $contenue = $commentaire['Message'];
-            $commentaireVue = "
-                <div class=\"commentaire\">
-                    <p class=\"auteur\">$auteur</p>
-                    <p class=\"date\"> le $dateCreation</p>
-                    <p class=\"contenue\">$contenue</p>
+            ?>
+                <div class=commentaire>
+                    <p class=auteur><?php echo($auteur) ?></p>
+                    <p class=date> le <?php echo($dateCreation) ?></p>
+                    <p class=contenue><?php echo($contenue) ?></p>
                 </div>
-            ";
-            return $commentaireVue;
+            <?php
 		}
-		
+		public function fermerDiv(){
+        ?>
+            </div>
+        <?php
+        }
 		public function afficher($texte){
             echo $texte;
-        }
-		
-		public function accueil(){
-            echo '<a id = accueil href = "index.php?module=image" > Accueil</a>';
-        }
-		
-		
-		
-		public function espacer(){
-            echo "<br><br>";
         }
 	}
 ?>

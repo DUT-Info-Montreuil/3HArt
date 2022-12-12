@@ -11,16 +11,16 @@ require_once("vue_image.php");
             $this->vue = $vue;
         }
 
-        public function afficheImage($nomImage,$miniature = false) {
-            $nomCheminImage = $this->modele->cheminImage($nomImage);
+        public function afficheImage($nomImage,$miniature = false) { //TODO recupérer l'image a la place du chemin
+            $image = $this->modele->getImage($nomImage);
             if ($miniature) {
                 echo ($this->vue->miniature($nomCheminImage));
             }
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
-                $vueCommentaires = $this->commentaires($commentaires);
-				$moyenne = $this->modele->obtenirMoyenne(1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
-				echo ($this->vue->affichage($nomCheminImage,$vueCommentaires,$moyenne));
+				$moyenne = $this->modele->obtenirMoyenne($image); // TODO changer le 1 par idUtilisateur quand module connexion implementer
+				$this->vue->affichage($image,$moyenne);
+                $this->commentaires($commentaires);
             }
         }
 
@@ -30,26 +30,17 @@ require_once("vue_image.php");
                 $auteur = $this->modele->getNomUtilisateur($commentaires[$i]["IdUtilisateur"])[0]["pseudo"];
                 $commentaire = $commentaire.$this->vue->afficherCommentaire($commentaires[$i],$auteur);
             }
-            return $commentaire;
+            $this->vue->fermerDiv();
         }
-		/*
-		public function afficherImages($images){
-            for($i = 0; $i <= sizeof($images) -1 ; $i++){
-				$nom = $images[$i];
-                $this->vue->afficher("<a id = images href = \"index.php?module=image&nom=$nom&action=image\" >");
-                $this->afficheImage($nom,true);
-                echo '</a>';
-				$this->vue->espacer();
-			}
-        }
-*/      
+    
         public function upload() {
             echo ($this->vue->upload());
             $this->modele->upload();
         }
 		
 		public function noter() {
-            return $this->modele->ajouterNote($_POST['note'], 1); // TODO changer le 1 par idUtilisateur quand module connexion implementer
+            var_dump($this->modele->getIdImage($_GET['nom']));
+            return $this->modele->ajouterNote($_POST['note'], $this->modele->getIdImage($_GET['nom'])); 
         }
 
         public function details(){
@@ -81,7 +72,6 @@ require_once("vue_image.php");
 									echo ("erreur : ".$_GET['log']);
 									break;
 							}
-							
 						}
                         break;
                     case "commenter":
@@ -125,17 +115,6 @@ require_once("vue_image.php");
                 $this->afficheImage($nom,true);
                 echo '</a>';
             }
-        } 
-		
-			
-		
-		public function connexion(){
-            $this->modele->connexion();
-		}
-		
-		public function deconnexion(){
-			$this->modele->deconnexion();
-		}
-        
+        }         
     }
 ?>

@@ -16,14 +16,11 @@
                 $search_query = self::$bdd->prepare("SELECT idImage FROM Image WHERE nomImage LIKE ? ");
                 $tmpTag = self::$bdd->prepare("SELECT * FROM Tag");
                 //$search_query1 = self::$bdd->prepare("SELECT idImage FROM Tag WHERE Tag LIKE ?");
-                var_dump($search);
                 $search_query->execute(array("%".$search."%"));
                 $tmpTag->execute();
                 $resultatTmp = $tmpTag->fetchAll();
                 //$search_query1->execute(array("%".$search."%"));
                 $resultat = $search_query->fetchAll();
-                var_dump($resultat);
-                var_dump($resultatTmp);
                 //var_dump($search_query1);
                 //TODO : mettre dans un set les deux recherche pour n'avoir qu'une fois chaque image
                 return $resultat;
@@ -33,9 +30,9 @@
             }
         }
 
-        public function getCheminImage($idImage) {
+        public function getImage($idImage) {
 			try {
-				$sql = 'SELECT pathImg FROM Image WHERE IdImage LIKE ?';
+				$sql = 'SELECT * FROM Image WHERE IdImage LIKE ?';
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($idImage));
 				$resultat = $statement->fetchAll();

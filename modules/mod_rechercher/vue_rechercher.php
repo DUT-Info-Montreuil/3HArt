@@ -6,11 +6,15 @@
         
         }
 
-        public function afficherResultat($cheminResultat) {
+        public function afficherResultat($resultat) {
+            var_dump($resultat);
             ?>
-                <div class=>
-                    <img class=imageMiniature src="<?php echo($cheminResultat[0]['pathImg']); ?>" alt="">
-                </div>
+                <a href="index.php?module=image&nom=<?php echo($resultat[0]['NomImage']) ?>&action=image">
+                    <div class=recherche>
+                        <img class=imageMiniature src="<?php echo($resultat[0]['pathImg']); ?>" alt="">
+                        <h1><?php echo($resultat[0]['NomImage']) ?></h1>
+                    </div>
+                </a>
             <?php
         }
 

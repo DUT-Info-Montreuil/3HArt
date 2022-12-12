@@ -7,6 +7,7 @@ header
 {
     /*TODO*/
     display: flex;
+    background-color: rgb(206, 192, 173);
 }
 nav
 {
@@ -47,7 +48,7 @@ form
 /*taille image*/
 .imageMiniature
 {
-    width: 15%;
+    width: 30%;
     height: auto;
     margin: 2%;
 }
@@ -175,9 +176,21 @@ form
     margin: 2px;
 }
 
-.elementADroite {
+.recherche {
+    width: 100%;
+}
+#barre-recherche {
+    display: flex;
+    border: none;
+    padding: 1%;
+    margin: 0%;
+    align-content: center;
     position: relative;
-    left: 72%;
+    left: 35%;
+}
+.elementADroite {
+    position: absolute;
+    right: 2%;
 }
 
 .list-image-scroll {
@@ -202,6 +215,7 @@ form
 #option {
     width: 25%;
     height: 400px;
+    width: 30%;
     vertical-align: top;
     border: 2px solid black;
     margin-left: 10%;

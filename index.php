@@ -2,6 +2,7 @@
     
     session_start();
     require_once("Connexion.php");
+    require_once("vue_generique.php");
     require_once("modules/mod_accueil/mod_accueil.php");
     require_once("modules/mod_decouvrir/mod_decouvrir.php");
     require_once("modules/mod_image/mod_image.php");
@@ -16,12 +17,9 @@
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <header>
-            <a href=""><img src="" alt="Logo" /></a>
-        </header>
-
         <nav>
-            <form action="index.php?module=rechercher&action=rechercher" method=POST>
+            <a class=logoHaut href="index.php"><img src="" alt="Logo" /></a>
+            <form id=barre-recherche action="index.php?module=rechercher&action=rechercher" method=POST>
                 <input type=search name=search>
             </form>
             <div class="elementADroite">
@@ -59,7 +57,7 @@
 
             function boutonNav() {
                 $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
-                if ($connecter)
+                if (isset($_SESSION['login']))
                   return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>";
                 else
                   return "

@@ -18,7 +18,20 @@ const REPERTOIRE = "./imageTest/";
 
 		public function getIdImage($nomImage) {
 			try {
-				$sql = 'SELECT IdImage FROM dutinfopw20164.Image WHERE NomImage LIKE ?';
+				$sql = 'SELECT IdImage FROM Image WHERE NomImage LIKE ?';
+				$statement = self::$bdd->prepare($sql);
+				$statement->execute(array($nomImage));
+				$resultat = $statement->fetchAll();
+				return $resultat;
+			}
+			catch (PDOExeception $e) {
+				echo $e->getMessage().$e->getCode();
+			}
+		}
+
+		public function getImage($nomImage) {
+			try {
+				$sql = 'SELECT * FROM Image WHERE NomImage LIKE ?';
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($nomImage));
 				$resultat = $statement->fetchAll();
@@ -100,23 +113,25 @@ const REPERTOIRE = "./imageTest/";
 		
 		public function ajouterNote($note, $idImage){
 			$auteur = $_SESSION["id"];
-			$sql = 'SELECT * FROM dutinfopw20164.Noter WHERE IdImage=? and IdUtilisateur =?';
+			$sql = 'SELECT * FROM Noter WHERE IdImage=? and IdUtilisateur =?';
 			$statement = self::$bdd->prepare($sql);
-			$statement->execute(array($idImage,$auteur)); // TODO changer le 5 par idUtilisateur
+			var_dump($idImage);
+			$statement->execute(array($idImage[0]['IdImage'],$auteur));
 			$resultat = $statement->fetchAll();
 			
 			if(is_numeric($note)){
 				if($note >= 0){
 					if($note <= 10){
 						if(!empty($resultat)){
-							$sql = " UPDATE dutinfopw20164.Noter SET Note = ?  WHERE IdUtilisateur = ? and IdImage = ?";
-							$parametre = array($note, $auteur, $idImage);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+							$sql = " UPDATE Noter SET Note = ?  WHERE IdUtilisateur = ? and IdImage = ?";
+							$parametre = array($note, $auteur, $idImage[0]['IdImage']);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
 						}
 						else{
-							$sql = 'INSERT INTO dutinfopw20164.Noter (IdUtilisateur, IdImage, Note) VALUES (?,?,?)';
-							$parametre = array($auteur, $idImage, $note);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
+							$sql = 'INSERT INTO Noter (IdUtilisateur, IdImage, Note) VALUES (?,?,?)';
+							$parametre = array($auteur, $idImage[0]['IdImage'], $note);// TODO changer le 5 par la variable $auteur quand le module connexion implementer
 						}	
 						try {
+							var_dump($parametre);
 							$statement = self::$bdd->prepare($sql);
 							$statement->execute($parametre); 
 						}
@@ -137,18 +152,21 @@ const REPERTOIRE = "./imageTest/";
 			}
 		}
 		
-		public function obtenirMoyenne($idImage){
+		public function obtenirMoyenne($image){
+			$idImage = $image[0]['IdImage'];
 			try {
-				$sql = 'SELECT SUM(Note), Count(*) FROM dutinfopw20164.Noter WHERE IdImage=?';
+				$sql = 'SELECT SUM(Note), Count(Note) FROM Noter WHERE IdImage=?';
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($idImage));
 				$resultat = $statement->fetchAll();
-				if($resultat[0]["Count(*)"] != 0 ){ 
-					$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(*)"];
+				var_dump($resultat[0]['Count(Note)']);
+				var_dump($idImage);
+				if($resultat[0]['Count(Note)'] != 0 ){ 
+					$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(Note)"];
 					return $moyenne;
 				}
 				else{
-					return -1;
+					return "Cette image n'a pas encore était noté";
 				}
 			}
 			catch (PDOExeception $e) {
