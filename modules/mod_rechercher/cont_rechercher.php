@@ -13,7 +13,22 @@
         }
 
         public function exec() {
-            $this->vue->afficherResultat($this->modele->rechercher());
+            echo("ici");
+            if(isset($_GET['action'])) {
+                switch($_GET['action']) {
+                    case 'rechercher':
+                        $resultat = $this->modele->rechercher();
+                        if(!empty($resultat)){
+                            foreach($resultat as $image) {
+                                $this->vue->afficherResultat($this->modele->getCheminImage($image['idImage']));
+                            }
+                        }
+                        else {
+                            $this->vue->sansResultat();
+                        }
+                        break;
+                    }
+            }
         }
     }
 

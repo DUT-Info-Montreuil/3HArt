@@ -78,7 +78,6 @@ const REPERTOIRE = "./imageTest/";
 				$statement = self::$bdd->prepare($sql);
 				$auteur = $this->getIdUtilisateur($auteur)[0]["IdUtilisateur"];
 				$idImage = $this->getIdImage($idImage)[0]["IdImage"];
-				var_dump($idImage);
 				$contenue = utf8_encode($contenue);
 				$statement->execute(array($auteur, $idImage, $contenue));
 			}
@@ -92,8 +91,6 @@ const REPERTOIRE = "./imageTest/";
 				$sql = 'INSERT INTO Image (NomImage, pathImg, IdUtilisateur) VALUES (?,?,?)';
 				$statement = self::$bdd->prepare($sql);
 				$auteur = $this->getIdUtilisateur($_SESSION["login"])[0]["IdUtilisateur"];
-				var_dump($name);
-				var_dump($chemin);
 				$statement->execute(array($name,$chemin,$auteur));
 			}
 			catch (PDOExeception $e) {

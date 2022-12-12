@@ -290,12 +290,20 @@ CREATE TABLE Noter(
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur),
    FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
 );
-CREATE TABLE Hastag(
-   idHastag SERIAL,
-   IdImage bigint(20) unsigned,
-   contenuHastag VARCHAR(50) NOT NULL,
-   FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
+CREATE TABLE Tag(
+   idTag SERIAL,
+   nomTag VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idTag)
+   
 );
+
+CREATE TABLE Tager(
+   idTag BIGINT(20) unsigned,
+   idImage BIGINT(20) unsigned,
+   PRIMARY KEY(idTag, IdImage),
+   FOREIGN KEY(idTag) REFERENCES Tag(idTag),
+   FOREIGN KEY(idImage) REFERENCES Image(IdImage)
+)
 
 Insert into Utilisateur values (1, 'xixi', 'xixi123', 'xixi@gmail.com', false);
 Insert into Utilisateur values (2, 'hello', 'hello123', 'hello@gmail.com', false);
