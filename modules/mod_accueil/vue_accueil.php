@@ -26,13 +26,8 @@
                 </a>
               </li>
               <li class="inline">
-                <a href="index.php?module=image&nom=628b1ba0599c7.webp&action=image">
-                  <img class="inline grande-image-pour-list" src="./imageTest/628b1ba0599c7.webp" alt="">
-                </a>
-              </li>
-              <li class="inline">
-                <a href="index.php?module=image&nom=6313b92632599.webp&action=image">
-                  <img class="inline grande-image-pour-list" src="./imageTest/6313b92632599.webp" alt="">
+                <a href="index.php?module=image&nom=Draft&action=image">
+                  <img class="inline grande-image-pour-list" src="./imageTest/6395c3fed89544.63801255.png" alt="">
                 </a>
               </li>
             </ul>
