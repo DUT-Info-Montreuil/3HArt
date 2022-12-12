@@ -18,7 +18,7 @@ require_once("vue_image.php");
             }
             else {
                 $commentaires = $this->modele->getCommentaire($this->modele->getIdImage($nomImage)[0]["IdImage"]);
-				$moyenne = $this->modele->obtenirMoyenne($image); // TODO changer le 1 par idUtilisateur quand module connexion implementer
+				$moyenne = $this->modele->obtenirMoyenne($image); 
 				$this->vue->affichage($image,$moyenne);
                 $this->commentaires($commentaires);
             }
@@ -39,6 +39,7 @@ require_once("vue_image.php");
         }
 		
 		public function noter() {
+            var_dump($_GET['nom']);
             var_dump($this->modele->getIdImage($_GET['nom']));
             return $this->modele->ajouterNote($_POST['note'], $this->modele->getIdImage($_GET['nom'])); 
         }
@@ -77,6 +78,7 @@ require_once("vue_image.php");
                     case "commenter":
                         if(isset($_POST['commentaire']) && $_POST['commentaire'] != "" ) {
 							$this->modele->postCommentaire($_SESSION['login'], $_GET['nom'], $_POST['commentaire'] ); 
+                            var_dump($_GET['nom']);
 							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image"); /* Pour que les données ne soit pas conservé
 							lors d'un rafraichissement de la page et que les commentaires dédoublent */
 						}

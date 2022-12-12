@@ -6,13 +6,14 @@
         
         }
 
-        public function afficherResultat($resultat) {
-            var_dump($resultat);
+        public function afficherResultat($resultat,$auteur) {
             ?>
-                <a href="index.php?module=image&nom=<?php echo($resultat[0]['NomImage']) ?>&action=image">
+                <a href="index.php?module=image&nom=<?php echo($resultat['NomImage']) ?>&action=image">
                     <div class=recherche>
-                        <img class=imageMiniature src="<?php echo($resultat[0]['pathImg']); ?>" alt="">
-                        <h1><?php echo($resultat[0]['NomImage']) ?></h1>
+                        <img class=imageMiniature src="<?php echo($resultat['pathImg']); ?>" alt="">
+                        <h1><?php echo($resultat['NomImage']) ?></h1>
+                        <p>publiée le <?php echo($resultat['dateCreation']) ?></p>
+                        <p>par <?php echo($auteur['Pseudo'])?></p>
                     </div>
                 </a>
             <?php

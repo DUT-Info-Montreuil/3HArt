@@ -13,7 +13,7 @@
         
             if (isset($search)){
                 $search = strtolower($search);
-                $search_query = self::$bdd->prepare("SELECT idImage FROM Image WHERE nomImage LIKE ? ");
+                $search_query = self::$bdd->prepare("SELECT * FROM Image WHERE nomImage LIKE ? ");
                 $tmpTag = self::$bdd->prepare("SELECT * FROM Tag");
                 //$search_query1 = self::$bdd->prepare("SELECT idImage FROM Tag WHERE Tag LIKE ?");
                 $search_query->execute(array("%".$search."%"));
@@ -30,18 +30,18 @@
             }
         }
 
-        public function getImage($idImage) {
-			try {
-				$sql = 'SELECT * FROM Image WHERE IdImage LIKE ?';
+        public function getPseudoUtilisateur($idUtilisateur) {
+            try {
+				$sql = 'SELECT Pseudo FROM Utilisateur WHERE IdUtilisateur LIKE ?';
 				$statement = self::$bdd->prepare($sql);
-				$statement->execute(array($idImage));
-				$resultat = $statement->fetchAll();
+				$statement->execute(array($idUtilisateur));
+				$resultat = $statement->fetch();
 				return $resultat;
 			}
 			catch (PDOExeception $e) {
 				echo $e->getMessage().$e->getCode();
 			}
-		}
+        }
     }
 
     

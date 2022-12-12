@@ -159,8 +159,6 @@ const REPERTOIRE = "./imageTest/";
 				$statement = self::$bdd->prepare($sql);
 				$statement->execute(array($idImage));
 				$resultat = $statement->fetchAll();
-				var_dump($resultat[0]['Count(Note)']);
-				var_dump($idImage);
 				if($resultat[0]['Count(Note)'] != 0 ){ 
 					$moyenne = $resultat[0]["SUM(Note)"] / $resultat[0]["Count(Note)"];
 					return $moyenne;

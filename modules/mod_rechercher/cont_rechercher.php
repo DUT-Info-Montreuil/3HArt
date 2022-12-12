@@ -19,7 +19,7 @@
                         $resultat = $this->modele->rechercher();
                         if(!empty($resultat)){
                             foreach($resultat as $image) {
-                                $this->vue->afficherResultat($this->modele->getImage($image['idImage']));
+                                $this->vue->afficherResultat($image, $this->modele->getPseudoUtilisateur($image['IdUtilisateur']));
                             }
                         }
                         else {

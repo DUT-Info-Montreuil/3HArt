@@ -45,14 +45,13 @@
                             <li><p>Il y aura des choses ici sur l'auteur</p></li>
                             <li><p>Il y aura des choses ici sur la description\nExemple :</p></li>
                             <li><p><?php echo($image[0]['dateCreation']); ?></p></li>
-                            <li><p><?php $note ?></p></li>
+                            <li><p>note moyenne : <?php echo($note) ?>/10</p></li>
                     </td>
                 </tr>
             </table>
             <div id=commentaires class=color-light-blue>
         <?php
             if (isset($_SESSION['login'])) {
-            // if (true) { // TODO: a changer
                 $this->commenter();
                 $this->noter();
             }
@@ -63,9 +62,8 @@
         }
 		
 		public function commenter(){
-            $nom = $_GET["nom"];
         ?>
-            <form id=creerCommentaire method=POST action="index.php?module=image&nom=<?php echo($nom); ?>&action=commenter" >
+            <form id=creerCommentaire method=POST action="index.php?module=image&nom=<?php echo($_GET['nom']) ?>&action=commenter" >
                 <label>Entrez un commentaire : </label>
                 <input type=text id=num name=commentaire></input>                
                 <input type=submit name=envoyer>
@@ -75,7 +73,7 @@
 		
 		public function noter(){
         ?>
-            <form id=noterImage method=POST action="index.php?module=image&nom=<?php $_GET["nom"] ?>&action=noter" >
+            <form id=noterImage method=POST action="index.php?module=image&nom=<?php echo($_GET["nom"]) ?>&action=noter" >
                 <label>Entrez une note : </label>
                 <input type=text id=num name=note></input>                
                 <input type=submit name=envoyer>

@@ -23,9 +23,7 @@
                 <input type=search name=search>
             </form>
             <div class="elementADroite">
-                
                 <?php echo(boutonNav()) ?>
-                <a class="bouton" href="index.php?action=ajoutImage&module=accueil">Ajouter une image</a>
             </div>
         </nav>
         <?php
