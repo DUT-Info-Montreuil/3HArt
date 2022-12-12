@@ -1,0 +1,252 @@
+body
+{
+    margin: 0px;
+}
+
+header
+{
+    /*TODO*/
+    display: flex;
+    background-color: rgb(206, 192, 173);
+}
+nav
+{
+    background-color: rgb(206, 192, 173);
+    display: flex;
+    position: sticky;
+    top: 0px;
+    height: 50px;
+    align-items: center;
+    z-index: 3;
+}
+div
+{
+    display: inline-flex;
+}
+a
+{
+    text-decoration: none;
+    color: black;
+}
+table
+{
+    background-color: rgb(176,182,185);
+    border:1px solid darkgrey;
+    width: -webkit-fill-available;
+}
+form 
+{
+    display: table;
+    margin: auto;
+    padding: 2%;
+    border: 2px solid #525e57;
+    border-radius: 4%;
+}
+
+/********** Class **************/
+
+/*taille image*/
+.imageMiniature
+{
+    width: 30%;
+    height: auto;
+    margin: 2%;
+}
+.imagePrincipale
+{
+    width:90%;
+    height:auto;
+    margin-left:5%;
+    max-height: 1000px;
+
+}
+.imagePleineEcran
+{
+    width: max-content;/*TODO*/
+    height: max-content;
+}
+
+/* color */
+.color-grey {
+    background-color: #525e57;
+}
+
+.color-dark-blue {
+    background-color: #20575c;
+}
+
+.color-green-blue {
+    background-color: #378d9a;
+}
+
+.color-blue {
+    background-color: #63a8c0;
+}
+
+.color-light-blue {
+    background-color: #b0d2ff;
+}
+
+.color-white-blue {
+    background-color: #dbe6fc;
+}
+
+.color-brown {
+    background-color: #d09b65;
+}
+
+.color-orange-brown {
+    background-color: #c07558;
+}
+/* color */
+
+
+
+.tableDeuxCol
+{
+    width: 50%;
+}
+
+#accueil{
+    color:blue;
+}
+
+.auteur{
+    display: inline-block;
+    font-weight:bold;
+    margin-left: 1%;
+}
+
+.date{
+    display: inline-block;
+    color:silver;
+    font-size: 12px;
+    margin-left: 1%;
+}
+
+.commentaire{
+    display: flex;
+    border: black solid 1px;
+}
+
+.contenue
+{
+    margin-left: 3%;
+}
+#images{
+    margin-left: 10px;
+}
+
+#creerCommentaire{
+    display: table;
+    border: hidden;
+    width: 100%;
+}
+
+#noterImage{
+    display: table;
+    border: hidden;
+    width: 100%;
+}
+
+#telechargement{
+    margin-left: 10px;
+    color: blue;
+}
+
+#commentaires{
+    display: list-item;
+}
+
+.inline {
+    display: inline;
+}
+
+.row-list{
+    text-decoration: none;
+    padding: 0%;
+    margin: 0%;
+    align-items: center;
+}
+
+.bouton {
+    border: 1px black solid;
+    border-radius: 6px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.recherche {
+    width: 100%;
+}
+#barre-recherche {
+    display: flex;
+    border: none;
+    padding: 1%;
+    margin: 0%;
+    align-content: center;
+    position: relative;
+    left: 35%;
+}
+.elementADroite {
+    position: absolute;
+    right: 2%;
+}
+
+.list-image-scroll {
+    overflow: scroll;
+    display: inline-flex;
+    margin: 20px;
+}
+
+.icon {
+    margin: 5%;
+}
+
+#accueil-list-image {
+    white-space: nowrap;
+    width: 60%;
+    height: fit-content;
+    border: 2px solid black;
+    border-radius: 2%;
+    align-items: flex-start;
+}
+
+#option {
+    width: 25%;
+    height: 400px;
+    width: 30%;
+    vertical-align: top;
+    border: 2px solid black;
+    margin-left: 10%;
+    margin: 20px;
+    border-radius: 5%;
+}
+
+.grande-image-pour-list {
+    width: 100%;
+    height: 390px;
+}
+
+.container 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+}
+
+
+div.form-element {
+    display: table-row;
+}
+
+label, input {
+    display: table-cell;
+    margin-bottom: 10px;
+}
+
+label {
+    padding-right: 10px;
+}
