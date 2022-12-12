@@ -65,6 +65,9 @@ form
     width: max-content;/*TODO*/
     height: max-content;
 }
+.logo{
+    width: 40px;
+}
 
 /* color */
 .color-grey {

@@ -18,7 +18,7 @@
     </head>
     <body>
         <nav>
-            <a class=logoHaut href="index.php"><img src="" alt="Logo" /></a>
+            <a href="index.php"><img class=logo src="logo.PNG" alt="Logo" /></a>
             <form id=barre-recherche action="index.php?module=rechercher&action=rechercher" method=POST>
                 <input type=search name=search>
             </form>
@@ -67,7 +67,7 @@
         <footer>
             <p>
                 <a href = index.php>
-                    <img src = "publicImage/logo.png" alt = "Logo du site"/>
+                    <img class=logo src = "logo.PNG" alt = "Logo du site"/>
                 </a>
             </p>
         </footer>
