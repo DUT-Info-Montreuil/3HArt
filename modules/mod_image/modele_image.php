@@ -16,6 +16,12 @@ const REPERTOIRE = "./imageTest/";
 			return "./imageTest/$nomImage";
 		}
 		public function calculerTemps($temps){
+			if($temps >= 3600){ 
+				$heures = intdiv($temps, 3600); 
+				$minutes =  intdiv(fmod($temps, 3600), 60);
+				$secondes = fmod($temps, 60)  ;
+				return array($heures, $minutes, $secondes);
+			}
 			if($temps >= 60){
 				$minutes = intdiv($temps, 60);
 				$secondes = fmod($temps, 60);

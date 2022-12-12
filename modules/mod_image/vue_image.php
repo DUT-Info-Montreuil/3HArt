@@ -25,12 +25,10 @@
         }
         
 
-        public function menu(){
-            echo 'menu';
-        }
+        
 
         public function afficherTelechargement($string){
-            echo "<a id = accueil href = index.php?module=image&action=telechargement&urlFichier=$string > Télécharger l'image</a>";
+            echo "<a id = telechargement href = index.php?module=image&action=telechargement&urlFichier=$string > Télécharger l'image</a>";
             //echo "<a id = telechargement href=./modules/mod_image/$string  download=$string></a>";
         }
 
@@ -63,13 +61,19 @@
         }
         public function afficherTemps($temps){
             if(is_array($temps)){
-                echo "Vous avez regardé cette image pendant $temps[0] minute(s) et $temps[1] seconde(s)";
+                if(sizeof($temps) > 2){
+                    echo "Vous avez regardé cette image pendant $temps[0] heures(s) $temps[1] minutes(s) et $temps[2] seconde(s)";
+                }
+                else{
+                    echo "Vous avez regardé cette image pendant $temps[0] minute(s) et $temps[1] seconde(s)";
+                }
             }
             else{
                 echo "Vous avez regardé cette image pendant $temps seconde(s)";
             }
         }
 		
+<<<<<<< HEAD
 		public function commenter(){
         ?>
             <form id=creerCommentaire method=POST action="index.php?module=image&nom=<?php echo($_GET['nom']) ?>&action=commenter" >
@@ -88,6 +92,18 @@
                 <input type=submit name=envoyer>
             </form>
         <?php
+=======
+		public function commenter($nom){
+            return "<form id = creerCommentaire method = POST action = \" index.php?module=image&nom=$nom&action=commenter \ >;
+                <label>Entrez un commentaire : </label> ;
+                <input type=text id= num name=commentaire></input>;
+                <br>;
+                <br>;
+                <input type =\"submit\" name = envoyer >;
+            </form>";
+
+
+>>>>>>> 4f39952 (amélioration du chronon)
         }
 
 		public function afficherCommentaire($commentaire,$auteur) {
