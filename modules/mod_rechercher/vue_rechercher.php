@@ -3,7 +3,7 @@
     class vue_rechercher extends vue_generique {
 
         public function __construct() {
-        
+            parent::__construct();
         }
 
         public function afficherResultat($resultat,$auteur) {

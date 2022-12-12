@@ -17,7 +17,7 @@
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <nav>
+        <nav class=color-brown>
             <a href="index.php"><img class=logo src="logo.PNG" alt="Logo" /></a>
             <form id=barre-recherche action="index.php?module=rechercher&action=rechercher" method=POST>
                 <input type=search name=search>
@@ -56,7 +56,8 @@
             function boutonNav() {
                 $connecter = false;// TODO: remplacer par test de connexion quand mod_connexion faite
                 if (isset($_SESSION['login']))
-                  return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>";
+                  return "<a class=\"bouton\" href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a>
+                            <a class=\"bouton\" href=\"index.php?module=maChaine\"> Ma Chaine</a>";
                 else
                   return "
                   <a class=\"bouton\" href=\"index.php?module=connexion&action=connexion\">Connexion</a>
@@ -64,7 +65,7 @@
                   ";
              }
         ?>
-        <footer>
+        <footer class=color-brown>
             <p>
                 <a href = index.php>
                     <img class=logo src = "logo.PNG" alt = "Logo du site"/>

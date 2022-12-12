@@ -3,25 +3,19 @@
     class vue_image extends vue_generique {        
 
         function __construct(){
-            
+            parent::__construct();
         }
 
         public function upload() {
-            return "
-                <form action=index.php?module=image&action=upload method=POST enctype=multipart/form-data>
+        ?>
+            <div class="container">
+                <form class="color-dark-blue centre-fenetre" action="index.php?module=image&action=upload" method=POST enctype=multipart/form-data>
                     <label for=file>Fichier</label>
-                    <input type=file name=file>
+                    <input type=file name=file accept=\".jpg, .jpeg, .png, .webp\">
                     <button type=submit>Enregistrer</button>
                 </form>
-            ";
-        }
-
-        public function image($image) {
-            return "";
-        }
-
-        public function miniature($nomImage) {
-            return "<img class=\"imageMiniature\" src=\"$nomImage\">";
+            </div>
+        <?php
         }
 
         public function affichage($image, $note, $auteur) {

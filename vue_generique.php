@@ -1,6 +1,6 @@
 <?php 
 
-    class vue_generique{
+    class vue_generique {
         
         public function __construct() {
             ob_start();

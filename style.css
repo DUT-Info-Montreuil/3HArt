@@ -2,7 +2,6 @@ body
 {
     margin: 0px;
 }
-
 header
 {
     /*TODO*/
@@ -11,13 +10,11 @@ header
 }
 nav
 {
-    background-color: rgb(206, 192, 173);
     display: flex;
     position: sticky;
     top: 0px;
     height: 50px;
     align-items: center;
-    z-index: 3;
 }
 div
 {
@@ -41,6 +38,15 @@ form
     padding: 2%;
     border: 2px solid #525e57;
     border-radius: 4%;
+}
+footer
+{
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    align-items: center;
 }
 
 /********** Class **************/
@@ -103,7 +109,26 @@ form
 }
 /* color */
 
-
+/* dropdown menu */
+.collapse-menu {
+    flex: none;
+    transition: flex 500ms;
+}
+.collapse-menu:hover {
+    flex: 1 1 auto;
+}
+.collapse-menu .collapse-element {
+    transition: all 500ms;
+}
+.collapse-menu:not(:hover) > .collapse-element {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+}
+.collapse-menu:hover > .collapse-element {
+    opacity: 1;
+    height: 0;
+}
 
 .tableDeuxCol
 {
@@ -136,6 +161,7 @@ form
 {
     margin-left: 3%;
 }
+
 #images{
     margin-left: 10px;
 }
@@ -234,10 +260,10 @@ form
 .container 
 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 90%;
+    height: 80vh;
 }
 
 
