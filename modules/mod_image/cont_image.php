@@ -55,6 +55,7 @@ require_once("vue_image.php");
 
                     case "image" :
                         $this->afficheImage($_GET['nom']);
+                        $_SESSION['tempsDebut'] = time();
 						if(isset($_GET['log'])){
 							switch($_GET['log']){
 								case -1:
@@ -82,13 +83,6 @@ require_once("vue_image.php");
 							header("Location: index.php?module=image&nom=".$_GET["nom"]."&action=image"); /* Pour que les données ne soit pas conservé
 							lors d'un rafraichissement de la page et que les commentaires dédoublent */
 						}
-                        /*$commentaire = $this->modele->lireCommentaires($_GET['nom']);
-						if($commentaire != -1){
-							$this->vue->afficherCommentaires($commentaire);
-						}
-						else{
-							$this->vue->afficher("Pas de commentaire a afficher :(");
-						}*/
 						break;
                     case "upload":
                         $this->upload();
@@ -104,6 +98,12 @@ require_once("vue_image.php");
 						}
 						break;
 						
+
+                    case "telechargement":
+                        $this->modele->telechargement($_GET['urlFichier']);
+                        break;
+
+                    
                     default:
                         echo ("erreur : ".$_GET['action']);
                         break;
@@ -111,11 +111,13 @@ require_once("vue_image.php");
                 }
             }
             else {
-                //$this->vue->menu();
-                $nom = $_GET['nom'];
-                echo "<a href = \"index.php?module=image&nom=$nom&action=image\" >";
-                $this->afficheImage($nom,true);
-                echo '</a>';
+                if(isset($_SESSION['tempsDebut'])){
+                    $t1 = time();
+                    $tFinal = $t1 - $_SESSION['tempsDebut'];
+                    $this->vue->afficherTemps($this->modele->calculerTemps($tFinal));
+                    unset($_SESSION['tempsDebut']);
+                }
+                $this->afficherImages($this->modele->getImages());                
             }
         }         
     }

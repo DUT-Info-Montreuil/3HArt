@@ -15,6 +15,34 @@ const REPERTOIRE = "./imageTest/";
 		public function cheminImage($nomImage) {
 			return "./imageTest/$nomImage";
 		}
+		public function calculerTemps($temps){
+			if($temps >= 60){
+				$minutes = intdiv($temps, 60);
+				$secondes = fmod($temps, 60);
+				return array($minutes, $secondes);
+			}
+			else{
+				return $temps;
+			}
+		}
+
+		public function telechargement($urlFichier){
+			// header('Content-Type: application/octet-stream');
+			header("Content-Transfer-Encoding: Binary"); 
+			header("Content-disposition: attachment; filename=\"" . basename($urlFichier) . "\""); 
+			readfile($urlFichier);
+			exit();
+		}
+		
+		public function dateT(){
+			$d = date("d");
+            $m = date("m");
+            $y = 20 . date("y");
+            $date = $d . "/" . $m . "/" . $y ;
+			return $date;
+		
+		}
+		
 
 		public function getIdImage($nomImage) {
 			try {

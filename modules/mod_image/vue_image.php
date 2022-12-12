@@ -30,7 +30,8 @@
         }
 
         public function afficherTelechargement($string){
-            echo "<a id = telechargement href=./modules/mod_image/$string  download=$string>Télécharger l'image</a>";
+            echo "<a id = accueil href = index.php?module=image&action=telechargement&urlFichier=$string > Télécharger l'image</a>";
+            //echo "<a id = telechargement href=./modules/mod_image/$string  download=$string></a>";
         }
 
         public function affichage($image, $note) {
@@ -59,6 +60,14 @@
         ?>
             
         <?php
+        }
+        public function afficherTemps($temps){
+            if(is_array($temps)){
+                echo "Vous avez regardé cette image pendant $temps[0] minute(s) et $temps[1] seconde(s)";
+            }
+            else{
+                echo "Vous avez regardé cette image pendant $temps seconde(s)";
+            }
         }
 		
 		public function commenter(){
