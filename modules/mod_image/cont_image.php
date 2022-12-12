@@ -111,13 +111,17 @@ require_once("vue_image.php");
                 }
             }
             else {
+                
                 if(isset($_SESSION['tempsDebut'])){
                     $t1 = time();
                     $tFinal = $t1 - $_SESSION['tempsDebut'];
                     $this->vue->afficherTemps($this->modele->calculerTemps($tFinal));
                     unset($_SESSION['tempsDebut']);
                 }
-                $this->afficherImages($this->modele->getImages());                
+                $this->afficherImages($this->modele->getImages());
+                
+                
+                
             }
         }         
     }

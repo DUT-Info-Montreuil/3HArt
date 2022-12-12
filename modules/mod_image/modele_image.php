@@ -18,11 +18,11 @@ const REPERTOIRE = "./imageTest/";
 		public function calculerTemps($temps){
 			if($temps >= 3600){ 
 				$heures = intdiv($temps, 3600); 
-				$minutes =  intdiv(fmod($temps, 3600), 60);
+				$minutes =  intdiv(fmod($temps, 3600), 60); 
 				$secondes = fmod($temps, 60)  ;
 				return array($heures, $minutes, $secondes);
 			}
-			if($temps >= 60){
+			else if($temps >= 60){
 				$minutes = intdiv($temps, 60);
 				$secondes = fmod($temps, 60);
 				return array($minutes, $secondes);
@@ -33,7 +33,6 @@ const REPERTOIRE = "./imageTest/";
 		}
 
 		public function telechargement($urlFichier){
-			// header('Content-Type: application/octet-stream');
 			header("Content-Transfer-Encoding: Binary"); 
 			header("Content-disposition: attachment; filename=\"" . basename($urlFichier) . "\""); 
 			readfile($urlFichier);

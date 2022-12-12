@@ -73,7 +73,6 @@
             }
         }
 		
-<<<<<<< HEAD
 		public function commenter(){
         ?>
             <form id=creerCommentaire method=POST action="index.php?module=image&nom=<?php echo($_GET['nom']) ?>&action=commenter" >
@@ -92,18 +91,6 @@
                 <input type=submit name=envoyer>
             </form>
         <?php
-=======
-		public function commenter($nom){
-            return "<form id = creerCommentaire method = POST action = \" index.php?module=image&nom=$nom&action=commenter \ >;
-                <label>Entrez un commentaire : </label> ;
-                <input type=text id= num name=commentaire></input>;
-                <br>;
-                <br>;
-                <input type =\"submit\" name = envoyer >;
-            </form>";
-
-
->>>>>>> 4f39952 (amélioration du chronon)
         }
 
 		public function afficherCommentaire($commentaire,$auteur) {
