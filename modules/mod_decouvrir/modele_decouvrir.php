@@ -1,5 +1,6 @@
 <?php
 
+
 //include_once('connexion.php');
 
     class ModeleDecouvrir {
@@ -26,8 +27,6 @@
 
 			}
 		}
-
-        
 
         public function getListe() {  
 
@@ -61,22 +60,18 @@
         }
   
 
-        public function categorie($typeImage){
-            switch ($typeImage) {
-                case '3d':
-                    //$this->modele->getDetailsTypeImage(3d);
-                    break;
-                case 'paysage':
-                    break;
-                case 'dessin':
-                    break;
-                case 'noirblanc':
-                    break;
-                
-                default:
-                    # code...
-                    break;
+        public function ImageParCategorie($typeImage){
+            try {
+                $sql= 'SELECT * from Image WHERE Categorie = $typeImage';
+                $statement = self::$bdd->prepare($sql);
+                $statement->execute(array($typeImage));
+                $resultat = $statement->fetchAll();
+                return $resultat;
+            
+            } catch (PDOException $e) {
+                echo $e->getMessage().$e->getCode();
             }
+
 
         }
         

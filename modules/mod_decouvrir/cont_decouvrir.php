@@ -7,44 +7,44 @@
         private $vue;
         private $modele;
         
-
         public function __construct(){
             $this->vue = new VueDecouvrir();
             $this->modele = new ModeleDecouvrir();
              
         }
-        public function connect(){
-            this;
-        }
-        
-        function liste() {
-            $this->vue->affiche_liste($this->modele->getListe());
-        }
 
-        public function detailsUsers() {
-            $this->vue->affiche_details($this->modele->getDetails($_GET['id']));
-        }
-        
-        
-
-
-        public function search(){
-            return $this->modele->search();
-        }
         public function categorie(){
 
             switch ($_GET['categorie']) {
                 case '3d':
-                    $this->modele->categorie("3d");
+                    $parcourrir= $this->modele->categorie("3d");
+                    foreach($parcourrir as $image){
+                        $this->vue->afficheImage($image);
+                    }
                     break;
                 case 'paysage':
+                    $parcourrir= $this->modele->categorie("paysage");
+                    foreach($parcourrir as $image){
+                        $this->vue->afficheImage($image);
+                    }
                     break;
                 case 'dessin':
+                    $parcourrir=$this->modele->categorie("dessin");
+                    foreach($parcourrir as $image){
+                        $this->vue->afficheImage($image);
+                    }
+                    break;
+                case 'portrait':
+                    $parcourrir=$this->modele->categorie("portrait");
+                    foreach($parcourrir as $image){
+                        $this->vue->afficheImage($image);
+                    }
                     break;
                 case 'noirblanc':
-                    break;
-                
-                default:
+                    $parcourrir=$this->modele->categorie("noirblanc");
+                    foreach($parcourrir as $image){
+                        $this->vue->afficheImage($image);
+                    }
                     break;
             }
         }
@@ -54,29 +54,9 @@
         public function exec(){
             $this->vue->menu();
             echo "<br>";
-            if (isset($_GET['action'])){
-                switch($_GET['action']) { 
-                    case "inscription":
-                        $this->vue->formulaireInscription();
-                        break;
-    
-                    case "connexion";
-                        $this->modele->connexion();
-                        break;
-                    
-                    case "deconnexion";
-                        $this->modele->deconnexion();
-                        break;
-                        
-                    case "search";
-                        $this->modele->search();
-    
-                    default:
-                        echo "erreur : " . $this->action;
-                        break;
-                    
-                }
-            }
+            $this->categorie();
+            
+            
             
         }    
     }

@@ -16,15 +16,6 @@ class ModDecouvrir{
 
     public function exec(){
         $this->controleur->exec();
-    
-
-        if (isset($_GET['action'])){
-            switch($_GET['action']) {
-                case "details":
-                    $this->controleur->detailUser();
-                    break;
-        }
-        }
 
     }
 

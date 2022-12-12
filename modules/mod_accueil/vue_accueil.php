@@ -36,10 +36,6 @@ const mois = [
         }
 
         public function menu(){
-            echo '<a href = " index.php?action=bienvenue&module=connexion" > Bienvenue </a>';
-            echo "<br>";
-            echo '<a href = "index.php?action=inscription&module=connexion" > FormulaireInscription</a>';
-            echo "<br>";
 			echo '<a href = "index.php?action=connexion&module=connexion" > Connexion</a>';
             echo "<br>";
 			echo '<a href = "index.php?action=deconnexion&module=connexion" > Deconnexion</a>';
