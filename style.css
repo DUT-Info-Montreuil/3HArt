@@ -145,7 +145,6 @@ a {
 }
 
 .list-image-scroll {
-    max-height: 400px;
     overflow: scroll;
     display: inline-flex;
     margin: 20px;
@@ -157,27 +156,25 @@ a {
 
 #accueil-list-image {
     white-space: nowrap;
-    width: 650px;
+    width: 60%;
+    height: fit-content;
     border: 2px solid black;
     border-radius: 2%;
     align-items: flex-start;
-    position: sticky;
-    left: 5%;
-    z-index: 1;
 }
 
 #option {
-    position: relative;
-    left: 10%;
+    width: 25%;
     height: 400px;
     vertical-align: top;
     border: 2px solid black;
-    margin: 25px;
+    margin-left: 10%;
+    margin: 20px;
     border-radius: 5%;
 }
 
 .grande-image-pour-list {
-    width: 650px;
+    width: 100%;
     height: 390px;
 }
 

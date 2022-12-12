@@ -112,24 +112,6 @@ require_once("vue_image.php");
 						}
 						break;
 						
-					case "noteErreur":
-						$this->afficheImage($_GET['nom']);
-						switch($_GET['log']){
-							case -1:
-								$this->vue->afficher("La note doit etre un nombre");
-								break;
-							
-							case -2:
-								$this->vue->afficher("La note doit etre positive");
-								break;
-								
-							case -3:
-								$this->vue->afficher("La note ne peut pas etre superieur a 10 "); 
-								break;
-							
-						}
-						break;
-						
                     default:
                         echo ("erreur : ".$_GET['action']);
                         break;
