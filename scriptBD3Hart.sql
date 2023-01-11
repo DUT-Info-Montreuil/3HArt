@@ -201,6 +201,7 @@ CREATE TABLE Utilisateur(
 CREATE TABLE Image(
    IdImage SERIAL,
    NomImage VARCHAR(50)  NOT NULL,
+   dateCreation datetime DEFAULT CURRENT_TIMESTAMP,
    MotCles TEXT,
    Categorie VARCHAR(50),
    pathImg VARCHAR(50) NOT NULL,
@@ -225,7 +226,7 @@ CREATE TABLE Publicite(
 CREATE TABLE Regarder(
    IdUtilisateur bigint(20) unsigned,
    IdImage bigint(20) unsigned,
-   DateVisionnage TIMESTAMP NOT NULL,
+   DateVisionnage TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    TempsVisionnage TIME,
    PRIMARY KEY(IdUtilisateur, IdImage),
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur),
@@ -265,11 +266,12 @@ CREATE TABLE Apparaitre(
 );
 
 CREATE TABLE Commenter(
+   IdCommentaire bigint(20) unsigned,
    IdUtilisateur bigint(20) unsigned,
    IdImage bigint(20) unsigned,
    Message VARCHAR(500),
    dateCreation datetime DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY(IdUtilisateur, IdImage),
+   PRIMARY KEY(IdCommentaire, IdUtilisateur, IdImage),
    FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur),
    FOREIGN KEY(IdImage) REFERENCES Image(IdImage)
 );
@@ -292,7 +294,14 @@ CREATE TABLE Noter(
 );
 CREATE TABLE Tag(
    idTag SERIAL,
-   nomTag VARCHAR(50) NOT NULL,
+   nomTag VARCHAR(50) NOT NULL,CREATE TABLE Tager(
+   idTag BIGINT(20) unsigned,
+   idImage BIGINT(20) unsigned,
+   PRIMARY KEY(idTag, IdImage),
+   FOREIGN KEY(idTag) REFERENCES Tag(idTag),
+   FOREIGN KEY(idImage) REFERENCES Image(IdImage)
+)
+
    PRIMARY KEY(idTag)
    
 );
